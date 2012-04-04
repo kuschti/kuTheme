@@ -30,7 +30,7 @@
 					wp_nav_menu( array('theme_location' => 'footer', 'container' => 'nav' ,'depth' => 1 ));} 
 				?>
 
-				<a href="#top-border" class="top"><?php _e('Back to Top &uArr;', 'piha') ?></a>
+				<a href="#container" class="top"><?php _e('Back to Top &uArr;', 'piha') ?></a>
 			</div><!-- end #site-generator -->
 		</div><!-- end #colophon -->
 	</footer><!-- end #footer-wrap -->

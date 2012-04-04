@@ -23,13 +23,6 @@
 			<h2 class="entry-title"><a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'piha' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_title(); ?></a></h2>
 		</header><!--end .entry-header -->
 
-		<?php if ( is_search() ) : // Only display Excerpts for search pages ?>
-		<div class="entry-summary">
-			<?php the_excerpt( __( 'View the pictures &rarr;', 'piha' ) ); ?>
-		</div><!-- end .entry-summary -->
-
-		<?php else : ?>
-
 		<?php if ( post_password_required() ) : ?>
 		<div class="entry-content">
 			<?php the_content( __( 'View the pictures &rarr;', 'piha' ) ); ?>
@@ -58,8 +51,6 @@
 				
 				<?php the_content( __( 'View the pictures &rarr;', 'piha' ) ); ?>
 		
-			<?php endif; ?>
-	
 			<?php endif; ?>
 			
 				<?php wp_link_pages( array( 'before' => '<div class="page-link">' . __( 'Pages:', 'piha' ), 'after' => '</div>' ) ); ?>

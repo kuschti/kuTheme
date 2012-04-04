@@ -63,7 +63,6 @@ body {
 /*-----------------------------------------------------------------------------------*/
 /*	Lists
 /*-----------------------------------------------------------------------------------*/
-
 #content ul, #content ol  {
 	margin: 0 30px 30px 0;
 }
@@ -74,7 +73,6 @@ dd {
 /*-----------------------------------------------------------------------------------*/
 /*	Header
 /*-----------------------------------------------------------------------------------*/
-
 #branding {
 	padding:0 12.6436% 0 9.1954%;
 }
@@ -85,7 +83,6 @@ dd {
 /*-----------------------------------------------------------------------------------*/
 /*	Top border with additional navigation and search form
 /*-----------------------------------------------------------------------------------*/
-
 #top-nav ul.menu li {
 	float:right;
 	margin:2px 0 2px 5px;
@@ -99,23 +96,43 @@ dd {
 	float: right;
 	text-align: left;
 }
-#s {
+#top-nav .searchform {
 	float: right;
-	padding: 4px 4px 4px 0;
+	text-align: left;
 }
-#searchsubmit {
+#top-nav .s {
+	padding: 4px 4px 4px 0;
+	float: right;
+}
+#top-nav .searchsubmit {
 	margin:0 5px 0 0;
 }
 
 /*-----------------------------------------------------------------------------------*/
 /*	Main Navigation
 /*-----------------------------------------------------------------------------------*/
-
 #main-nav ul li {
+	margin:0 0 0 1px;
 	float: right;
 }
 #main-nav ul ul {
+	margin: 0;
+	padding:0;
 	float: right;
+	left: auto;
+	right:0;
+}
+#main-nav ul ul ul {
+	left: auto;
+	right: 97%;
+	top: -5px;
+}
+#main-nav li li {
+	margin:0;
+	padding:0 10px;
+}
+#main-nav ul ul a {
+	padding: 9px 0;
 }
 
 /*-----------------------------------------------------------------------------------*/
@@ -124,7 +141,9 @@ dd {
 #content .post {
 	padding: 0 110px 0 0;
 }
-
+#content .post .entry-content a.more-link {
+	display:inline-block;
+}
 /*-----------------------------------------------------------------------------------*/
 /*	Posts Format Icons 
 /*-----------------------------------------------------------------------------------*/
@@ -206,7 +225,6 @@ dd {
 /*-----------------------------------------------------------------------------------*/
 /*	Post Typography
 /*-----------------------------------------------------------------------------------*/
-
 #content blockquote p cite {
 	font-size: .85em;
 }
@@ -225,7 +243,6 @@ dd {
 /*-----------------------------------------------------------------------------------*/
 /*	Images / Video
 /*-----------------------------------------------------------------------------------*/
-
 #content img.wp-post-image {
 	margin: 5px 0 5px 15px !important;
 	float: right;
@@ -255,9 +272,9 @@ dd {
 /*-----------------------------------------------------------------------------------*/
 /*	Theme Option: Share Posts
 /*-----------------------------------------------------------------------------------*/
-
 #content ul.share li {
 	float:right !important;
+	padding: 0 !important;
 }
 ul.share li.post-shortlink input {
 	margin:2px 4px 0 25px;
@@ -269,7 +286,6 @@ ul.share li.post-fb iframe {
 /*-----------------------------------------------------------------------------------*/
 /*	Post Author Info
 /*-----------------------------------------------------------------------------------*/
-
 #content .post .author-info .avatar {
 	float: right;
 	margin:0 0 0 15px;
@@ -278,14 +294,13 @@ ul.share li.post-fb iframe {
 /*-----------------------------------------------------------------------------------*/
 /*	Post Formats
 /*-----------------------------------------------------------------------------------*/
-
 /* --- Format Link --- */
 #content .format-link .entry-content a.link-format-btn {
-	background:#8958B5;
-	padding:20px 15px;
+	background:#8958B5 url(images/formatlink-rtl.png) 20px 25px no-repeat;
+	padding:20px 15px 20px 50px;
 }
 #content .format-link .entry-content a.link-format-btn:hover {
-	background:#222222;
+	background:#222222 url(images/formatlink-rtl.png) 20px 25px no-repeat;
 }
 /* --- Format Quote --- */
 #content .format-quote blockquote {
@@ -319,7 +334,6 @@ ul.share li.post-fb iframe {
 /*-----------------------------------------------------------------------------------*/
 /*	Comments
 /*-----------------------------------------------------------------------------------*/
-
 #comments {
 	padding:20px 110px 0 0;
 }
@@ -356,7 +370,6 @@ ul.share li.post-fb iframe {
 /*-----------------------------------------------------------------------------------*/
 /*	Shortcodes
 /*-----------------------------------------------------------------------------------*/
-
 .two-columns-one,
 .three-columns-one,
 .three-columns-two, 
@@ -413,15 +426,13 @@ ul.share li.post-fb iframe {
 /*-----------------------------------------------------------------------------------*/
 /*	Archives / Search Results / 404
 /*-----------------------------------------------------------------------------------*/
-
-#content .page-header h1.page-title {
+#content .page-header {
 	padding: 0 110px 20px 0;
 }
 
 /*-----------------------------------------------------------------------------------*/
 /*	Pages
 /*-----------------------------------------------------------------------------------*/
-
 #content .page .entry-wrap {
 	padding:0;
 }
@@ -432,7 +443,6 @@ ul.share li.post-fb iframe {
 /*-----------------------------------------------------------------------------------*/
 /*	Previous/Next Pagination
 /*-----------------------------------------------------------------------------------*/
-
 #content #nav-below {
 	padding: 0 110px 0 0;
 } 
@@ -459,7 +469,6 @@ ul.share li.post-fb iframe {
 /*-----------------------------------------------------------------------------------*/
 /* Sidebar Widgets
 /*-----------------------------------------------------------------------------------*/
-
 .widget_categories ul li ul.children li, 
 .widget_nav_menu ul li ul.sub-menu li, 
 .widget_pages ul li ul.children li {
@@ -475,18 +484,20 @@ ul.sociallinks li {
 ul.sociallinks li a {
 	margin:0px 0 8px 8px;
 }
-
 /* --- Search Widget --- */
-.widget_search #searchform {
+.widget_search .searchform {
+	margin:0;
+	padding:0;
 	text-align: left;
 }
-.widget_search #searchform #s {
-	float: right;
+.widget_search .searchform .s {
 	margin:5px 5px 5px 0;
 	padding: 4px 4px 4px 0;
+	float: right;
 }
-.widget_search #searchsubmit {
+.widget_search .searchsubmit {
 	margin:5px 0 5px 5px;
+	background:#8958B5 url(images/icon-sprites.png) 67% -43px no-repeat;
 }
 /* --- Calendar Widget --- */
 .widget_calendar table#wp-calendar tfoot tr td#next a {
@@ -505,7 +516,6 @@ ul.sociallinks li a {
 /*-----------------------------------------------------------------------------------*/
 /*	Footer
 /*-----------------------------------------------------------------------------------*/
-
 #colophon #site-generator {
 	padding:25px 30px 30px;
 }
@@ -536,7 +546,6 @@ ul.sociallinks li a {
 /*-----------------------------------------------------------------------------------*/
 /*	Styles for external WP-Plugins
 /*-----------------------------------------------------------------------------------*/
-
 /* --- Better WordPress Recent Comments --- */
 .bwp-rc-widget li.sidebar-comment .comment-content {
 	padding:0 10px 0 0;
@@ -582,7 +591,6 @@ ul#smart-archives-block li span.empty-month {
 /*-----------------------------------------------------------------------------------*/
 /*	CSS3 Media Queries for Responsiveness
 /*-----------------------------------------------------------------------------------*/
-
 @media screen and (max-width: 1230px) {
 /* --- General Structure --- */
 #container {
@@ -592,9 +600,9 @@ ul#smart-archives-block li span.empty-month {
 #footer-wrap {
 	background:rgba(34, 34, 34, 0.75) url(images/bg-container-short-rtl.png) repeat-y 100% 100%;
 }
-#branding {
-	margin: 0;
-	padding: 0 12.6436% 0 9.1954%;
+#branding,
+#content {
+	padding-left:7%;
 }
 #secondary {
 	padding:0 3.5% 30px 0;
@@ -626,16 +634,24 @@ ul#smart-archives-block li span.empty-month {
 	float:left;
 }
 #top-nav .search-mobile a.search-mobile-btn {
+	margin:0;
 	float:left;
 	background:#8958B5 url(images/icon-sprites.png) 11px -43px no-repeat;
 }
 #top-nav .search-mobile .pulldown {
+	right:auto;
 	left:0;
 	float:left;
 }
-#top-nav .search-mobile .pulldown #searchform #s {
-	float: right;
+#top-nav .search-mobile .pulldown .searchform .s {
+	width: 210px;
+	height: 15px;
 	padding: 4px 4px 4px 0;
+	float: right;
+}
+#branding {
+	margin:0;
+	padding:0 16.796875%;
 }
 /* --- Main Navigation --- */
 #main-nav-mobile a.nav-mobile-btn {
@@ -661,6 +677,10 @@ ul#smart-archives-block li span.empty-month {
 #content .post,
 #content .type-attachment {
 	padding: 0 16.796875%;
+}
+/* --- Comments --- */
+#comments {
+	padding: 20px 16.796875% 0;
 }
 /* --- Posts Format Icons --- */
 #content a.post-format, 
@@ -702,7 +722,7 @@ ul#smart-archives-block li span.empty-month {
 	padding: 45px 16.796875% 0;
 	overflow:hidden;
 }
-.widget_categories ul li a,
+.widget_categories ul li,
 .widget_archive ul li,
 .widget_meta ul li,
 .widget_links ul li,
@@ -712,6 +732,22 @@ ul#smart-archives-block li span.empty-month {
 }
 #content #nav-below {
 	padding: 0 16.796875%;
+}
+#content #nav-single,
+#image-nav-below {
+	padding: 50px 16.796875% 0;
+}
+/* --- Archives / Search Results / 404 --- */
+#content .page-header {
+	padding:0 16.796875% 20px;
+}
+/* --- Pages --- */
+#content .page {
+	padding:  0 16.796875%;
+}
+/* --- WP-PageNavi --- */
+#content .wp-pagenavi {
+	padding:  0 16.796875%;
 }
 }
 @media screen and (max-width: 870px) {
@@ -742,7 +778,7 @@ ul#smart-archives-block li span.empty-month {
 	height:83px;
 }
 /* --- Archives / Search Results / 404 --- */
-#content .page-header h1.page-title {
+#content .page-header {
 	padding:0 10.76% 20px;
 }
 /* --- Previous/Next Pagination --- */
@@ -824,8 +860,7 @@ ul#smart-archives-block li span.empty-month {
 }
 /* --- Post Images --- */
 #content img.wp-post-image {
-	width: 120px;
-	margin: 5px 10px 5px 0 !important;
+	margin: 5px 0 5px 10px !important;
 }
 /* --- Post Meta --- */
 #content .entry-meta {
@@ -913,6 +948,14 @@ content .post .author-info {
 #content p.nocomments {
 	padding:8px;
 }
+#content ol.commentlist li.depth-2,
+#content ol.commentlist li.depth-3,
+#content ol.commentlist li.depth-4,
+#content ol.commentlist li.depth-5,
+#content ol.commentlist li.depth-6,
+#content ol.commentlist li.depth-7 {
+	margin-right:0;
+}
 /* --- Comments Reply / Forms --- */
 #commentform input#author, 
 #commentform input#email, 
@@ -954,7 +997,7 @@ content .post .author-info {
 	padding: 35px 20px 0;
 }
 /* --- Archives / Search Results / 404 --- */
-#content .page-header h1.page-title {
+#content .page-header {
 	padding:0 20px 20px;
 }
 /* --- Previous/Next Pagination --- */
@@ -1037,7 +1080,7 @@ padding-top: 8px;
 	width:110px;
 	height:83px;
 }
-.widget_search #searchform {
+.widget_search .searchform {
 	width: 99%;
 }
 /* --- Footer --- */

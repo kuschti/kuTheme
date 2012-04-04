@@ -5,7 +5,7 @@ Description: Piha is a modern blog theme with responsive web design. So you don'
 
 Author: Elmastudio
 Author URI: http://www.elmastudio.de/wordpress-themes/
-Version: 1.0
+Version: 1.0.2
 Tags: responsive layout, post-formats, two-columns, right-sidebar, custom-colors, custom-header, custom-background, custom-menu, theme-options, threaded-comments, sticky-post, translation-ready
 
 License: GNU/GPL Version 2 or later
@@ -17,7 +17,7 @@ License URI: http://www.gnu.org/licenses/gpl.html
 /*---------------------------------------------------------------------------------------------*/
 
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,a,img,strong,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{border:0;font-size:100%;font:inherit;vertical-align:baseline;margin:0;padding:0;}
-address{padding:0 0 30px;}
+address{padding:0 0 30px;font-size: 1.1em;}
 abbr,acronym{border-bottom:.1em dotted;}
 ins{background:#f0f0f0;text-decoration:none;}
 article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block;}
@@ -179,7 +179,8 @@ ul.share li.post-shortlink input,
 	color:#8958B5;
 }
 input#submit, 
-input.wpcf7-submit {
+input.wpcf7-submit,
+.jetpack_subscription_widget form#subscribe-blog input[type="submit"] {
 	background-color:#8958B5;
 }
 #secondary a,
@@ -199,11 +200,13 @@ input.wpcf7-submit {
 #content ul,
 #content ol  {
 	margin: 0 0 30px 30px;
+	font-size: 1.1em;
 	line-height: 1.5;
 }
 #content ol ol,
 #content ul ul {
 	padding:8px 0 0;
+	font-size: 1em;
 }
 #content ul li {
 	padding:0 0 4px;
@@ -222,6 +225,7 @@ input.wpcf7-submit {
 dl {
 	margin:0;
 	padding:0;
+	font-size: 1.1em;
 }
 dt {
 	margin: 0;
@@ -262,7 +266,8 @@ dd {
 #site-title a.logo img {
 	max-width:100%;
 }
-#header img.header-image {
+#header img.header-image,
+#header img.attachment-post-thumbnail {
 	max-width:100%;
 	height:auto;
 	margin:20px 0 0;
@@ -360,6 +365,7 @@ dd {
 	-moz-border-radius: 2px;
 	border-radius: 2px;
 	cursor:pointer;
+	-webkit-appearance: none;
 	-webkit-transition: all .15s ease-in-out;
 	-moz-transition: all .15s ease-in-out;
 	-o-transition: all .15s ease-in-out;
@@ -660,7 +666,8 @@ dd {
 	margin: 0 0 30px;
 	line-height:1.6;
 }
-#content .entry-content {
+#content .entry-content,
+#content .entry-summary {
 	font-size:.9em;
 }
 #content .entry-content p:last-child, 
@@ -671,7 +678,6 @@ strong {
 	font-weight: bold;
 }
 em {
-	font-size: .9em;
 	font-style: italic;
 }
 pre {
@@ -857,7 +863,7 @@ ul.share li.post-twitter {
 }
 ul.share li.post-fb iframe {
 	width:125px;
-	height:20px;
+	height:24px;
 	margin-right:10px;
 	border:none;
 }
@@ -1265,6 +1271,7 @@ input.wpcf7-submit {
 	color:#fff;
 	font-weight:bold;
 	cursor: pointer;
+	-webkit-appearance: none;
 	-webkit-transition: all .15s ease-in-out;
 	-moz-transition: all .15s ease-in-out;
 	-o-transition: all .15s ease-in-out;
@@ -1383,6 +1390,7 @@ input.wpcf7-submit:hover {
 	margin: 40px 0;
 	padding: 20px;
 	overflow:hidden;
+	font-size: 1.1em;
 	line-height:1.4;
 }
 .white-box p, 
@@ -1428,7 +1436,7 @@ input.wpcf7-submit:hover {
 /* ------- Button Shortcodes ------- */
 .standard-btn, 
 .icons-btn  {
-	margin:0 15px 0 0;
+	margin:0 15px 15px 0;
 	padding:7px 10px;
 	display:inline-block;
 	overflow:hidden;
@@ -1542,17 +1550,25 @@ input.wpcf7-submit:hover {
 /*-----------------------------------------------------------------------------------*/
 /*	Archives / Search Results / 404
 /*-----------------------------------------------------------------------------------*/
-#content .page-header h1.page-title {
-	margin:0;
+#content .page-header {
 	padding: 0 0 20px 110px;
+}
+#content .page-header h1.page-title,
+#content .page-header p {
+	margin:0;
+	padding: 0;
 	font-size: .7em;
 	color: rgba(0, 0, 0, 0.4);
 	font-weight: normal;
+	line-height:1.6;
 	text-transform: uppercase;
 	letter-spacing:0.2em;
 }
 #content .page-header h1.page-title span {
 	font-weight:bold;
+}
+.search-results #content .page {
+	margin: 0 0 100px 0;
 }
 
 /*-----------------------------------------------------------------------------------*/
@@ -1845,6 +1861,7 @@ ul.sociallinks li a.rsscomments {
 	border-radius: 2px;
 	text-indent:-9999em;
 	cursor:pointer;
+	-webkit-appearance: none;
 	-webkit-transition: all .1s ease-in-out;
 	-moz-transition: all .1s ease-in-out;
 	-o-transition: all .1s ease-in-out;
@@ -1937,6 +1954,33 @@ ul.sociallinks li a.rsscomments {
 .featured-video {
 	max-width:300px;
 }
+/* --- Jetpack Subscription Widget --- */
+#content .jetpack_subscription_widget p {
+	margin:0;
+	line-height:1.4;
+}
+.jetpack_subscription_widget form#subscribe-blog input#subscribe-field {
+	margin: 10px 0;
+	padding: 10px 6px !important;
+	display: block;
+	background:#fff;
+	border: 1px solid #D9D9D9;
+	color: #999;
+	font-size:1.05em;
+	-webkit-appearance: none;
+}
+.jetpack_subscription_widget form#subscribe-blog input[type="submit"] {
+	margin: 0;
+	padding: 10px;
+	border:none;
+	font-size:0.95em;
+	color:#fff;
+	cursor: pointer;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	border-radius: 2px;
+	-webkit-appearance: none;
+}
 
 /*-----------------------------------------------------------------------------------*/
 /*	Footer
@@ -2014,6 +2058,17 @@ ul.sociallinks li a.rsscomments {
 #ie7 .row {
     display:inline !important;
 }
+#ie7 #branding {
+	margin-left: 15px;
+	background:#fff;
+}
+#ie7 #top-nav .searchsubmit {
+	text-indent:-9999em;
+	text-transform: capitalize;
+}
+#ie7 #main-nav {
+	overflow:hidden;
+}
 #ie7 #secondary a, #ie8 #secondary a,
 #ie7 #site-generator a, #ie8 #site-generator a, 
 #ie7 #content .format-gallery .entry-content a,#ie8 #content .format-gallery .entry-content a {
@@ -2074,12 +2129,15 @@ ul.sociallinks li a.rsscomments {
 /* --- WP-PageNavi --- */
 #content .wp-pagenavi {
 	margin:0;
-	padding: 10px 0 10px 110px;
-	overflow:hidden;
+	padding: 0 0 0 110px;
 	font-size:.68em;
 	color:#666;
 }
-#content .wp-pagenavi a {
+#content .wp-pagenavi a.page,
+#content .wp-pagenavi a.nextpostslink,
+#content .wp-pagenavi a.previouspostslink,
+#content .wp-pagenavi a.first,
+#content .wp-pagenavi a.last {
 	margin:0 3px 6px;
 	padding:6px 8px;
 	display:inline-block;
@@ -2093,8 +2151,14 @@ ul.sociallinks li a.rsscomments {
 	-moz-transition: all .15s ease-in-out;
 	-o-transition: all .15s ease-in-out;
 	transition: all .15s ease-in-out;
+	clear:none !important;
+	overflow:visible;
 }
-#content .wp-pagenavi a:hover {
+#content .wp-pagenavi a.page:hover,
+#content .wp-pagenavi a.nextpostslink:hover,
+#content .wp-pagenavi a.previouspostslink:hover,
+#content .wp-pagenavi a.first:hover,
+#content .wp-pagenavi a.last:hover {
 	background:#E5E5E5;
 	border:1px solid #bfbfbf;
 	color:#666;
@@ -2103,6 +2167,7 @@ ul.sociallinks li a.rsscomments {
 #content .wp-pagenavi span.current {
 	margin:0 3px 5px;
 	padding:6px 8px;
+	display:inline-block;
 	background:#E5E5E5;
 	border:1px solid #bfbfbf;
 	-webkit-border-radius: 2px;
@@ -2255,8 +2320,9 @@ input.wpcf7-submit {
 #content .related-posts ul li a {
 	color:#969696;
 }
-/* --- Remove WordPress Jetpack smiley --- */
+/* --- Remove WordPress Jetpack Stats smiley --- */
 img#wpstats {
+	display:none;
 	position:absolute;
 	top:0;
 	width:0;
@@ -2276,6 +2342,12 @@ img#wpstats {
 #footer-wrap {
 	background:rgba(34, 34, 34, 0.75) url(images/bg-container-short.png) repeat-y 0 0;
 }
+#ie7 #container,
+#ie8 #container,
+#ie7 #footer-wrap,
+#ie8 #footer-wrap {
+	background:#444 url(images/bg-container-short.png) repeat-y 0 0;
+}
 #page {
 	width:805px;
 }
@@ -2293,7 +2365,9 @@ img#wpstats {
 
 @media screen and (max-width: 1110px) {
 /* --- General Structure --- */
-#container {
+#container,
+#ie7 #container,
+#ie8 #container {
 	max-width: 100%;
 	padding: 0;
 	background: none;
@@ -2476,7 +2550,7 @@ img#wpstats {
 	padding:4px 0;
 	display: block;
 	float:none;
-	background:#fff;
+	background:#fafafa;
 }
 #main-nav-mobile ul ul ul {
 	left: 0;
@@ -2574,7 +2648,7 @@ img#wpstats {
 	padding: 45px 16.796875% 0;
 	overflow:hidden;
 }
-.widget_categories ul li a,
+.widget_categories ul li,
 .widget_archive ul li,
 .widget_meta ul li,
 .widget_links ul li,
@@ -2587,7 +2661,7 @@ img#wpstats {
 	width:100%;
 }
 /* --- Archives / Search Results / 404 --- */
-#content .page-header h1.page-title {
+#content .page-header {
 	padding:0 16.796875% 20px;
 }
 /* --- Pages --- */
@@ -2632,7 +2706,7 @@ img#wpstats {
 	padding: 45px 10.76% 0;
 }
 /* --- Archives / Search Results / 404 --- */
-#content .page-header h1.page-title {
+#content .page-header {
 	padding:0 10.76% 20px;
 }
 /* --- Previous/Next Pagination --- */
@@ -2648,6 +2722,10 @@ img#wpstats {
 
 @media screen and (max-width : 720px) {
 /* --- General Structure --- */
+html {
+	-ms-text-size-adjust: none;
+	-webkit-text-size-adjust: none;
+}
 #branding,
 #content .post,
 #content .page,
@@ -2671,11 +2749,11 @@ img#wpstats {
 	padding:18px 0 0;
 }
 #site-title h1 {
-	font-size:2em;
-	line-height: 1.2;
+	font-size:1.7em !important;
+	line-height: 1.2 !important;
 }
 #site-title h2#site-description {
-	font-size:.75em;
+	font-size:.75em !important;
 }
 #header #header-slogan p {
 	font-size:.9em;
@@ -2805,6 +2883,14 @@ content .post .author-info {
 #content p.nocomments {
 	padding:8px;
 }
+#content ol.commentlist li.depth-2,
+#content ol.commentlist li.depth-3,
+#content ol.commentlist li.depth-4,
+#content ol.commentlist li.depth-5,
+#content ol.commentlist li.depth-6,
+#content ol.commentlist li.depth-7 {
+	margin-left:0;
+}
 /* --- Comments Reply / Forms --- */
 #commentform input#author, 
 #commentform input#email, 
@@ -2845,9 +2931,16 @@ content .post .author-info {
 #secondary .widget {
 	padding: 35px 20px 0;
 }
+.jetpack_subscription_widget form#subscribe-blog input#subscribe-field {
+	max-width: 260px;
+}
 /* --- Archives / Search Results / 404 --- */
-#content .page-header h1.page-title {
+#content .page-header {
 	padding:0 20px 20px;
+}
+.search-results #content .post,
+.search-results #content .page {
+margin: 0 0 40px 0;
 }
 /* --- Previous/Next Pagination --- */
 #content #nav-single,

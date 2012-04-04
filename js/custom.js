@@ -21,25 +21,25 @@ firstScrollable:function(b){return this.pushStack(m.call(this,{el:"first",dir:b}
 f.length;h&&g<j;)if(e.closest(f[g++]).length)h=false}if(h){d.scrollTarget=b.scrollTarget||i;d.link=this;a.preventDefault();c.smoothScroll(d)}});return this}});c.smoothScroll=function(b,d){var a,e,f,g=0;e="offset";var i="scrollTop",h={};if(typeof b==="number"){a=c.fn.smoothScroll.defaults;f=b}else{a=c.extend({},c.fn.smoothScroll.defaults,b||{});if(a.scrollElement){e="position";a.scrollElement.css("position")=="static"&&a.scrollElement.css("position","relative")}f=d||c(a.scrollTarget)[e]()&&c(a.scrollTarget)[e]()[a.direction]||
 0}a=c.extend({link:null},a);i=a.direction=="left"?"scrollLeft":i;if(a.scrollElement){e=a.scrollElement;g=e[i]()}else e=c("html, body").firstScrollable();h[i]=f+g+a.offset;e.animate(h,{duration:a.speed,easing:a.easing,complete:function(){a.afterScroll&&c.isFunction(a.afterScroll)&&a.afterScroll.call(a.link,a)}})};c.smoothScroll.version="1.4";c.fn.smoothScroll.defaults={exclude:[],excludeWithin:[],offset:0,direction:"top",scrollElement:null,scrollTarget:null,afterScroll:null,easing:"swing",speed:400}})(jQuery);
 
-$(document).ready(function() {
-	$('a.top').smoothScroll();
+jQuery(document).ready(function() {
+	jQuery('a.top').smoothScroll();
 });
 
 /*-----------------------------------------------------------------------------------
   Show/Hide Mobile Searchform
 -----------------------------------------------------------------------------------*/
-$(document).ready(function(){
-    	$(".pulldown").hide();
+jQuery(document).ready(function(){
+    	jQuery(".pulldown").hide();
 
-    $("a.search-mobile-btn").click(function () {
-       $('.pulldown').fadeToggle("fast");
+    jQuery("a.search-mobile-btn").click(function () {
+       jQuery('.pulldown').fadeToggle("fast");
     });
 });
 
 /*-----------------------------------------------------------------------------------
   Flexible width for embedded videos (see https://github.com/davatron5000/FitVids.js/)
 -----------------------------------------------------------------------------------*/
-$(document).ready(function(){
+jQuery(document).ready(function(){
     // Target your .container, .wrapper, .post, etc.
-    $("#container").fitVids();
+    jQuery("#container").fitVids();
 });

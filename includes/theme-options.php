@@ -311,11 +311,11 @@ function piha_print_nav_mobile_script() {
 
 ?>
 <script type="text/javascript">
-$(document).ready(function(){
-    	$("#main-nav-mobile .menu").hide();
+jQuery(document).ready(function(){
+    	jQuery("#main-nav-mobile .menu").hide();
 
-    $("a.nav-mobile-btn").click(function () {
-       $('#main-nav-mobile .menu').slideToggle("400");
+    jQuery("a.nav-mobile-btn").click(function () {
+       jQuery('#main-nav-mobile .menu').slideToggle("400");
     });
 });
 </script>
@@ -370,7 +370,7 @@ function piha_print_link_color_style() {
 a, #content .entry-header h2.entry-title a:hover,ul.share li.post-shortlink input,#content .comment-header p a:hover,#smart-archives-list a:hover,#content .related-posts ul li a:hover, #main-nav-mobile ul li a, #main-nav-mobile ul li ul li a:hover, #main-nav-mobile li:hover > a, #main-nav-mobile li li:hover > a {color:<?php echo $link_color; ?>;}
 #content a.post-format,#content .post-format-single{background:<?php echo $link_color; ?> url(<?php echo get_template_directory_uri(); ?>/images/postformat-icons.png) 0 0 no-repeat;}
 #content .format-link .entry-content a.link-format-btn{background:<?php echo $link_color; ?> url(<?php echo get_template_directory_uri(); ?>/images/icon-sprites.png) right -245px  no-repeat;}
-input#submit,input.wpcf7-submit {background-color:<?php echo $link_color; ?>;}
+input#submit,input.wpcf7-submit, .jetpack_subscription_widget form#subscribe-blog input[type="submit"] {background-color:<?php echo $link_color; ?>;}
 .widget_search .searchsubmit{background:<?php echo $link_color; ?> url(<?php echo get_template_directory_uri(); ?>/images/icon-sprites.png) 67% -43px no-repeat;}
 #top-nav .search-mobile a.search-mobile-btn {background:<?php echo $link_color; ?> url(<?php echo get_template_directory_uri(); ?>/images/icon-sprites.png) 11px -43px no-repeat;}
 #main-nav-mobile a.nav-mobile-btn {background:<?php echo $link_color; ?> url(<?php echo get_template_directory_uri(); ?>/images/icon-sprites.png) 10px -202px no-repeat;

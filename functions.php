@@ -40,26 +40,14 @@ if ( ! function_exists( 'piha' ) ):
 require_once ( get_template_directory() . '/includes/theme-options.php' );
 
 /*-----------------------------------------------------------------------------------*/
-/* Register and call jQuery via Google Libraries API
-/*-----------------------------------------------------------------------------------*/
-
-function piha_googlejquery_init() {
-    if ( !is_admin() ) {
-        wp_deregister_script( 'jquery' );
-        wp_register_script( 'jquery', 'https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js', false, '1.6.4');
-        wp_enqueue_script( 'jquery' );
-    }
-}
-add_action( 'init', 'piha_googlejquery_init' );
-
-/*-----------------------------------------------------------------------------------*/
 /* Call JavaScript Scripts for Piha (Fitvids for Elasic Videos and Custom)
 /*-----------------------------------------------------------------------------------*/
 
 add_action('wp_enqueue_scripts','piha_scripts_function');
 	function piha_scripts_function() {
 		wp_enqueue_script( 'fitvids', get_template_directory_uri() . '/js/jquery.fitvids.js', false, '1.0');
-		wp_enqueue_script( 'custom', get_template_directory_uri() . '/js/custom.js', false, '1.0');
+		wp_enqueue_script( 'respond', get_template_directory_uri() . '/js/respond.min.js', false, '1.0.1');
+		wp_enqueue_script( 'custom', get_template_directory_uri() . '/js/custom.js', false, '1.0.1');
 }
 
 /*-----------------------------------------------------------------------------------*/
