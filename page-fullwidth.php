@@ -1,6 +1,6 @@
 <?php
 /**
- * The template for displaying all pages.
+ * Template Name: Fullwidth Page
  *
  * @package WordPress
  * @subpackage Pohutukawa
@@ -9,9 +9,10 @@
 
 get_header(); ?>
 
-	<div id="content">
+	<div id="content" class="fullwidth">
 
 		<?php while ( have_posts() ) : the_post(); ?>
+
 			<?php get_template_part( 'content', 'page' ); ?>
 
 			<?php comments_template( '', true ); ?>

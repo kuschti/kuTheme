@@ -3,14 +3,16 @@
  * The template for displaying Comments.
  *
  * @package WordPress
- * @subpackage Piha
+ * @subpackage Pohutukawa
+ * @since Pohutukawa 1.0
  */
 ?>
 
 	<div id="comments">
-	<?php if ( post_password_required() ) : ?>
-		<div class="nopassword"><?php _e( 'This post is password protected. Enter the password to view any comments.', 'piha' ); ?></div>
+		<?php if ( post_password_required() ) : ?>
+		<div class="nopassword"><?php _e( 'This post is password protected. Enter the password to view any comments.', 'pohutukawa' ); ?></div>
 	</div><!-- end #comments -->
+	
 	<?php
 			/* Stop the rest of comments.php from being processed,
 			 * but don't kill the script entirely -- we still have
@@ -23,10 +25,9 @@
 	<?php // You can start editing here -- including this comment! ?>
 
 	<?php if ( have_comments() ) : ?>
-		
 		<h3 id="comments-title">
 			<?php
-				printf( _n( 'One comment', '%1$s comments', get_comments_number(), 'piha' ),
+				printf( _n( 'One comment', '%1$s comments', get_comments_number(), 'pohutukawa' ),
 					number_format_i18n( get_comments_number() ) );
 			?>
 		</h3>
@@ -34,18 +35,18 @@
 		<ol class="commentlist">
 				<?php
 				/* Loop through and list the comments. Tell wp_list_comments()
-				 * to use piha_comment() to format the comments.
+				 * to use pohutukawa_comment() to format the comments.
 				 * If you want to overload this in a child theme then you can
-				 * define piha_comment() and that will be used instead.
+				 * define pohutukawa_comment() and that will be used instead.
 				 */
-				wp_list_comments( array( 'callback' => 'piha_comment' ) );
+				wp_list_comments( array( 'callback' => 'pohutukawa_comment' ) );
 			?>
 		</ol>
 
 		<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // are there comments to navigate through ?>
 		<nav id="comment-nav">
-			<div class="nav-next"><?php next_comments_link( __( 'Newer Comments &rarr;', 'piha' ) ); ?></div>
-			<div class="nav-previous"><?php previous_comments_link( __( '&larr; Older Comments', 'piha' ) ); ?></div>
+			<div class="nav-previous"><?php previous_comments_link( __( '&laquo;  Older Comments', 'pohutukawa' ) ); ?></div>
+			<div class="nav-next"><?php next_comments_link( __( 'Newer Comments  &raquo;', 'pohutukawa' ) ); ?></div>
 		</nav><!-- end #comment-nav -->
 		<?php endif; // check for comment navigation ?>
 
@@ -60,7 +61,7 @@
 			 */
 			if ( ! comments_open() && ! is_page() ) :
 			?>
-			<p class="nocomments"><?php _e( 'Comments are closed.', 'piha' ); ?></p>
+			<p class="nocomments"><?php _e( 'Comments are closed.', 'pohutukawa' ); ?></p>
 			<?php endif; // end ! comments_open() && ! is_page() ?>
 
 		<?php endif; ?>
@@ -69,11 +70,11 @@
 
 	<?php comment_form (
 		array(
-			'comment_notes_before' =>__( '<p class="comment-note">Required fields are marked <span class="required">*</span>.</p>', 'piha'),
+			'comment_notes_before' =>__( '<p class="comment-note">Required fields are marked <span class="required">*</span>.</p>', 'pohutukawa'),
 			'comment_notes_after' => '',
-			'comment_field'  => '<p class="comment-form-comment"><label for="comment">' . _x( 'Message <span class="required">*</span>', 'noun', 'piha' ) . 			'</label><br/><textarea id="comment" name="comment" rows="8"></textarea></p>',
-			'label_submit'	=> __( 'Send', 'piha' ))
+			'comment_field'  => '<p class="comment-form-comment"><label for="comment">' . _x( 'Message <span class="required">*</span>', 'noun', 'pohutukawa' ) . 			'</label><br/><textarea id="comment" name="comment" rows="8"></textarea></p>',
+			'label_submit'	=> __( 'Send', 'pohutukawa' ))
 		); 
 	?>
 
-</div><!-- end #comments -->
+	</div><!-- end #comments -->

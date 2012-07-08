@@ -1,52 +1,50 @@
-var farbtastic;
+jQuery(document).ready(function($) {
+    $('#colorpicker1').hide();
+    $('#colorpicker1').farbtastic('#link-color');
 
-(function($){
-	var pickColor = function(a) {
-		farbtastic.setColor(a);
-		$('#link-color').val(a);
-		$('#link-color-example').css('background-color', a);
-	};
+    $('#link-color').click(function() {
+        $('#colorpicker1').show();
+    });
 
-	$(document).ready( function() {
-		$('#default-color').wrapInner('<a href="#" />');
+    $(document).mousedown(function() {
+        $('#colorpicker1').each(function() {
+            var display = $(this).css('display');
+            if ( display == 'block' )
+                $(this).hide();
+        });
+    });
+});
 
-		farbtastic = $.farbtastic('#colorPickerDiv', pickColor);
+jQuery(document).ready(function($) {
+    $('#colorpicker2').hide();
+    $('#colorpicker2').farbtastic('#footerwidget-color');
 
-		pickColor( $('#link-color').val() );
+    $('#footerwidget-color').click(function() {
+        $('#colorpicker2').show();
+    });
 
-		$('.pickcolor').click( function(e) {
-			$('#colorPickerDiv').show();
-			e.preventDefault();
-		});
+    $(document).mousedown(function() {
+        $('#colorpicker2').each(function() {
+            var display = $(this).css('display');
+            if ( display == 'block' )
+                $(this).hide();
+        });
+    });
+});
 
-		$('#link-color').keyup( function() {
-			var a = $('#link-color').val(),
-				b = a;
+jQuery(document).ready(function($) {
+    $('#colorpicker3').hide();
+    $('#colorpicker3').farbtastic('#widget-headline-color');
 
-			a = a.replace(/[^a-fA-F0-9]/, '');
-			if ( '#' + a !== b )
-				$('#link-color').val(a);
-			if ( a.length === 3 || a.length === 6 )
-				pickColor( '#' + a );
-		});
+    $('#widget-headline-color').click(function() {
+        $('#colorpicker3').show();
+    });
 
-		$(document).mousedown( function() {
-			$('#colorPickerDiv').hide();
-		});
-
-		$('#default-color a').click( function(e) {
-			pickColor( '#' + this.innerHTML.replace(/[^a-fA-F0-9]/, '') );
-			e.preventDefault();
-		});
-
-		$('.image-radio-option.color-scheme input:radio').change( function() {
-			var currentDefault = $('#default-color a'),
-				newDefault = $(this).next().val();
-
-			if ( $('#link-color').val() == currentDefault.text() )
-				pickColor( newDefault );
-
-			currentDefault.text( newDefault );
-		});
-	});
-})(jQuery);
+    $(document).mousedown(function() {
+        $('#colorpicker3').each(function() {
+            var display = $(this).css('display');
+            if ( display == 'block' )
+                $(this).hide();
+        });
+    });
+});

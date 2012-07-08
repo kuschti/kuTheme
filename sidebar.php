@@ -3,28 +3,28 @@
  * The Sidebar containing the widget areas.
  
  * @package WordPress
- * @subpackage Piha
+ * @subpackage Pohutukawa
+ * @since Pohutukawa 1.0
  */
 ?>
 
-	<div id="secondary" class="widget-area" role="complementary">
-		<?php if ( ! dynamic_sidebar( 'sidebar-1' ) ) : ?>
-		
-			<aside id="archives" class="widget">
-				<h3 class="widget-title"><?php _e( 'Archives', 'piha' ); ?></h3>
-				<ul class="widget_archives">
-					<?php wp_get_archives( array( 'type' => 'monthly' ) ); ?>
-				</ul>
-			</aside>
+	<div id="sidebar">
 
-			<aside id="meta" class="widget">
-				<h3 class="widget-title"><?php _e( 'Meta', 'piha' ); ?></h3>
-				<ul class="widget_meta">
-					<?php wp_register(); ?>
-					<li><?php wp_loginout(); ?></li>
-					<?php wp_meta(); ?>
-				</ul>
-			</aside>
+		<nav id="main-nav">
+			<?php
+			$options = get_option('pohutukawa_theme_options');
+			if( $options['menu_title'] != '' ) : ?>
+				<h3><?php echo $options['menu_title']; ?></h3>
+			<?php else: ?>
+				<h3><?php _e('Menu', 'pohutukawa') ?></h3>
+			<?php endif  ?>
+				<?php wp_nav_menu( array( 'theme_location' => 'primary' ) ); ?>
+		</nav><!-- end #main-nav -->
 
-<?php endif; // end sidebar widget area ?>
-		</div><!-- #secondary -->
+		<?php if ( is_active_sidebar( 'widget-area-main' ) ) : ?>
+			<div class="widget-area">
+				<?php dynamic_sidebar( 'widget-area-main' ); ?>
+			</div><!-- .widget-area -->
+		<?php endif; ?>
+
+	</div><!-- end #sidebar -->
