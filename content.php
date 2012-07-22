@@ -17,14 +17,7 @@
 	<footer class="entry-meta">
 		<ul>
 			<li class="post-date"><a href="<?php the_permalink(); ?>"><?php echo get_the_date(); ?></a></li>
-			<li class="post-author"><?php _e('by', 'pohutukawa') ?>
-				<?php
-					printf( __( '<a href="%1$s" title="%2$s">%3$s</a>', 'pohutukawa' ),
-					esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ),
-					sprintf( esc_attr__( 'All posts by %s', 'pohutukawa' ), get_the_author() ),
-					get_the_author() );
-				?>
-			</li>
+			
 			<li class="post-comments"><?php comments_popup_link( __( '0 comments', 'pohutukawa' ), __( '1 comment', 'pohutukawa' ), __( '% comments', 'pohutukawa' ), 'comments-link', __( 'comments off', 'pohutukawa' ) ); ?></li>
 
 			<?php // Include Share-Btns

@@ -469,8 +469,9 @@ dl dd {
 }
 #content .entry-content p:last-child, 
 #content .entry-summary p:last-child {
-	margin: 0;
+	margin: 0 auto;
 }
+
 strong {
 	font-weight: bold;
 }
@@ -498,6 +499,11 @@ pre {
 small {
 	font-size:70%;
 }
+#content figure
+{
+	margin: 0 auto 20px;
+	text-align: center;
+}
 #content blockquote {
 	margin:0 0 30px;
 	padding:0 0 0 20px;
@@ -509,7 +515,7 @@ small {
 	margin:10px 0 0;
 }
 #content blockquote p {
-	margin: 0;
+	margin: 0 auto;
 	font-style:italic;
 	line-height:1.6 !important;
 }
@@ -557,6 +563,7 @@ small {
 /*-----------------------------------------------------------------------------------*/
 #content img {
 	max-width:100%;
+	text-align: center;
 	height:auto;
 	width: auto\9; /* ie8 */
 }
@@ -2541,7 +2548,8 @@ input.wpcf7-submit:hover {
 .one-column #content .single-posts-meta,
 .one-column #comments,
 .one-column #content #nav-single {
-	width:680px;
+	width:100%;
+	max-width: 980px;
 }
 .one-column #content .entry-header,
 .one-column #content .single-posts-meta,
@@ -2623,8 +2631,10 @@ margin: 0px 7px 7px 0;
 }
 /* --- Typography --- */
 #content p {
+	max-width: 680px;
 	font-size: 100%;
 	line-height:1.8;
+	margin: 0 auto 30px;
 }
 /* --- Fullwidth Page --- */
 .page-template-page-fullwidth-php #container {
