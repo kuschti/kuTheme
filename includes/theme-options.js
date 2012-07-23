@@ -16,27 +16,10 @@ jQuery(document).ready(function($) {
 });
 
 jQuery(document).ready(function($) {
-    $('#colorpicker2').hide();
-    $('#colorpicker2').farbtastic('#footerwidget-color');
-
-    $('#footerwidget-color').click(function() {
-        $('#colorpicker2').show();
-    });
-
-    $(document).mousedown(function() {
-        $('#colorpicker2').each(function() {
-            var display = $(this).css('display');
-            if ( display == 'block' )
-                $(this).hide();
-        });
-    });
-});
-
-jQuery(document).ready(function($) {
     $('#colorpicker3').hide();
-    $('#colorpicker3').farbtastic('#widget-headline-color');
+    $('#colorpicker3').farbtastic('#specialbg-color');
 
-    $('#widget-headline-color').click(function() {
+    $('#specialbg-color').click(function() {
         $('#colorpicker3').show();
     });
 

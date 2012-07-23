@@ -2,29 +2,23 @@
 /**
  * The template for displaying image attachments.
  *
- * @package WordPress
- * @subpackage Pohutukawa
- * @since Pohutukawa 1.0
+ * @package Meola
+ * @since Meola 1.0
  */
 
 get_header(); ?>
 
+<?php get_sidebar('top'); ?>
+
 <div id="content">
+
 	<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
 		<header class="entry-header">
 			<h1 class="entry-title"><?php the_title(); ?></h1>
 		</header><!--end .entry-header -->
 
-		<footer class="entry-meta">
-			<ul>
-				<li class="post-date"><a href="<?php the_permalink(); ?>"><?php echo get_the_date(); ?></a></li>
-				<li class="post-comments"><?php comments_popup_link( __( '0 comments', 'pohutukawa' ), __( '1 comment', 'pohutukawa' ), __( '% comments', 'pohutukawa' ), 'comments-link', __( 'comments off', 'pohutukawa' ) ); ?></li>
-				<li class="post-edit"><?php edit_post_link(__( 'Edit this post', 'pohutukawa') ); ?></li>
-			</ul>
-		</footer><!-- end .entry-meta -->
-
-		<div class="entry-content">
+		<div class="entry-content clearfix">
 			<div class="attachment">
 <?php
 	/**
@@ -62,45 +56,18 @@ get_header(); ?>
 						<?php endif; ?>
 					</div><!-- .attachment -->
 				</div><!-- .entry-content -->
-
-				<div class="single-posts-meta">
-				 	<ul>
-					<?php if (function_exists('pohutukawa_simple_exif')) { ?>
-						<?php pohutukawa_simple_exif($post->ID); ?>
-					<?php } ?>
-
-						<?php
-						$metadata = wp_get_attachment_metadata();
-						printf( __( '<li class="image-size"><span>Image Size:</span> <a href="%3$s" title="Link to full-size image">%4$s&times;%5$s pixels</a> </li>
-						<li><span>Posted in:</span> <a href="%6$s" title="%7$s">%7$s</a></li>', 'pohutukawa' ),
-							esc_attr( get_the_time() ),
-							get_the_date(),
-							esc_url( wp_get_attachment_url() ),
-							$metadata['width'],
-							$metadata['height'],
-							esc_url( get_permalink( $post->post_parent ) ),
-							get_the_title( $post->post_parent )
-							);
-						?>
-					
-					<?php // Include Share-Btns on single posts page
-						$options = get_option('pohutukawa_theme_options');
-						if($options['share-singleposts'] or $options['share-posts']) : ?>
-						<?php get_template_part( 'share'); ?>
-					<?php endif; ?>
-
-				</div><!-- end .single-posts-meta -->
-	
+		
 		</article><!-- #post-<?php the_ID(); ?> -->
+
 
 			<?php comments_template(); ?>
 			
-				<nav id="image-nav"  class="clearfix">
-					<span class="next-image"><?php next_image_link( false, __( 'Next Image &raquo;' , 'pohutukawa' ) ); ?></span>
-					<span class="previous-image"><?php previous_image_link( false, __( '&laquo; Previous Image' , 'pohutukawa' ) ); ?></span>
-				</nav><!-- #image-nav -->
+			<nav id="image-nav"  class="clearfix">
+				<div class="previous-image"><?php previous_image_link( '%link', __( '&larr; Previous Image', 'meola' )); ?></div>
+				<div class="next-image"><?php next_image_link(  '%link', __( 'Next Image &rarr;', 'meola' ) ); ?></div>
+			</nav><!-- #image-nav -->
 
-	</div><!--end #content-->
+	</div><!-- end #content -->
 
-<?php get_sidebar(); ?>
+<?php get_sidebar('bottom'); ?>
 <?php get_footer(); ?>

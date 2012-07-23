@@ -2,12 +2,13 @@
 /**
  * The Template for displaying all single posts.
  *
- * @package WordPress
- * @subpackage Pohutukawa
- * @since Pohutukawa 1.0
+ * @package Meola
+ * @since Meola 1.0
  */
 
 get_header(); ?>
+
+<?php get_sidebar('top'); ?>
 
 	<div id="content">
 
@@ -20,12 +21,12 @@ get_header(); ?>
 
 		<?php endwhile; // end of the loop. ?>
 
-		<nav id="nav-single" class="clearfix">
-			<div class="nav-next"><?php next_post_link( '%link', __( 'Next Post &raquo;', 'pohutukawa' ) ); ?></div>
-			<div class="nav-previous"><?php previous_post_link( '%link', __( '&laquo; Previous Post', 'pohutukawa' ) ); ?></div>
+		<nav id="nav-below" class="clearfix">
+			<div class="nav-previous"><?php next_post_link( '%link', __( 'Next Post &rarr;', 'meola' ) ); ?></div>
+			<div class="nav-next"><?php previous_post_link( '%link', __( '&larr; Previous Post', 'meola' ) ); ?></div>
 		</nav><!-- #nav-below -->
 
-	</div><!--end #content-->
+	</div><!-- end #content -->
 
-<?php get_sidebar(); ?>
+<?php get_sidebar('bottom'); ?>
 <?php get_footer(); ?>

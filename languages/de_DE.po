@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: \n"
+"Project-Id-Version: Meola v1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: \n"
+"PO-Revision-Date: 2012-07-23 04:25:52+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -19,897 +19,900 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Textdomain-Support: yes"
 
-#: 404.php:16
-#@ pohutukawa
+#: 404.php:17
+#@ meola
 msgid "Not Found"
 msgstr "Nichts gefunden"
 
-#: 404.php:20
-#@ pohutukawa
+#: 404.php:21
+#@ meola
 msgid "Apologies, but the page you requested could not be found. Perhaps searching will help."
 msgstr "Entschuldigung, aber die Seite konnte leider nicht gefunden werden. Vielleicht findest du ein Ergebnis über die Suchfunktion."
 
-#: archive.php:25
-#@ pohutukawa
-msgid "Blog Archives"
-msgstr "Blogarchiv"
-
-#: content-page.php:19
-#: content-single.php:38
-#: content.php:53
-#@ pohutukawa
+#: content-single.php:25
+#: content.php:40
+#@ meola
 msgid "Pages:"
 msgstr "Seiten:"
 
-#: comments.php:13
-#@ pohutukawa
+#: comments.php:12
+#@ meola
 msgid "This post is password protected. Enter the password to view any comments."
 msgstr "Dieser Artikel ist Passwort geschützt. Trage das Passwort ein, um die Kommentare zu sehen."
 
-#: content-aside.php:14
-#: content-gallery.php:14
-#: content-video.php:14
-#: content.php:14
+#: content-aside.php:17
+#: content-audio.php:17
+#: content-chat.php:17
+#: content-gallery.php:17
+#: content-video.php:17
+#: content.php:17
 #, php-format
-#@ pohutukawa
+#@ meola
 msgid "Permalink to %s"
 msgstr "Permalink zu %s"
 
-#: functions.php:82
-#@ pohutukawa
+#: functions.php:74
+#@ meola
 msgid "Primary Navigation"
 msgstr "Haupt-Navigation"
 
-#: header.php:29
+#: header.php:37
 #, php-format
-#@ pohutukawa
+#@ meola
 msgid "Page %s"
 msgstr "Seite %s"
 
-#: functions.php:265
+#: functions.php:277
 #, php-format
-#@ pohutukawa
+#@ meola
 msgid "%s"
 msgstr "%s"
 
-#: functions.php:279
-#@ pohutukawa
+#: functions.php:292
+#@ meola
 msgid "Your comment is awaiting moderation."
 msgstr "Dein Kommentar befindet sich in Moderation."
 
-#: search.php:41
-#@ pohutukawa
+#: archive.php:79
+#: search.php:33
+#@ meola
 msgid "Nothing Found"
 msgstr "Keine Einträge gefunden"
 
-#: search.php:45
-#@ pohutukawa
+#: search.php:36
+#@ meola
 msgid "Sorry, but nothing matched your search criteria. Please try again with some different keywords."
 msgstr "Entschuldigung, leider wurde zu deiner Suchanfrage kein Eintrag gefunden. Bitte versuche es noch einmal mit anderen Schlagwörtern."
 
-#: author.php:16
-#, php-format
-#@ pohutukawa
-msgid "Author Archives: <span class=\"vcard\">%s</span>"
-msgstr "Alle Artikel von: <span class=\"vcard\">%s</span>"
-
-#: functions.php:614
-#: functions.php:701
-#: functions.php:1002
-#@ pohutukawa
+#: functions.php:586
+#: functions.php:679
+#: functions.php:764
+#: functions.php:838
+#: functions.php:918
+#: functions.php:1234
+#@ meola
 msgid "Title:"
 msgstr "Titel:"
 
-#: includes/theme-options.php:191
-#@ default
-msgid "custom_logo"
-msgstr "custom_logo"
-
 #: comments.php:74
-#@ pohutukawa
+#@ meola
 msgctxt "noun"
 msgid "Message <span class=\"required\">*</span>"
 msgstr "Nachricht <span class=\"required\">*</span>"
 
 #: includes/theme-options.php:63
 #: includes/theme-options.php:64
-#@ pohutukawa
+#@ meola
 msgid "Theme Options"
 msgstr "Theme Optionen"
 
-#: includes/theme-options.php:132
+#: includes/theme-options.php:110
 #, php-format
-#@ pohutukawa
+#@ meola
 msgid "%s Theme Options"
 msgstr "%s Theme Optionen"
 
-#: includes/theme-options.php:146
-#@ pohutukawa
+#: includes/theme-options.php:126
+#@ meola
 msgid "Link Color"
 msgstr "Linkfarbe"
 
-#: functions.php:274
-#@ pohutukawa
+#: functions.php:278
+#@ meola
 msgid "Reply"
 msgstr "Antworten"
 
-#: comments.php:75
-#@ pohutukawa
-msgid "Send"
-msgstr "Senden"
-
-#: comments.php:63
-#@ pohutukawa
+#: comments.php:64
+#@ meola
 msgid "Comments are closed."
 msgstr "Kommentare sind geschlossen."
 
-#: functions.php:634
-#@ pohutukawa
+#: functions.php:606
+#@ meola
 msgid "Number of photos:"
 msgstr "Anzahl der Bilder:"
 
-#: functions.php:645
-#@ pohutukawa
+#: functions.php:617
+#@ meola
 msgid "User"
 msgstr "Person"
 
-#: functions.php:646
-#@ pohutukawa
+#: functions.php:618
+#@ meola
 msgid "Group"
 msgstr "Gruppe"
 
-#: functions.php:650
-#@ pohutukawa
+#: functions.php:622
+#@ meola
 msgid "Show latest or random pictures:"
 msgstr "Zeige neuste oder zufällige Bilder:"
 
-#: functions.php:652
-#@ pohutukawa
+#: functions.php:624
+#@ meola
 msgid "Latest"
 msgstr "Neuste"
 
-#: functions.php:653
-#@ pohutukawa
+#: functions.php:625
+#@ meola
 msgid "Random"
 msgstr "Zufällige"
 
-#: functions.php:643
-#@ pohutukawa
+#: functions.php:615
+#@ meola
 msgid "Choose user or group:"
 msgstr "Wähle Person oder Gruppe:"
 
-#: functions.php:573
-#@ pohutukawa
-msgid "Flickr Widget"
-msgstr "Flickr Widget"
-
-#: functions.php:619
-#@ pohutukawa
+#: functions.php:591
+#@ meola
 msgid "Flickr ID (<a href=\"http://www.idgettr.com\" target=\"_blank\">idGettr</a>):"
 msgstr "Flickr ID (<a href=\"http://www.idgettr.com\" target=\"_blank\">idGettr</a>):"
 
-#: functions.php:725
-#@ pohutukawa
-msgid "Social Links Widget"
-msgstr "Social Links Widget"
-
-#: functions.php:1047
-#@ pohutukawa
-msgid "Dribbble URL:"
-msgstr "Dribbble URL:"
-
-#: functions.php:1012
-#@ pohutukawa
-msgid "Facebook URL:"
-msgstr "Facebook URL:"
-
-#: functions.php:1052
-#@ pohutukawa
-msgid "Ffffound URL:"
-msgstr "Ffffound URL:"
-
-#: functions.php:1022
-#@ pohutukawa
-msgid "Flickr URL:"
-msgstr "Flickr URL:"
-
-#: functions.php:1102
-#@ pohutukawa
-msgid "Foursquare URL:"
-msgstr "Foursquare URL:"
-
-#: functions.php:1107
-#@ pohutukawa
-msgid "Gowalla URL:"
-msgstr "Gowalla URL:"
-
-#: functions.php:1092
-#@ pohutukawa
-msgid "Grooveshark URL:"
-msgstr "Grooveshark URL:"
-
-#: functions.php:1087
-#@ pohutukawa
-msgid "Last.fm URL:"
-msgstr "Last.fm URL:"
-
-#: functions.php:1112
-#@ pohutukawa
-msgid "Linkedin URL:"
-msgstr "Linkedin URL:"
-
-#: functions.php:1027
-#@ pohutukawa
-msgid "Picasa URL:"
-msgstr "Picasa URL:"
-
-#: functions.php:1082
-#@ pohutukawa
-msgid "Slideshare URL:"
-msgstr "Slideshare URL:"
-
-#: functions.php:1127
-#@ pohutukawa
-msgid "Tumblr URL:"
-msgstr "Tumblr URL:"
-
-#: functions.php:1007
-#@ pohutukawa
-msgid "Twitter URL:"
-msgstr "Twitter URL:"
-
-#: functions.php:1042
-#@ pohutukawa
-msgid "Vimeo URL:"
-msgstr "Vimeo URL:"
-
-#: functions.php:1122
-#@ pohutukawa
-msgid "WordPress URL:"
-msgstr "WordPress URL:"
-
-#: functions.php:1117
-#@ pohutukawa
-msgid "Xing URL:"
-msgstr "Xing URL:"
-
-#: functions.php:1037
-#@ pohutukawa
-msgid "YouTube URL:"
-msgstr "YouTube URL:"
-
-#: functions.php:1062
-#@ pohutukawa
-msgid "Zootool URL:"
-msgstr "Zootool URL:"
-
-#: includes/theme-options.php:190
-#@ pohutukawa
+#: includes/theme-options.php:154
+#@ meola
 msgid "Custom Logo image"
 msgstr "Eigenes Logobild"
 
-#: includes/theme-options.php:235
-#: includes/theme-options.php:237
-#@ pohutukawa
+#: includes/theme-options.php:185
+#: includes/theme-options.php:187
+#@ meola
 msgid "Custom Favicon"
 msgstr "Eigenes Favicon"
 
-#: includes/theme-options.php:238
-#@ default
-msgid "custom_favicon"
-msgstr "custom_favicon"
-
-#: includes/theme-options.php:239
-#@ pohutukawa
-msgid "Create a favicon image e.g. with <a href=\"http://www.faviconr.com/\" target=\"_blank\">Faviconr</a>, upload your .ico Favicon image (via FTP) to your server and enter the Favicon URL here."
-msgstr "Erstelle zuerst ein Favicon-Bild z.B. mit Hilfe von <a href=\"http://www.faviconr.com/\" target=\"_blank\">Faviconr</a>. Lade dieses .ico Faviconbild dann (via FTP) auf deinen Server hoch und trage die Datei URL hier ein."
-
-#: includes/theme-options.php:228
-#@ pohutukawa
+#: includes/theme-options.php:172
+#@ meola
 msgid "Custom Footer text"
 msgstr "Footer Text anpassen"
 
-#: includes/theme-options.php:230
-#@ pohutukawa
+#: includes/theme-options.php:174
+#@ meola
 msgid "Customize the footer credit text. Standard HTML is allowed."
 msgstr "Trage deinen eigenen Footer-Text ein. Standard HTML-Code ist möglich."
 
-#: functions.php:1017
-#@ pohutukawa
-msgid "Google+ URL:"
-msgstr "Google+ URL:"
-
-#: functions.php:1132
-#@ pohutukawa
-msgid "RSS-Feed URL:"
-msgstr "RSS-Feed URL:"
-
-#: functions.php:1137
-#@ pohutukawa
-msgid "RSS for Comments URL:"
-msgstr "RSS für Kommentare URL:"
-
-#: content-aside.php:28
-#: content-gallery.php:28
-#: content-image.php:16
-#: content-link.php:16
-#: content-quote.php:16
-#: content-single.php:28
-#: content-status.php:16
-#: content-video.php:28
-#: content.php:28
-#: image.php:22
-#@ pohutukawa
+#: content-aside.php:27
+#: content-audio.php:27
+#: content-chat.php:27
+#: content-gallery.php:27
+#: content-image.php:23
+#: content-link.php:23
+#: content-quote.php:23
+#: content-status.php:23
+#: content-video.php:27
+#: content.php:48
+#@ meola
 msgid "0 comments"
 msgstr "0 Kommentare"
 
-#: content-aside.php:28
-#: content-gallery.php:28
-#: content-image.php:16
-#: content-link.php:16
-#: content-quote.php:16
-#: content-single.php:28
-#: content-status.php:16
-#: content-video.php:28
-#: content.php:28
-#: image.php:22
-#@ pohutukawa
-msgid "1 comment"
-msgstr "1 Kommentar"
-
-#: content-aside.php:28
-#: content-gallery.php:28
-#: content-image.php:16
-#: content-link.php:16
-#: content-quote.php:16
-#: content-single.php:28
-#: content-status.php:16
-#: content-video.php:28
-#: content.php:28
-#: image.php:22
-#@ pohutukawa
+#: content-aside.php:27
+#: content-audio.php:27
+#: content-chat.php:27
+#: content-gallery.php:27
+#: content-image.php:23
+#: content-link.php:23
+#: content-quote.php:23
+#: content-status.php:23
+#: content-video.php:27
+#: content.php:48
+#@ meola
 msgid "% comments"
 msgstr "% Kommentare"
 
-#: content-aside.php:28
-#: content-gallery.php:28
-#: content-image.php:16
-#: content-link.php:16
-#: content-quote.php:16
-#: content-single.php:28
-#: content-status.php:16
-#: content-video.php:28
-#: content.php:28
-#: image.php:22
-#@ pohutukawa
+#: content-aside.php:27
+#: content-audio.php:27
+#: content-chat.php:27
+#: content-gallery.php:27
+#: content-image.php:23
+#: content-link.php:23
+#: content-quote.php:23
+#: content-status.php:23
+#: content-video.php:27
+#: content.php:48
+#@ meola
 msgid "comments off"
 msgstr "Kommentare deaktiviert"
 
-#: search.php:16
-#, php-format
-#@ pohutukawa
-msgid "Search Results for: %s"
-msgstr "Suchergebnisse für: %s"
-
-#: includes/theme-options.php:248
-#@ pohutukawa
-msgid "Check this box to include a post short URL, Twitter, Facebook and Google+ button on the blogs front page and on single post pages."
-msgstr "Wähle diese Option, um eine Kurz-URL, einen Twitter, Facebook und Google+ Button auf der Blog-Startseite und auf Artikel-Einzelseiten anzuzeigen."
-
-#: includes/theme-options.php:257
-#@ pohutukawa
-msgid "Check this box to include the share post buttons <strong>only</strong> on single post pages."
-msgstr "Wähle diese Option, um die Teilen-Button nur auf Artikel-Einzelseiten anzuzeigen."
-
 #. translators: 1: date, 2: time
-#: functions.php:269
+#: functions.php:282
 #, php-format
-#@ pohutukawa
+#@ meola
 msgid "%1$s &#64; %2$s"
 msgstr "%1$s &#64; %2$s"
 
-#: comments.php:29
+#: comments.php:73
+#@ meola
+msgid "<p class=\"comment-note\">Required fields are marked <span class=\"required\">*</span>.</p>"
+msgstr "<p class=\"comment-note\">Pflichtfelder sind mit <span class=\"required\">*</span> markiert.</p>"
+
+#: functions.php:596
+#@ meola
+msgid "Flickr Profile Link Text:"
+msgstr "Flickr-Profil Link-Text:"
+
+#: functions.php:601
+#@ meola
+msgid "Flickr Profile URL:"
+msgstr "Flickr-Profil URL:"
+
+#: functions.php:843
+#@ meola
+msgid "Video embed code:"
+msgstr "Video-Einbettungscode:"
+
+#: footer.php:20
+#@ meola
+msgid "WordPress"
+msgstr "WordPress"
+
+#: content-single.php:49
 #, php-format
-#@ pohutukawa
-msgid "One comment"
+#@ meola
+msgid "Posted by %s"
+msgstr "Veröffentlicht von %s"
+
+#: includes/theme-options.php:152
+#@ meola
+msgid "Custom Logo"
+msgstr "Eigenes Logobild"
+
+#: includes/theme-options.php:209
+#: includes/theme-options.php:211
+#@ meola
+msgid "Share option for posts"
+msgstr "Teilen-Buttons für Artikel"
+
+#: includes/theme-options.php:218
+#: includes/theme-options.php:220
+#@ meola
+msgid "Share option for single post pages only"
+msgstr "Teilen-Buttons nur auf Einzelartikel-Seiten"
+
+#: includes/theme-options.php:227
+#: includes/theme-options.php:229
+#@ meola
+msgid "Share option for pages"
+msgstr "Teilen-Buttons für Seiten"
+
+#: share.php:14
+#@ meola
+msgid "Tweet"
+msgstr "Twitter"
+
+#: includes/theme-options.php:156
+#: includes/theme-options.php:198
+#@ meola
+msgid "WordPress Media Uploader"
+msgstr "WordPress Mediathek"
+
+#: footer.php:50
+#@ meola
+msgid "en_US"
+msgstr "de_DE"
+
+#: functions.php:306
+#@ meola
+msgid "<span>Pingback:</span>"
+msgstr "<span>Pingback:</span>"
+
+#: includes/theme-options.php:156
+#@ meola
+msgid "Upload your own logo image using the "
+msgstr "Lade dein eigenes Logo-Bild hoch "
+
+#: includes/theme-options.php:124
+#@ meola
+msgid "Custom Link Color"
+msgstr "Eigene Linkfarbe"
+
+#: comments.php:48
+#@ meola
+msgid "&larr;  Older Comments"
+msgstr "&larr;  Ältere Kommentare"
+
+#: comments.php:49
+#@ meola
+msgid "Newer Comments  &rarr;"
+msgstr "Neuere Kommentare  &rarr;"
+
+#: content-aside.php:21
+#: content-audio.php:21
+#: content-chat.php:21
+#: content-gallery.php:21
+#: content-image.php:17
+#: content-link.php:17
+#: content-quote.php:17
+#: content-status.php:17
+#: content-video.php:21
+#: content.php:37
+#: functions.php:217
+#@ meola
+msgid "Read more &rarr;"
+msgstr "Weiterlesen &rarr;"
+
+#: content-aside.php:28
+#: content-audio.php:28
+#: content-chat.php:28
+#: content-gallery.php:28
+#: content-image.php:24
+#: content-link.php:24
+#: content-quote.php:24
+#: content-status.php:24
+#: content-video.php:28
+#: content.php:49
+#@ meola
+msgid "Edit Post &rarr;"
+msgstr "Artikel bearbeiten &rarr;"
+
+#: includes/theme-options.php:156
+#@ meola
+msgid ". Then copy your logo image file URL and insert the URL here."
+msgstr ". Dann kopiere deine Logobild-URL und trage die URL hier ein."
+
+#: includes/theme-options.php:189
+#@ meola
+msgid "Create a <strong>16x16px</strong> image and generate a .ico favicon using a favicon online generator (e.g. <a href=\"http://www.faviconr.com/\" target=\"_blank\">Faviconr</a>). Now upload your favicon to your themes folder (via FTP) and enter your Favicon URL here (the URL path should be similar to: yourdomain.com/wp-content/themes/meola/favicon.ico)."
+msgstr "Erstelle ein <strong>16x16px</strong> Bild und erzeuge ein .ico favicon mit Hilfe eines Favicon Online Generators (z.B. <a href=\"http://www.faviconr.com/\" target=\"_blank\">Faviconr</a>). Jetzt kannst du dein .ico Favicon (mit einem FTP Programm) in deinen Themes-Ordner hochladen und die URL des Favicons hier eintragen (der URL Pfad sollte ähnlich sein wie:  deinedomain.de/wp-content/themes/meola/favicon.ico)."
+
+#: includes/theme-options.php:194
+#: includes/theme-options.php:196
+#@ meola
+msgid "Custom Apple Touch Icon"
+msgstr "Eigenes Apple Touch Icon"
+
+#: includes/theme-options.php:198
+#@ meola
+msgid "Create a <strong>128x128px png</strong> image for your webclip icon. Upload your image using the "
+msgstr "Erstelle ein <strong>128x128px png</strong> Bild für dein Apple Webclip-Icon. Lade das Bild über die "
+
+#: includes/theme-options.php:198
+#@ meola
+msgid ". Now copy the image file URL and insert the URL here."
+msgstr " hoch. Dann kopiere die Bild-URL und füge sie hier ein."
+
+#: includes/theme-options.php:222
+#@ meola
+msgid "Check this box to include the share post buttons <strong>only</strong> on single post pages (below the post content)."
+msgstr "Wähle diese Option, um die Teilen-Buttons <strong>nur</strong> auf den Artikel-Einzelseiten (unterhalb des Artikels) zu integrieren."
+
+#: includes/theme-options.php:231
+#@ meola
+msgid "Check this box to also include the share buttons on pages."
+msgstr "Wähle diese Option, um die Teilen-Buttons auch auf deinen Seiten anzuzeigen."
+
+#: share.php:10
+#@ meola
+msgid "Share"
+msgstr "Teilen"
+
+#: footer.php:20
+#@ meola
+msgid "Proudly powered by"
+msgstr "Proudly powered by"
+
+#: footer.php:21
+#, php-format
+#@ meola
+msgid "Theme: %1$s by %2$s"
+msgstr "Theme: %1$s von %2$s"
+
+#: header.php:71
+#@ meola
+msgid "Menu"
+msgstr "Menü"
+
+#: archive.php:21
+#, php-format
+#@ meola
+msgid "Posts in Category &lsquo;%s&rsquo;"
+msgstr "Artikel in der Kategorie &lsquo;%s&rsquo;"
+
+#: archive.php:24
+#, php-format
+#@ meola
+msgid "Posts Tagged &lsquo;%s&rsquo;"
+msgstr "Artikel mit dem Schlagwort &lsquo;%s&rsquo;"
+
+#: archive.php:28
+#, php-format
+#@ meola
+msgid "All Posts by %s"
+msgstr "Alle Artikel von %s"
+
+#: archive.php:32
+#, php-format
+#@ meola
+msgid "Daily Archives: %s"
+msgstr "Archiv von: %s"
+
+#: archive.php:35
+#, php-format
+#@ meola
+msgid "Monthly Archives: %s"
+msgstr "Archiv des Monats: %s"
+
+#: archive.php:38
+#, php-format
+#@ meola
+msgid "Yearly Archives: %s"
+msgstr "Archiv des Jahres: %s"
+
+#: archive.php:41
+#@ meola
+msgid "Archives"
+msgstr "Archiv"
+
+#: archive.php:83
+#@ meola
+msgid "It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help."
+msgstr "Leider kann kein Eintrag zu diesem Suchbegriff gefunden werden. Vielleicht ist die Suche mit einem alternativen Schlagwort erfolgreich."
+
+#. gettext fix: identical singular and plural forms found, that may be ambiguous! Please check the code!
+#: comments.php:29
+#: content-aside.php:27
+#: content-audio.php:27
+#: content-chat.php:27
+#: content-gallery.php:27
+#: content-image.php:23
+#: content-link.php:23
+#: content-quote.php:23
+#: content-status.php:23
+#: content-video.php:27
+#: content.php:48
+#, php-format
+#@ meola
+msgid "1 comment"
 msgid_plural "%1$s comments"
 msgstr[0] "1 Kommentar"
 msgstr[1] "%1$s Kommentare"
 
-#: comments.php:72
-#@ pohutukawa
-msgid "<p class=\"comment-note\">Required fields are marked <span class=\"required\">*</span>.</p>"
-msgstr "<p class=\"comment-note\">Pflichtfelder sind mit <span class=\"required\">*</span> markiert.</p>"
+#: comments.php:75
+#@ meola
+msgid "Send Comment"
+msgstr "Kommentar senden"
 
-#: content-aside.php:22
-#: content-gallery.php:22
-#: content-single.php:22
-#: content-video.php:22
-#: content.php:22
-#, php-format
-#@ pohutukawa
-msgid "<a href=\"%1$s\" title=\"%2$s\">%3$s</a>"
-msgstr "<a href=\"%1$s\" title=\"%2$s\">%3$s</a>"
+#: content-single.php:30
+#@ meola
+msgid "Posted in:"
+msgstr "Veröffentlicht in:"
 
-#: functions.php:624
-#@ pohutukawa
-msgid "Flickr Profile Link Text:"
-msgstr "Flickr-Profil Link-Text:"
+#: content-single.php:33
+#@ meola
+msgid "Tagged:"
+msgstr "Schlagwort:"
 
-#: functions.php:629
-#@ pohutukawa
-msgid "Flickr Profile URL:"
-msgstr "Flickr-Profil URL:"
+#: footer.php:20
+#@ meola
+msgid "http://wordpress.org/"
+msgstr "http://wordpress.org/"
 
-#: functions.php:1032
-#@ pohutukawa
+#: functions.php:75
+#@ meola
+msgid "Footer Navigation (no sub menus supported)"
+msgstr "Footer Navigation (es werden keine Untermenüs unterstützt)"
+
+#: functions.php:1239
+#@ meola
+msgid "Twitter URL:"
+msgstr "Twitter URL:"
+
+#: functions.php:1244
+#@ meola
+msgid "Facebook URL:"
+msgstr "Facebook URL:"
+
+#: functions.php:1249
+#@ meola
+msgid "Google+ URL:"
+msgstr "Google+ URL:"
+
+#: functions.php:1254
+#@ meola
+msgid "Flickr URL:"
+msgstr "Flickr URL:"
+
+#: functions.php:1259
+#@ meola
+msgid "Instagram URL (e.g. via Instagrid.me):"
+msgstr "Instagram URL (z.B. mit Instagrid.me):"
+
+#: functions.php:1264
+#@ meola
+msgid "Picasa URL:"
+msgstr "Picasa URL:"
+
+#: functions.php:1269
+#@ meola
 msgid "500px URL:"
 msgstr "500px URL:"
 
-#: functions.php:1067
-#@ pohutukawa
-msgid "Behance Network URL:"
-msgstr "Behance Network URL:"
+#: functions.php:1274
+#@ meola
+msgid "YouTube URL:"
+msgstr "YouTube URL:"
 
-#: functions.php:1077
-#@ pohutukawa
-msgid "Squidoo URL:"
-msgstr "Squidoo URL:"
+#: functions.php:1279
+#@ meola
+msgid "Vimeo URL:"
+msgstr "Vimeo URL:"
 
-#: functions.php:1097
-#@ pohutukawa
-msgid "Soundcloud URL:"
-msgstr "Soundcloud URL:"
+#: functions.php:1284
+#@ meola
+msgid "Dribbble URL:"
+msgstr "Dribbble URL:"
 
-#: functions.php:671
-#@ pohutukawa
-msgid "Video Widget"
-msgstr "Video Widget"
+#: functions.php:1289
+#@ meola
+msgid "Ffffound URL:"
+msgstr "Ffffound URL:"
 
-#: functions.php:706
-#@ pohutukawa
-msgid "Video embed code:"
-msgstr "Video-Einbettungscode:"
-
-#: functions.php:1142
-#@ pohutukawa
-msgid "Open all links in a new browser tab"
-msgstr "Öffne alle Social-Links in einem neuen Browser-Tab"
-
-#: header.php:79
-#: sidebar.php:18
-#@ pohutukawa
-msgid "Menu"
-msgstr "Menü"
-
-#: functions.php:1057
-#@ pohutukawa
+#: functions.php:1294
+#@ meola
 msgid "Pinterest URL:"
 msgstr "Pinterest URL:"
 
-#: content-aside.php:20
-#: content-gallery.php:20
-#: content-video.php:20
-#@ pohutukawa
-msgid "Posted by"
-msgstr "Veröffentlicht von"
+#: functions.php:1304
+#@ meola
+msgid "Behance Network URL:"
+msgstr "Behance Network URL:"
 
-#: content-aside.php:24
-#: content-gallery.php:24
-#: content-single.php:24
-#: content-video.php:24
-#: content.php:24
-#, php-format
-#@ pohutukawa
-msgid "All posts by %s"
-msgstr "Alle Artikel von %s"
-
-#: content-aside.php:41
-#: content-gallery.php:41
-#: content-image.php:29
-#: content-link.php:29
-#: content-quote.php:29
-#: content-status.php:29
-#: content-video.php:41
-#: content.php:52
-#@ pohutukawa
-msgid "Continue Reading"
-msgstr "Weiterlesen"
-
-#: footer.php:37
-#@ pohutukawa
-msgid "WordPress"
-msgstr "WordPress"
-
-#: functions.php:305
-#@ pohutukawa
-msgid "Main Widget Area"
-msgstr "Haupt-Widgetbereich"
-
-#: functions.php:365
-#@ pohutukawa
-msgid "Submit"
-msgstr "Senden"
-
-#: archive.php:19
-#, php-format
-#@ pohutukawa
-msgid "Day: <span>%s</span>"
-msgstr "Tag: <span>%s</span>"
-
-#: archive.php:21
-#, php-format
-#@ pohutukawa
-msgid "Month: <span>%s</span>"
-msgstr "Monat: <span>%s</span>"
-
-#: archive.php:23
-#, php-format
-#@ pohutukawa
-msgid "Year: <span>%s</span>"
-msgstr "Jahr: <span>%s</span>"
-
-#: category.php:14
-#, php-format
-#@ pohutukawa
-msgid "Category: %s"
-msgstr "Kategorie: %s"
-
-#: content-aside.php:36
-#: content-gallery.php:36
-#: content-image.php:24
-#: content-link.php:24
-#: content-page.php:29
-#: content-quote.php:24
-#: content-single.php:29
-#: content-status.php:24
-#: content-video.php:36
-#: content.php:36
-#: image.php:23
-#@ pohutukawa
-msgid "Edit this post"
-msgstr "Artikel bearbeiten"
-
-#: content-single.php:20
-#: content.php:20
-#@ pohutukawa
-msgid "by"
-msgstr "von"
-
-#: content-single.php:52
-#, php-format
-#@ pohutukawa
-msgid "Posted by %s"
-msgstr "Veröffentlicht von %s"
-
-#: content-single.php:62
-#@ pohutukawa
-msgid "Category:"
-msgstr "Kategorie:"
-
-#: content-single.php:65
-#@ pohutukawa
-msgid "Tags:"
-msgstr "Schlagwort:"
-
-#: functions.php:206
-#@ pohutukawa
-msgid "Continue reading"
-msgstr "Weiterlesen"
-
-#: functions.php:291
-#@ pohutukawa
-msgid "Edit pingback"
-msgstr "Pingback bearbeiten"
-
-#: includes/theme-options.php:188
-#@ pohutukawa
-msgid "Custom Logo"
-msgstr "Eigenes Logo"
-
-#: includes/theme-options.php:244
-#: includes/theme-options.php:246
-#@ pohutukawa
-msgid "Share option for posts"
-msgstr "Teilen-Buttons für Artikel"
-
-#: includes/theme-options.php:253
-#: includes/theme-options.php:255
-#@ pohutukawa
-msgid "Share option for single post pages only"
-msgstr "Teilen-Buttons nur auf Einzelartikel-Seiten"
-
-#: includes/theme-options.php:262
-#: includes/theme-options.php:264
-#@ pohutukawa
-msgid "Share option for pages"
-msgstr "Teilen-Buttons für Seiten"
-
-#: includes/theme-options.php:266
-#@ pohutukawa
-msgid "Check this box to include the share option on pages."
-msgstr "Wähle diese Option, um Teilen-Buttons auch auf Seiten zu integrieren."
-
-#: share.php:13
-#@ pohutukawa
-msgid "Tweet"
-msgstr "Twitter"
-
-#: tag.php:14
-#, php-format
-#@ pohutukawa
-msgid "Tag: %s"
-msgstr "Schlagwort: %s"
-
-#: functions.php:307
-#@ pohutukawa
-msgid "Main widget area (below the post and pages content)."
-msgstr "Haupt-Widgetbereich (unterhalb des Artikel- und Seitenbereichs)."
-
-#: includes/theme-options.php:192
-#@ pohutukawa
-msgid "WordPress Media Uploader"
-msgstr "WordPress Mediathek"
-
-#: includes/theme-options.php:192
-#@ pohutukawa
-msgid ". Copy your logo image file URL and insert the URL here."
-msgstr " .Kopiere die Bild URL deines Logos und füge die URL hier ein."
-
-#: footer.php:66
-#@ pohutukawa
-msgid "en_US"
-msgstr "de_DE"
-
-#: archive.php:42
-#: author.php:31
-#: category.php:32
-#: index.php:24
-#: search.php:29
-#: tag.php:29
-#@ pohutukawa
-msgid "&laquo; Older posts"
-msgstr "&laquo; Ältere Artikel"
-
-#: archive.php:43
-#: author.php:32
-#: category.php:33
-#: index.php:25
-#: search.php:30
-#: tag.php:30
-#@ pohutukawa
-msgid "Newer posts &raquo;"
-msgstr "Neuere Artikel &raquo;"
-
-#: footer.php:21
-#@ pohutukawa
-msgid "&#8593; Back to Top &#8593;"
-msgstr "&#8593; Nach oben &#8593;"
-
-#: footer.php:37
-#@ pohutukawa
-msgid "<span class=\"slash\"> //</span> Proudly powered by"
-msgstr "<span class=\"slash\"> //</span> Proudly powered by"
-
-#: footer.php:38
-#, php-format
-#@ pohutukawa
-msgid "<span class=\"slash\"> //</span> Theme: %1$s by %2$s"
-msgstr "<span class=\"slash\"> //</span> Theme: %1$s von %2$s"
-
-#: functions.php:83
-#@ pohutukawa
-msgid "Optional Navigation (no sub menus supported)"
-msgstr "Optionale Navigation (es werden keine Unter-Menüpunkte unterstützt)"
-
-#: functions.php:266
-#@ pohutukawa
-msgid " // "
-msgstr " // "
-
-#: functions.php:273
-#@ pohutukawa
-msgid "Edit"
-msgstr "Bearbeiten"
-
-#: functions.php:290
-#@ pohutukawa
-msgid "<span>Pingback:</span>"
-msgstr "<span>Pingback:</span>"
-
-#: functions.php:315
-#@ pohutukawa
-msgid "Footer Widget Area 1"
-msgstr "Footer Widgetbereich 1"
-
-#: functions.php:317
-#@ pohutukawa
-msgid "Footer Widget Area 1 (left column in desktop view)"
-msgstr "Footer Widgetbereich 1 (linke Spalte in der Desktop-Ansicht)"
-
-#: functions.php:325
-#@ pohutukawa
-msgid "Footer Widget Area 2"
-msgstr "Footer Widgetbereich 2"
-
-#: functions.php:327
-#@ pohutukawa
-msgid "Footer Widget Area 2 (middle column in desktop view)"
-msgstr "Footer Widgetbereich 2 (mittlere Spalte in der Desktop-Ansicht)"
-
-#: functions.php:335
-#@ pohutukawa
-msgid "Footer Widget Area 3"
-msgstr "Footer Widgetbereich 3"
-
-#: functions.php:337
-#@ pohutukawa
-msgid "Footer Widget Area 3 (right column in desktop view)"
-msgstr "Footer Widgetbereich 3 (rechte Spalte in der Desktop-Ansicht)"
-
-#: functions.php:345
-#@ pohutukawa
-msgid "Social Links Footer Widget"
-msgstr "Social Links Footer Widget"
-
-#: functions.php:347
-#@ pohutukawa
-msgid "Optional widget area to include the Social Links Widget in the bottom footer area."
-msgstr "Optionaler Widgetbereich für die Integration des Social Links Widgets in den unteren  (dunklen) Footerbereich."
-
-#: functions.php:364
-#@ pohutukawa
-msgid "Search..."
-msgstr "Suche..."
-
-#: functions.php:1072
-#@ pohutukawa
+#: functions.php:1309
+#@ meola
 msgid "deviantART URL:"
 msgstr "deviantART URL:"
 
-#: single.php:21
-#@ pohutukawa
-msgid "Next Post &raquo;"
-msgstr "Nächster Artikel &raquo;"
+#: functions.php:1314
+#@ meola
+msgid "Squidoo URL:"
+msgstr "Squidoo URL:"
 
-#: single.php:22
-#@ pohutukawa
-msgid "&laquo; Previous Post"
-msgstr "&laquo; Vorheriger Artikel"
+#: functions.php:1319
+#@ meola
+msgid "Slideshare URL:"
+msgstr "Slideshare URL:"
 
-#: comments.php:47
-#@ pohutukawa
-msgid "&laquo;  Older Comments"
-msgstr "&laquo;  Ältere Kommentare"
+#: functions.php:1324
+#@ meola
+msgid "Last.fm URL:"
+msgstr "Last.fm URL:"
 
-#: comments.php:48
-#@ pohutukawa
-msgid "Newer Comments  &raquo;"
-msgstr "Neuere Kommentare  &raquo;"
+#: functions.php:1329
+#@ meola
+msgid "Grooveshark URL:"
+msgstr "Grooveshark URL:"
 
-#. translators: header image description
-#: functions.php:140
-#@ pohutukawa
-msgid "Pohutukawa"
-msgstr "Pohutukawa"
+#: functions.php:1334
+#@ meola
+msgid "Soundcloud URL:"
+msgstr "Soundcloud URL:"
 
-#. translators: header image description
-#: functions.php:146
-#@ pohutukawa
-msgid "Roadtrip"
-msgstr "Roadtrip"
+#: functions.php:1339
+#@ meola
+msgid "Foursquare URL:"
+msgstr "Foursquare URL:"
 
-#. translators: header image description
-#: functions.php:152
-#@ pohutukawa
-msgid "Poetry Garden"
-msgstr "Poetry Garden"
+#: functions.php:1344
+#@ meola
+msgid "GitHub URL:"
+msgstr "GitHub URL:"
 
-#: includes/theme-options.php:80
-#@ pohutukawa
-msgid "right Sidebar"
-msgstr "rechte Sidebar"
+#: functions.php:1349
+#@ meola
+msgid "Linkedin URL:"
+msgstr "Linkedin URL:"
 
-#: includes/theme-options.php:85
-#@ pohutukawa
-msgid "One-column"
-msgstr "einspaltig"
+#: functions.php:1354
+#@ meola
+msgid "Xing URL:"
+msgstr "Xing URL:"
+
+#: functions.php:1359
+#@ meola
+msgid "WordPress URL:"
+msgstr "WordPress URL:"
+
+#: functions.php:1364
+#@ meola
+msgid "Tumblr URL:"
+msgstr "Tumblr URL:"
+
+#: functions.php:1369
+#@ meola
+msgid "RSS-Feed URL:"
+msgstr "RSS-Feed URL:"
+
+#: functions.php:1374
+#@ meola
+msgid "RSS for Comments URL:"
+msgstr "RSS der Kommentare URL:"
+
+#: functions.php:1379
+#@ meola
+msgid "Open all links in a new browser tab"
+msgstr "Öffne alle Links in einem neuen Browser-Tab"
+
+#: image.php:66
+#@ meola
+msgid "&larr; Previous Image"
+msgstr "&larr; Vorheriges Bild"
+
+#: image.php:67
+#@ meola
+msgid "Next Image &rarr;"
+msgstr "Nächstes Bild &rarr;"
+
+#: includes/theme-options.php:170
+#@ meola
+msgid "Custom Footer Text"
+msgstr "Individueller Footertext"
+
+#: includes/theme-options.php:213
+#@ meola
+msgid "Check this box to include share buttons (for Twitter, Facebook, Google+) on your blogs front page and on single post pages."
+msgstr "Wähle diese Option, um die Share-Buttons (für Twitter, Google+, Facebook) auf der Blog-Startseite, sowie auf Artikel-Einzelseiten anzuzeigen."
+
+#: search.php:17
+#, php-format
+#@ meola
+msgid "Search Results for &lsquo;%s&rsquo;"
+msgstr "Suchergebnisse für &lsquo;%s&rsquo;"
+
+#: searchform.php:11
+#@ meola
+msgid "Search"
+msgstr "Suche"
+
+#: single.php:25
+#@ meola
+msgid "Next Post &rarr;"
+msgstr "Nächster Artikel &rarr;"
+
+#: single.php:26
+#@ meola
+msgid "&larr; Previous Post"
+msgstr "&larr; Vorheriger Artikel"
+
+#: comments.php:32
+#@ meola
+msgid "Write a comment"
+msgstr "Schreibe einen Kommentar"
+
+#: footer.php:28
+#@ meola
+msgid "Top"
+msgstr "Top"
+
+#: functions.php:286
+#: functions.php:307
+#@ meola
+msgid "Edit"
+msgstr "Bearbeiten"
+
+#: functions.php:321
+#@ meola
+msgid "Widget Area Top"
+msgstr "Widgetbereich Oben"
+
+#: functions.php:323
+#@ meola
+msgid "Widgets will appear below the header and above the post or page content area."
+msgstr "Die Widgets werden unterhalb des Headers und oberhalb der Artikel oder Seiten angezeigt."
+
+#: functions.php:331
+#@ meola
+msgid "Widget Area Bottom"
+msgstr "Widgetbereich Unten"
+
+#: functions.php:333
+#@ meola
+msgid "Widgets will appear below the post or page content area and above the footer."
+msgstr "Widgets werden unterhalb der Artikel und Seiten und oberhalb des Footers angezeigt."
+
+#: functions.php:355
+#@ meola
+msgid "&laquo; Older entries"
+msgstr "&laquo; Ältere Einträge"
+
+#: functions.php:356
+#@ meola
+msgid "Newer entries &raquo;"
+msgstr "Neuere Einträge &raquo;"
+
+#: functions.php:545
+#@ meola
+msgid "Meola Flickr"
+msgstr "Meola Flickr"
+
+#: functions.php:643
+#@ meola
+msgid "Meola Featured Image"
+msgstr "Meola Featured Bild"
+
+#: functions.php:689
+#@ meola
+msgid "Image Width:"
+msgstr "Bildbreite:"
+
+#: functions.php:694
+#@ meola
+msgid "Image Height:"
+msgstr "Bildhöhe:"
+
+#: functions.php:699
+#@ meola
+msgid "Image Title:"
+msgstr "Bild-Titel:"
+
+#: functions.php:704
+#@ meola
+msgid "Link URL:"
+msgstr "Link URL:"
+
+#: functions.php:723
+#@ meola
+msgid "Meola About"
+msgstr "Meola About"
+
+#: functions.php:684
+#: functions.php:769
+#@ meola
+msgid "Image URL:"
+msgstr "Bild URL:"
+
+#: functions.php:784
+#@ meola
+msgid "Image Caption Text:"
+msgstr "Text der Bildunterschrift:"
+
+#: functions.php:789
+#@ meola
+msgid "About Text:"
+msgstr "About Text:"
+
+#: functions.php:808
+#@ meola
+msgid "Meola Featured Video"
+msgstr "Meola Featured Video"
+
+#: functions.php:863
+#@ meola
+msgid "Meola Recent Posts"
+msgstr "Meola Neueste Artikel"
+
+#: functions.php:929
+#@ meola
+msgid "Display thumbnails?"
+msgstr "Vorschaubilder anzeigen?"
+
+#: functions.php:948
+#@ meola
+msgid "Meola Social Links"
+msgstr "Meola Social Links"
+
+#: functions.php:1299
+#@ meola
+msgid "mixi URL:"
+msgstr "mixi URL:"
+
+#: includes/theme-options.php:122
+#@ meola
+msgid "Custom Colors"
+msgstr "Eigene Farben"
+
+#: includes/theme-options.php:130
+#, php-format
+#@ meola
+msgid "Choose your custom link color, the default Link Color is: %s. Do not forget to include the # before the color value."
+msgstr "Wähle deine eigene Linkfarbe, die Standardfarbe ist: %s. Vergiss dabei nicht das # Hexwert-Zeichen vor dem Farbwert."
+
+#: includes/theme-options.php:135
+#: includes/theme-options.php:137
+#@ meola
+msgid "Custom Background Color"
+msgstr "Eigene Hintergrundfarbe"
+
+#: includes/theme-options.php:141
+#, php-format
+#@ meola
+msgid "Choose your custom background colors (for special Widgets, Main Navigation & Autor Info). The default Background Color is: %s)."
+msgstr "Wähle eine eigene Hintergrundfarbe (für spezielle Widgets, die Haupt-Navigation und das Autoren-Infofeld). Die Standardfarbe ist: %s."
 
 #: includes/theme-options.php:150
-#, php-format
-#@ pohutukawa
-msgid "Default Link Color: %s"
-msgstr "Standard Linkfarbe: %s"
-
-#: includes/theme-options.php:166
-#: includes/theme-options.php:168
-#@ pohutukawa
-msgid "Layout Options"
-msgstr "Layout Optionen"
-
-#: includes/theme-options.php:192
-#@ pohutukawa
-msgid "Upload your own logo image using the "
-msgstr "Lade dein eigenes Logobild hoch"
-
-#: includes/theme-options.php:197
-#: includes/theme-options.php:199
-#@ pohutukawa
-msgid "White Header Font Color"
-msgstr "Weiße Header-Schriftfarbe"
-
-#: includes/theme-options.php:201
-#@ pohutukawa
-msgid "Check this box to set white as the standard header font color (this option is useful if you choose a dark header image)."
-msgstr "Wähle diese Option, um weiß als Standard Header-Schriftfarbe zu verwenden (dies ist sinnvoll, wenn du ein dunkles Headerbild nutzt)."
-
-#: includes/theme-options.php:206
-#: includes/theme-options.php:208
-#@ pohutukawa
-msgid "Custom Menu Title"
-msgstr "Individueller Menü-Titel"
-
-#: includes/theme-options.php:209
-#@ default
-msgid "menu_title"
-msgstr ""
-
-#: includes/theme-options.php:210
-#@ pohutukawa
-msgid "Choose a custom title for your main navigation (e.g. Navigation, Pages or Categories. The default title is \"Menu\")."
-msgstr "Wähle einen individuellen Menü-Titel für deine Hauptnavigation (z.B. Navigation, Seiten oder Kategorien. Der Standard-Titel ist \\\"Menü\\\")."
-
-#: includes/theme-options.php:215
-#: includes/theme-options.php:217
-#@ pohutukawa
-msgid "Footer Widgets Background Color"
-msgstr "Footer-Widgets Hintergrundfarbe"
-
-#: includes/theme-options.php:221
-#, php-format
-#@ pohutukawa
-msgid "Default Footer Widgets Background Color: %s"
-msgstr "Standard Footer-Widgets Hintergrundfarbe: %s"
-
-#: includes/theme-options.php:226
-#@ pohutukawa
-msgid "Custom Footer Credit Text"
-msgstr "Individueller Footer Credit-Text"
-
-#: image.php:74
-#, php-format
-#@ pohutukawa
-msgid ""
-"<li class=\"image-size\"><span>Image Size:</span> <a href=\"%3$s\" title=\"Link to full-size image\">%4$s&times;%5$s pixels</a> </li>\n"
-"\t\t\t\t\t\t<li><span>Posted in:</span> <a href=\"%6$s\" title=\"%7$s\">%7$s</a></li>"
-msgstr ""
-"<li class=\"image-size\"><span>Bildgröße:</span> <a href=\"%3$s\" title=\"Link to full-size image\">%4$s&times;%5$s Pixel</a> </li>\n"
-"\\\t\\\t\\\t\\\t\\\t\\\t<li><span>Veröffentlicht in:</span> <a href=\"%6$s\" title=\"%7$s\">%7$s</a></li>"
-
-#: image.php:99
-#@ pohutukawa
-msgid "Next Image &raquo;"
-msgstr "Nächstes Bild &raquo;"
-
-#: image.php:100
-#@ pohutukawa
-msgid "&laquo; Previous Image"
-msgstr "&laquo; Vorheriges Bild"
-
-#: includes/theme-options.php:144
-#@ pohutukawa
-msgid "Custom Link Color"
-msgstr "Eigene Linkfarbe"
-
-#: includes/theme-options.php:155
-#: includes/theme-options.php:157
-#@ pohutukawa
-msgid "Second Custom Color"
-msgstr "Eigene zweite Farbe"
+#@ meola
+msgid "Custom Logo, Post Excerpts and Custom Footer Text"
+msgstr "Eigenes Logo, Artikel-Excerpts und eigener Footertext"
 
 #: includes/theme-options.php:161
-#, php-format
-#@ pohutukawa
-msgid "This color is used for widget headlines, subheadlines and the quote post format. Default: %s"
-msgstr "Diese Farbe wird für die Widget-Überschriften, Unterüberschriften und im Zitat Artikel-Format genutzt. Standard-Farbwert ist: %s"
+#: includes/theme-options.php:163
+#@ meola
+msgid "Post Excerpts"
+msgstr "Artikel-Excerpts"
+
+#: includes/theme-options.php:165
+#@ meola
+msgid "Check this box to show automatic post excerpts in your blog (with this option you will not need the more tag in posts)."
+msgstr "Mache ein Häkchen, um automatische Artikel-Excerpts in deinem Blog anzuzeigen (mit dieser Option benötigst du keinen more tag in deinen Artikeln)."
+
+#: includes/theme-options.php:183
+#@ meola
+msgid "Favicon and Apple Touch Icon"
+msgstr "Favicon und Apple Touch Icon"
+
+#: includes/theme-options.php:207
+#@ meola
+msgid "Share Buttons"
+msgstr "Teilen Buttons"
+
+#: includes/theme-options.php:240
+#@ meola
+msgid "Responsive Slider"
+msgstr "Responsive Slider"
+
+#: includes/theme-options.php:242
+#: includes/theme-options.php:244
+#@ meola
+msgid "Include Responsive Slider"
+msgstr "Responsive Slider integrieren"
+
+#: searchform.php:10
+#@ meola
+msgid "Search this site..."
+msgstr "Seite durchsuchen..."
+
+#: functions.php:923
+#@ meola
+msgid "Category ID numbers (to choose which categories to include):"
+msgstr "Kategorie ID Nummern (um festzulegen, welche Kategorien angezeigt werden):"
+
+#: includes/theme-options.php:246
+#@ meola
+msgid "Check this box to inlcude the Responsive Slider WordPress-Plugin below the blog title in the header section of your front page(this can either be your blog or a static page, see Settings/Reading)."
+msgstr "Mache ein Häkchen, um den Slider des Responsive Slider WordPress-Plugins unterhalb des Blog-Titels im Header deiner Startseite anzuzeigen (die Startseite kann entweder dein Blog oder eine statische Seite sein, siehe Einstellungen/Lesen)."
+
+#: functions.php:126
+#@ meola
+msgid "Ocean"
+msgstr "Ozean"
+
+#: functions.php:774
+#@ meola
+msgid "Image Width (only value, no px):"
+msgstr "Bildbreite (nur Wert, nicht px):"
+
+#: functions.php:779
+#@ meola
+msgid "Image Height (only value, no px):"
+msgstr "Bildhöhe (nur Wert, nicht px):"
+
+#: functions.php:131
+#@ meola
+msgid "Directions"
+msgstr "Wegweise"
+
+#: functions.php:136
+#@ meola
+msgid "Wave"
+msgstr "Welle"
+
+#: functions.php:141
+#@ meola
+msgid "Beach"
+msgstr "Strand"
 

@@ -2,15 +2,14 @@
 /**
  * The template for displaying Comments.
  *
- * @package WordPress
- * @subpackage Pohutukawa
- * @since Pohutukawa 1.0
+ * @package Meola
+ * @since Meola 1.0
  */
 ?>
 
 	<div id="comments">
 		<?php if ( post_password_required() ) : ?>
-		<div class="nopassword"><?php _e( 'This post is password protected. Enter the password to view any comments.', 'pohutukawa' ); ?></div>
+		<div class="nopassword"><?php _e( 'This post is password protected. Enter the password to view any comments.', 'meola' ); ?></div>
 	</div><!-- end #comments -->
 	
 	<?php
@@ -27,26 +26,27 @@
 	<?php if ( have_comments() ) : ?>
 		<h3 id="comments-title">
 			<?php
-				printf( _n( 'One comment', '%1$s comments', get_comments_number(), 'pohutukawa' ),
+				printf( _n( '1 comment', '%1$s comments', get_comments_number(), 'meola' ),
 					number_format_i18n( get_comments_number() ) );
 			?>
+			<span><a href="#reply-title"><?php _e( 'Write a comment', 'meola' ); ?></a></span>
 		</h3>
 
 		<ol class="commentlist">
 				<?php
 				/* Loop through and list the comments. Tell wp_list_comments()
-				 * to use pohutukawa_comment() to format the comments.
+				 * to use meola_comment() to format the comments.
 				 * If you want to overload this in a child theme then you can
-				 * define pohutukawa_comment() and that will be used instead.
+				 * define meola_comment() and that will be used instead.
 				 */
-				wp_list_comments( array( 'callback' => 'pohutukawa_comment' ) );
+				wp_list_comments( array( 'callback' => 'meola_comment' ) );
 			?>
 		</ol>
 
 		<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // are there comments to navigate through ?>
 		<nav id="comment-nav">
-			<div class="nav-previous"><?php previous_comments_link( __( '&laquo;  Older Comments', 'pohutukawa' ) ); ?></div>
-			<div class="nav-next"><?php next_comments_link( __( 'Newer Comments  &raquo;', 'pohutukawa' ) ); ?></div>
+			<div class="nav-previous"><?php previous_comments_link( __( '&larr;  Older Comments', 'meola' ) ); ?></div>
+			<div class="nav-next"><?php next_comments_link( __( 'Newer Comments  &rarr;', 'meola' ) ); ?></div>
 		</nav><!-- end #comment-nav -->
 		<?php endif; // check for comment navigation ?>
 
@@ -61,7 +61,7 @@
 			 */
 			if ( ! comments_open() && ! is_page() ) :
 			?>
-			<p class="nocomments"><?php _e( 'Comments are closed.', 'pohutukawa' ); ?></p>
+			<p class="nocomments"><?php _e( 'Comments are closed.', 'meola' ); ?></p>
 			<?php endif; // end ! comments_open() && ! is_page() ?>
 
 		<?php endif; ?>
@@ -70,10 +70,9 @@
 
 	<?php comment_form (
 		array(
-			'comment_notes_before' =>__( '<p class="comment-note">Required fields are marked <span class="required">*</span>.</p>', 'pohutukawa'),
-			'comment_notes_after' => '',
-			'comment_field'  => '<p class="comment-form-comment"><label for="comment">' . _x( 'Message <span class="required">*</span>', 'noun', 'pohutukawa' ) . 			'</label><br/><textarea id="comment" name="comment" rows="8"></textarea></p>',
-			'label_submit'	=> __( 'Send', 'pohutukawa' ))
+			'comment_notes_before' =>__( '<p class="comment-note">Required fields are marked <span class="required">*</span>.</p>', 'meola'),
+			'comment_field'  => '<p class="comment-form-comment"><label for="comment">' . _x( 'Message <span class="required">*</span>', 'noun', 'meola' ) . 			'</label><br/><textarea id="comment" name="comment" rows="8"></textarea></p>',
+			'label_submit'	=> __( 'Send Comment', 'meola' ))
 		); 
 	?>
 

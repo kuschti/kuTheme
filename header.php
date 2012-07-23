@@ -1,10 +1,11 @@
 <?php
 /**
- * The themes header file.
+ * The themes Header file.
  *
- * @package WordPress
- * @subpackage Pohutukawa
- * @since Pohutukawa 1.0
+ * Displays all of the <head> section and everything up till </header>
+ *
+ * @package Meola
+ * @since Meola 1.0
  */
 ?><!DOCTYPE html>
 <!--[if lte IE 8]>
@@ -20,26 +21,38 @@
 	 * Print the <title> tag based on what is being viewed.
 	 */
 	global $page, $paged;
+
 	wp_title( '|', true, 'right' );
+	
+	// Add the blog name.
 	bloginfo( 'name' );
+	
+	// Add the blog description for the home/front page.
 	$site_description = get_bloginfo( 'description', 'display' );
 	if ( $site_description && ( is_home() || is_front_page() ) )
 		echo " | $site_description";
+
+	// Add a page number if necessary:
 	if ( $paged >= 2 || $page >= 2 )
-		echo ' | ' . sprintf( __( 'Page %s', 'pohutukawa' ), max( $paged, $page ) );
+		echo ' | ' . sprintf( __( 'Page %s', 'meola' ), max( $paged, $page ) );
 ?></title>
 <link rel="profile" href="http://gmpg.org/xfn/11" />
 <link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'stylesheet_url' ); ?>" />
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
 <?php 
-	$options = get_option('pohutukawa_theme_options');
+	$options = get_option('meola_theme_options');
 	if( $options['custom_favicon'] != '' ) : ?>
 <link rel="shortcut icon" type="image/ico" href="<?php echo $options['custom_favicon']; ?>" />
 <?php endif  ?>
+<?php 
+	$options = get_option('meola_theme_options');
+	if( $options['custom_apple_icon'] != '' ) : ?>
+<link rel="apple-touch-icon" href="<?php echo $options['custom_apple_icon']; ?>" />
+<?php endif  ?>
 
-<!-- HTML5 enabling script for IE7+8 -->
+<!-- HTML5 enabling script for older IE -->
 <!--[if lt IE 9]>
-<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 <![endif]-->
 
 <?php
@@ -53,34 +66,75 @@
 
 <body <?php body_class(); ?>>
 
-	<div id="wrap">
-		<header id="header">
+	<div id="site-nav-wrap" class="clearfix">
+		<div id="site-nav-container">
+			<a href="#nav-mobile" id="mobile-menu-btn"><?php _e('Menu', 'meola') ?></a>
+			<nav id="site-nav">
+				<?php wp_nav_menu( array( 'theme_location' => 'primary' ) ); ?>
+			</nav><!-- end #site-nav -->
+		</div><!-- end #site-nav-container -->
+	</div><!-- end #site-nav-wrap -->
+
+		<header id="header" class="clearfix">
 			<div id="branding">
-				<hgroup id="site-title">
-					<?php $options = get_option('pohutukawa_theme_options');
+				<div id="site-title">
+					<?php $options = get_option('meola_theme_options');
 						if( $options['custom_logo'] != '' ) : ?>
 						<a href="<?php echo home_url( '/' ); ?>" class="logo"><img src="<?php echo $options['custom_logo']; ?>" alt="<?php bloginfo('name'); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" /></a>
 					<?php else: ?>
 						<h1><a href="<?php echo home_url( '/' ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>"><?php bloginfo( 'name' ); ?></a></h1>
-						<h2 id="site-description"><?php bloginfo( 'description' ); ?></h2>		
+						<h2 id="site-description"><?php bloginfo( 'description' ); ?></h2>
 					<?php endif  ?>
-				</hgroup><!-- end #site-title -->
+				</div><!-- end #site-title -->
 
-				<?php if (has_nav_menu( 'optional' ) ) {
-					wp_nav_menu( array('theme_location' => 'optional', 'container' => 'nav' , 'container_class' => 'optional-nav', 'depth' => 1 ));} 
-				?>
 			</div><!-- end #branding -->
-		
-			<?php if ( get_header_image() ) : ?>
-				<img src="<?php header_image(); ?>" width="<?php echo HEADER_IMAGE_WIDTH; ?>" height="<?php echo HEADER_IMAGE_HEIGHT; ?>" class="header-image" /><!-- end header-image -->
-			<?php endif; // end check for header image ?>
 
-			<div class="mobile-nav">
-				<a href="#main-nav" class="menu-btn"><?php _e('Menu', 'pohutukawa') ?></a>
-				<div class="search">
-					<?php get_search_form(); ?>
-				</div><!-- end .search -->
-			</div><!-- end .mobile-nav -->
+			<?php
+				// Check to see if the header image has been removed
+				$header_image = get_header_image();
+				if ( $header_image ) :
+					// Compatibility with versions of WordPress prior to 3.4.
+					if ( function_exists( 'get_custom_header' ) ) {
+						// We need to figure out what the minimum width should be for our featured image.
+						// This result would be the suggested width if the theme were to implement flexible widths.
+						$header_image_width = get_theme_support( 'custom-header', 'width' );
+					} else {
+						$header_image_width = HEADER_IMAGE_WIDTH;
+					}
+					?>
+			<div class="header-image">
+			<a href="<?php echo esc_url( home_url( '/' ) ); ?>">
+				<?php
+					// The header image
+					// Check if this is a post or page, if it has a thumbnail, and if it's a big one
+					if ( is_singular() && has_post_thumbnail( $post->ID ) &&
+							( /* $src, $width, $height */ $image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), array( $header_image_width, $header_image_width ) ) ) &&
+							$image[1] >= $header_image_width ) :
+						// Houston, we have a new header image!
+						echo get_the_post_thumbnail( $post->ID, 'post-thumbnail' );
+					else :
+						// Compatibility with versions of WordPress prior to 3.4.
+						if ( function_exists( 'get_custom_header' ) ) {
+							$header_image_width  = get_custom_header()->width;
+							$header_image_height = get_custom_header()->height;
+						} else {
+							$header_image_width  = HEADER_IMAGE_WIDTH;
+							$header_image_height = HEADER_IMAGE_HEIGHT;
+						}
+						?>
+					<img src="<?php header_image(); ?>" width="<?php echo $header_image_width; ?>" height="<?php echo $header_image_height; ?>" alt="" />
+				<?php endif; // end check for featured image or standard header ?>
+			</a></div><!-- end .header-image -->
+			<?php endif; // end check for removed header image ?>
+
+			<?php // Include Responsive Slider, see Meola Theme Options
+				$options = get_option('meola_theme_options');
+				if( $options['use-slider'] ) : ?>
+
+				<?php if(is_front_page() ) { ?>
+					<?php do_shortcode('[responsive_slider]'); ?>
+				<?php } ?>
+
+			<?php endif; ?>
+			
 		</header><!-- end #header -->
-
-	<div id="container" class="clearfix">

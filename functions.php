@@ -1,75 +1,67 @@
 <?php
 /**
- * nori functions and definitions
+ * Meola functions and definitions
  *
- * @package WordPress
- * @subpackage Pohutukawa
- * @since Pohutukawa 1.0
+ * @package Meola
+ * @since Meola 1.0
  */
-
-/*-----------------------------------------------------------------------------------*/
-/* Make theme available for translation
-/* Translations can be filed in the /languages/ directory
-/*-----------------------------------------------------------------------------------*/
-
-load_theme_textdomain( 'pohutukawa', TEMPLATEPATH . '/languages' );
-
-$locale = get_locale();
-$locale_file = TEMPLATEPATH . "/languages/$locale.php";
-	if ( is_readable( $locale_file ) )
-		require_once( $locale_file );
-
+ 
 /*-----------------------------------------------------------------------------------*/
 /* Set the content width based on the theme's design and stylesheet.
 /*-----------------------------------------------------------------------------------*/
 
 if ( ! isset( $content_width ) )
-	$content_width = 680;
+	$content_width = 660; /* pixels */
 
 /*-----------------------------------------------------------------------------------*/
-/* Tell WordPress to run pohutukawa() when the 'after_setup_theme' hook is run.
+/* Call JavaScript Scripts for Meola (Fitvids for elasic videos, Custom and Placeholder)
 /*-----------------------------------------------------------------------------------*/
 
-add_action( 'after_setup_theme', 'pohutukawa' );
-
-if ( ! function_exists( 'pohutukawa' ) ):
-
-/*-----------------------------------------------------------------------------------*/
-/* Create the Nori Theme Options Page
-/*-----------------------------------------------------------------------------------*/
-
-require_once ( get_template_directory() . '/includes/theme-options.php' );
-
-/*-----------------------------------------------------------------------------------*/
-/* Call JavaScript Scripts for pohutukawa (Masonry layout, Fitvids for Elasic Videos and Custom)
-/*-----------------------------------------------------------------------------------*/
-
-add_action('wp_enqueue_scripts','pohutukawa_scripts_function');
-	function pohutukawa_scripts_function() {
+add_action('wp_enqueue_scripts','meola_scripts_function');
+	function meola_scripts_function() {
 		wp_enqueue_script( 'fitvids', get_template_directory_uri() . '/js/jquery.fitvids.js', false, '1.0');
 		wp_enqueue_script( 'placeholder', get_template_directory_uri() . '/js/jquery.placeholder.min.js', false, '1.0');
 		wp_enqueue_script( 'custom', get_template_directory_uri() . '/js/custom.js', false, '1.0');
 }
 
 /*-----------------------------------------------------------------------------------*/
-/* Load Google Webfonts for Headlines
+/* Include Google Webfonts
 /*-----------------------------------------------------------------------------------*/
 
- function pohutukawa_load_fonts() {
-            wp_register_style('googleFonts', 'http://fonts.googleapis.com/css?family=PT+Sans:700');
-            wp_enqueue_style( 'googleFonts');
-        }
- 
-    add_action('wp_print_styles', 'pohutukawa_load_fonts');
+function load_fonts() {
+          wp_register_style('googleFonts', 'http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,700,800');
+          wp_enqueue_style( 'googleFonts');
+       }
+
+add_action('wp_print_styles', 'load_fonts');
 
 /*-----------------------------------------------------------------------------------*/
-/* Sets up theme defaults and registers support for WordPress features. 
+/* Sets up theme defaults and registers support for various WordPress features.
 /*-----------------------------------------------------------------------------------*/
+/**
+ * Tell WordPress to run meola_setup() when the 'after_setup_theme' hook is run.
+ */
+add_action( 'after_setup_theme', 'meola_setup' );
 
-function pohutukawa() {
+if ( ! function_exists( 'meola_setup' ) ):
+/**
+ * Note that this function is hooked into the after_setup_theme hook, which runs
+ * before the init hook. The init hook is too late for some features, such as indicating
+ * support post thumbnails.
+ *
+ * To override meola_setup() in a child theme, add your own meola_setup to your child theme's
+ * functions.php file.
+ */
+function meola_setup() {
+
+	// Make Meola available for translation. Translations can be filed in the /languages/ directory.
+	load_theme_textdomain( 'meola', get_template_directory() . '/languages' );
 
 	// This theme styles the visual editor with editor-style.css to match the theme style.
 	add_editor_style();
+	
+	// Load up the Meola theme options page and related code.
+	require( get_template_directory() . '/includes/theme-options.php' );
 
 	// This theme uses post thumbnails
 	add_theme_support( 'post-thumbnails' );
@@ -77,152 +69,165 @@ function pohutukawa() {
 	// Add default posts and comments RSS feed links to head
 	add_theme_support( 'automatic-feed-links' );
 
-	// This theme uses wp_nav_menu() in one location.
+	// This theme uses wp_nav_menu().
 	register_nav_menus( array(
-		'primary' => __( 'Primary Navigation', 'pohutukawa' ),
-		'optional' => __( 'Optional Navigation (no sub menus supported)', 'pohutukawa' )
+		'primary' => __( 'Primary Navigation', 'meola' ),
+		'optional' => __( 'Footer Navigation (no sub menus supported)', 'meola' )
 	) );
 	
 	// Add support for Post Formats
-	add_theme_support( 'post-formats', array( 'aside', 'status', 'link', 'quote', 'image', 'gallery', 'video', 'audio' ) );
+	add_theme_support( 'post-formats', array( 'aside', 'status', 'link', 'quote', 'image', 'gallery', 'video', 'audio','chat' ) );
 
-	// This theme allows users to set a custom background
-	add_custom_background();
-
-// The default header text color
-	define( 'HEADER_TEXTCOLOR', '222' );
 	
-	// By leaving empty, we allow for random image rotation.
-	define( 'HEADER_IMAGE', '' );
+	// Allows users to set a custom background
+	if ( function_exists('get_custom_background')) {
+        add_theme_support('custom-background');
+	} else {
+	// Backward Compatibility for Versions of WordPress prior to 3.4.
+        add_custom_background();
+	}
 
-	// The height and width of your custom header. You can hook into the theme's own filters to change these values.
-	// Add a filter to pohutukawa_header_image_width and pohutukawa_header_image_height to change these values.
-	define( 'HEADER_IMAGE_WIDTH', apply_filters( 'pohutukawa_header_image_width', 1400 ) );
-	define( 'HEADER_IMAGE_HEIGHT', apply_filters( 'pohutukawa_header_image_height', 440 ) );
+	// Add support for custom headers.
+	$custom_header_support = array(
+		'width' => apply_filters( 'meola_header_image_width', 1132 ),
+		'height' => apply_filters( 'meola_image_height', 500 ),
+		'flex-height' => true,
+		'random-default' => true,
+		'header-text' => false,
+		'wp-head-callback' => '',
+		'admin-head-callback' => 'meola_admin_header_style',
+		'admin-preview-callback' => 'meola_admin_header_image',
+	);
 
-	// Don't support text inside the header image.
-	define( 'NO_HEADER_TEXT', true );
+	add_theme_support( 'custom-header', $custom_header_support );
 
-	// gets included in the site header
-	 
-	function header_style() {
-    ?>
-	 <?php if ( get_header_image() ) : ?>
-	 <style type="text/css">
-	 @media screen and (min-width: 1100px) {
-        #header {
-            background: url(<?php header_image(); ?>) no-repeat scroll;
-				height: <?php echo HEADER_IMAGE_HEIGHT; ?>px;
-				background-position:center;
-				background-size: cover;
-				-webkit-background-size: cover;
-				-moz-background-size: cover;
-				-o-background-size: cover;
-        }
-		}
-    </style>
-	 <?php endif; // end check for header image ?>
-	 <?php
-}
+	if ( ! function_exists( 'get_custom_header' ) ) {
+		// This is all for compatibility with versions of WordPress prior to 3.4.
+		define( 'HEADER_IMAGE', '' );
+		define( 'HEADER_IMAGE_WIDTH', $custom_header_support['width'] );
+		define( 'HEADER_IMAGE_HEIGHT', $custom_header_support['height'] );
+		add_custom_image_header( $custom_header_support['wp-head-callback'], $custom_header_support['admin-head-callback'], $custom_header_support['admin-preview-callback'] );
+		add_custom_background();
+	}
 
-	// Add a way for the custom header to be styled in the admin panel that controls
-	// custom headers. See pohutukawa_admin_header_style(), below.
-	add_custom_image_header( 'header_style', 'pohutukawa_admin_header_style' );
+	// We'll be using post thumbnails for custom header images on posts and pages.
+	// We want them to be the size of the header image that we just defined
+	// Larger images will be auto-cropped to fit, smaller ones will be ignored. See header.php.
+	set_post_thumbnail_size( $custom_header_support['width'], $custom_header_support['height'], true );
 
-	// ... and thus ends the changeable header business.
+	// Add Meola's custom image sizes.
+	add_image_size( 'large-feature', $custom_header_support['width'], $custom_header_support['height'], true );
 
 	// Default custom headers packaged with the theme. %s is a placeholder for the theme template directory URI.
 	register_default_headers( array(
-			'pohutukawa' => array(
-				'url' => '%s/images/headers/pohutukawa.jpg',
-				'thumbnail_url' => '%s/images/headers/pohutukawa-thumbnail.jpg',
-				/* translators: header image description */
-				'description' => __( 'Pohutukawa', 'pohutukawa' )
-			),
-			'roadtrip' => array(
-				'url' => '%s/images/headers/roadtrip.jpg',
-				'thumbnail_url' => '%s/images/headers/roadtrip-thumbnail.jpg',
-				/* translators: header image description */
-				'description' => __( 'Roadtrip', 'pohutukawa' )
-			),
-			'poetrygarden' => array(
-				'url' => '%s/images/headers/poetrygarden.jpg',
-				'thumbnail_url' => '%s/images/headers/poetrygarden-thumbnail.jpg',
-				/* translators: header image description */
-				'description' => __( 'Poetry Garden', 'pohutukawa' )
-			),
-			'skyline' => array(
-				'url' => '%s/images/headers/skyline.jpg',
-				'thumbnail_url' => '%s/images/headers/skyline-thumbnail.jpg',
-				/* translators: header image description */
-				'description' => __( 'Skyline', 'pohutukawa' )
-			)
+		'ocean' => array(
+			'url' => '%s/images/headers/ocean.jpg',
+			'thumbnail_url' => '%s/images/headers/ocean-thumbnail.jpg',
+			'description' => __( 'Ocean', 'meola' )
+		),
+		'directions' => array(
+			'url' => '%s/images/headers/directions.jpg',
+			'thumbnail_url' => '%s/images/headers/directions-thumbnail.jpg',
+			'description' => __( 'Directions', 'meola' )
+		),
+		'wave' => array(
+			'url' => '%s/images/headers/wave.jpg',
+			'thumbnail_url' => '%s/images/headers/wave-thumbnail.jpg',
+			'description' => __( 'Wave', 'meola' )
+		),
+		'beach' => array(
+			'url' => '%s/images/headers/beach.jpg',
+			'thumbnail_url' => '%s/images/headers/beach-thumbnail.jpg',
+			'description' => __( 'Beach', 'meola' )
+		)
 	) );
 }
-endif;
+endif; // meola_setup
 
-if ( ! function_exists( 'pohutukawa_admin_header_style' ) ) :
+
+if ( ! function_exists( 'meola_admin_header_style' ) ) :
 
 /*-----------------------------------------------------------------------------------*/
 /* Styles the header image displayed on the Appearance > Header admin panel.
-/* Referenced via add_custom_image_header() in pohutukawa_setup().
 /*-----------------------------------------------------------------------------------*/
 
-function pohutukawa_admin_header_style() {
+function meola_admin_header_style() {
 ?>
-<style type="text/css">
-/* Shows the same border as on front end */
-#heading {
-	border-bottom: 1px solid #000;
-	border-top: 4px solid #000;
-}
-/* If NO_HEADER_TEXT is false, you would style the text with these selectors:
-	#headimg #name { }
-	#headimg #desc { }
-*/
-</style>
+	<style type="text/css">
+	.appearance_page_custom-header #headimg {
+		border: none;
+	}
+	#headimg img {
+		max-width: 1132px;
+		height: auto;
+		width: 100%;
+	}
+	</style>
 <?php
 }
-endif;
+endif; // meola_admin_header_style
+
+if ( ! function_exists( 'meola_admin_header_image' ) ) :
+
+/*-----------------------------------------------------------------------------------*/
+/* Custom header image markup displayed on the Appearance > Header admin panel.
+/*-----------------------------------------------------------------------------------*/
+
+function meola_admin_header_image() { ?>
+	<div id="headimg">
+		<?php
+		$image = get_header_image();
+		if ( $color && $color != 'blank' )
+			$style = ' style="color:#' . $color . '"';
+		else
+			$style = ' style="display:none"';
+		?>
+		<?php if ( $image ) : ?>
+			<img src="<?php echo esc_url( $image ); ?>" alt="" />
+		<?php endif; ?>
+	</div>
+<?php }
+endif; // meola_admin_header_image
+
 
 /*-----------------------------------------------------------------------------------*/
 /* Get our wp_nav_menu() fallback, wp_page_menu(), to show a home link.
 /*-----------------------------------------------------------------------------------*/
 
-function pohutukawa_page_menu_args( $args ) {
+function meola_page_menu_args( $args ) {
 	$args['show_home'] = true;
 	return $args;
 }
-add_filter( 'wp_page_menu_args', 'pohutukawa_page_menu_args' );
+add_filter( 'wp_page_menu_args', 'meola_page_menu_args' );
 
 /*-----------------------------------------------------------------------------------*/
 /* Sets the post excerpt length to 40 characters.
 /*-----------------------------------------------------------------------------------*/
 
-function pohutukawa_excerpt_length( $length ) {
-	return 40;
+function meola_excerpt_length( $length ) {
+	return 35;
 }
-add_filter( 'excerpt_length', 'pohutukawa_excerpt_length' );
+add_filter( 'excerpt_length', 'meola_excerpt_length' );
 
 /*-----------------------------------------------------------------------------------*/
 /* Returns a "Continue Reading" link for excerpts
 /*-----------------------------------------------------------------------------------*/
 
-function pohutukawa_continue_reading_link() {
-	return ' <a href="'. get_permalink() . '">' . __( 'Continue reading', 'pohutukawa' ) . '</a>';
+function meola_continue_reading_link() {
+	return ' <a href="'. get_permalink() . '">' . __( 'Read more &rarr;', 'meola' ) . '</a>';
 }
 
 /*-----------------------------------------------------------------------------------*/
-/* Replaces "[...]" (appended to automatically generated excerpts) with an ellipsis and pohutukawa_continue_reading_link().
+/* Replaces "[...]" (appended to automatically generated excerpts) with an ellipsis and meola_continue_reading_link().
 /*
 /* To override this in a child theme, remove the filter and add your own
 /* function tied to the excerpt_more filter hook.
 /*-----------------------------------------------------------------------------------*/
 
-function pohutukawa_auto_excerpt_more( $more ) {
-	return ' &hellip;' . pohutukawa_continue_reading_link();
+function meola_auto_excerpt_more( $more ) {
+	return ' &hellip;' . meola_continue_reading_link();
 }
-add_filter( 'excerpt_more', 'pohutukawa_auto_excerpt_more' );
+add_filter( 'excerpt_more', 'meola_auto_excerpt_more' );
 
 /*-----------------------------------------------------------------------------------*/
 /* Adds a pretty "Continue Reading" link to custom post excerpts.
@@ -231,77 +236,65 @@ add_filter( 'excerpt_more', 'pohutukawa_auto_excerpt_more' );
 /* function tied to the get_the_excerpt filter hook.
 /*-----------------------------------------------------------------------------------*/
 
-function pohutukawa_custom_excerpt_more( $output ) {
+function meola_custom_excerpt_more( $output ) {
 	if ( has_excerpt() && ! is_attachment() ) {
-		$output .= pohutukawa_continue_reading_link();
+		$output .= meola_continue_reading_link();
 	}
 	return $output;
 }
-add_filter( 'get_the_excerpt', 'pohutukawa_custom_excerpt_more' );
+add_filter( 'get_the_excerpt', 'meola_custom_excerpt_more' );
 
 /*-----------------------------------------------------------------------------------*/
 /* Remove inline styles printed when the gallery shortcode is used.
 /*-----------------------------------------------------------------------------------*/
 
-function pohutukawa_remove_gallery_css( $css ) {
+function meola_remove_gallery_css( $css ) {
 	return preg_replace( "#<style type='text/css'>(.*?)</style>#s", '', $css );
 }
-add_filter( 'gallery_style', 'pohutukawa_remove_gallery_css' );
+add_filter( 'gallery_style', 'meola_remove_gallery_css' );
 
 
-if ( ! function_exists( 'pohutukawa_comment' ) ) :
-
-
+if ( ! function_exists( 'meola_comment' ) ) :
 /*-----------------------------------------------------------------------------------*/
-/* Replace p Tag around images with figure tag
-/*-----------------------------------------------------------------------------------*/
-function fb_unautop_4_img( $content ) {
-    
-    $content = preg_replace( 
-        '/<p>\\s*?(<a.*?><img.*?><\\/a>|<img.*?>)?\\s*<\\/p>/s',
-        '<figure>$1</figure>',
-        $content
-    );
-    
-    return $content;
-}
-add_filter( 'the_content', 'fb_unautop_4_img', 99 );
-
-
-/*-----------------------------------------------------------------------------------*/
-/* Comments template pohutukawa_comment
+/* Comments template waipoua_comment
 /*-----------------------------------------------------------------------------------*/
 
-function pohutukawa_comment( $comment, $args, $depth ) {
+function meola_comment( $comment, $args, $depth ) {
 	$GLOBALS['comment'] = $comment;
 	switch ( $comment->comment_type ) :
 		case '' :
 	?>
 
 	<li <?php comment_class(); ?> id="li-comment-<?php comment_ID(); ?>">
-		<article id="comment-<?php comment_ID(); ?>" class="comment">			
+		<article id="comment-<?php comment_ID(); ?>" class="comment">
 
-				<?php echo get_avatar( $comment, 40 ); ?>
-		
-			<div class="comment-content">
+			<div class="comment-avatar">
+				<?php echo get_avatar( $comment, 55 ); ?>
+			</div>
+
+<div class="comment-content">
 				<ul class="comment-meta">
-					<li class="comment-author"><?php printf( __( '%s', 'pohutukawa' ), sprintf( '%s', get_comment_author_link() ) ); ?></li>
-						<li class="comment-time"><?php _e( ' // ', 'pohutukawa' ); ?><a href="<?php echo esc_url( get_comment_link( $comment->comment_ID ) ); ?>">
+					<li class="comment-author"><?php printf( __( '%s', 'meola' ), sprintf( '%s', get_comment_author_link() ) ); ?></li>
+					<li class="comment-reply"><?php comment_reply_link( array_merge( $args, array( 'reply_text' => __( 'Reply', 'meola' ), 'depth' => $depth, 'max_depth' => $args['max_depth'] ) ) ); ?></li>
+					<li class="comment-time"><a href="<?php echo esc_url( get_comment_link( $comment->comment_ID ) ); ?>">
 					<?php
 						/* translators: 1: date, 2: time */
-						printf( __( '%1$s &#64; %2$s', 'pohutukawa' ),
+						printf( __( '%1$s &#64; %2$s', 'meola' ),
 						get_comment_date('d.m.y'),
 						get_comment_time() );
 					?></a></li>
-					<li class="comment-edit"><?php edit_comment_link( __( 'Edit', 'pohutukawa' ), ' ' );?></li>
-					<li class="comment-reply"><?php comment_reply_link( array_merge( $args, array( 'reply_text' => __( 'Reply', 'pohutukawa' ), 'depth' => $depth, 'max_depth' => $args['max_depth'] ) ) ); ?></li>
+					<li class="comment-edit"><?php edit_comment_link( __( 'Edit', 'meola' ), ' ' );?></li>
 				</ul>
-				
-				<?php comment_text(); ?>	
-				<?php if ( $comment->comment_approved == '0' ) : ?>
-					<p class="comment-awaiting-moderation"><?php _e( 'Your comment is awaiting moderation.', 'pohutukawa' ); ?></p>
-				<?php endif; ?>
+					<div class="comment-text">
+						<?php comment_text(); ?>
+						
+						<?php if ( $comment->comment_approved == '0' ) : ?>
+						<p class="comment-awaiting-moderation"><?php _e( 'Your comment is awaiting moderation.', 'meola' ); ?></p>
+						<?php endif; ?>
+					</div><!-- end .comment-text -->
+					
 			</div><!-- end .comment-content -->
+		
 		</article><!-- end .comment -->
 
 	<?php
@@ -309,9 +302,9 @@ function pohutukawa_comment( $comment, $args, $depth ) {
 		case 'pingback'  :
 		case 'trackback' :
 	?>
-	<li class="post pingback">
-		<p><?php _e( '<span>Pingback:</span>', 'pohutukawa' ); ?> <?php comment_author_link(); ?></p>
-		<p><?php edit_comment_link( __('Edit pingback', 'pohutukawa'), ' ' ); ?></p>
+	<li class="pingback">
+		<p><?php _e( '<span>Pingback:</span>', 'meola' ); ?> <?php comment_author_link(); ?></p>
+		<p><?php edit_comment_link( __('Edit', 'meola'), ' ' ); ?></p>
 	<?php
 			break;
 	endswitch;
@@ -319,96 +312,77 @@ function pohutukawa_comment( $comment, $args, $depth ) {
 endif;
 
 /*-----------------------------------------------------------------------------------*/
-/* Register widgetized area and update sidebar with default widgets
+/* Register widgetized areas
 /*-----------------------------------------------------------------------------------*/
 
-function pohutukawa_widgets_init() {
+function meola_widgets_init() {
 
 	register_sidebar( array (
-		'name' => __( 'Main Widget Area', 'pohutukawa' ),
-		'id' => 'widget-area-main',
-		'description' => __( 'Main widget area (below the post and pages content).', 'pohutukawa' ),
-		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-		'after_widget' => "</aside>",
+		'name' => __( 'Widget Area Top', 'meola' ),
+		'id' => 'sidebar-top',
+		'description' => __( 'Widgets will appear below the header and above the post or page content area.', 'meola' ),
+		'before_widget' => '<aside id="%1$s" class="widget %2$s"><div class="widget-wrap">',
+		'after_widget' => "</div></aside>",
 		'before_title' => '<h3 class="widget-title">',
 		'after_title' => '</h3>',
 	) );
 
 	register_sidebar( array (
-		'name' => __( 'Footer Widget Area 1', 'pohutukawa' ),
-		'id' => 'widget-area-footer-1',
-		'description' => __( 'Footer Widget Area 1 (left column in desktop view)', 'pohutukawa' ),
-		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-		'after_widget' => "</aside>",
-		'before_title' => '<h3 class="widget-title">',
-		'after_title' => '</h3>',
-	) );
-
-	register_sidebar( array (
-		'name' => __( 'Footer Widget Area 2', 'pohutukawa' ),
-		'id' => 'widget-area-footer-2',
-		'description' => __( 'Footer Widget Area 2 (middle column in desktop view)', 'pohutukawa' ),
-		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-		'after_widget' => "</aside>",
-		'before_title' => '<h3 class="widget-title">',
-		'after_title' => '</h3>',
-	) );
-
-	register_sidebar( array (
-		'name' => __( 'Footer Widget Area 3', 'pohutukawa' ),
-		'id' => 'widget-area-footer-3',
-		'description' => __( 'Footer Widget Area 3 (right column in desktop view)', 'pohutukawa' ),
-		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-		'after_widget' => "</aside>",
-		'before_title' => '<h3 class="widget-title">',
-		'after_title' => '</h3>',
-	) );
-
-	register_sidebar( array (
-		'name' => __( 'Social Links Footer Widget', 'pohutukawa' ),
-		'id' => 'widget-area-footer-sociallinks',
-		'description' => __( 'Optional widget area to include the Social Links Widget in the bottom footer area.', 'pohutukawa' ),
-		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-		'after_widget' => "</aside>",
+		'name' => __( 'Widget Area Bottom', 'meola' ),
+		'id' => 'sidebar-bottom',
+		'description' => __( 'Widgets will appear below the post or page content area and above the footer.', 'meola' ),
+		'before_widget' => '<aside id="%1$s" class="widget %2$s"><div class="widget-wrap">',
+		'after_widget' => "</div></aside>",
 		'before_title' => '<h3 class="widget-title">',
 		'after_title' => '</h3>',
 	) );
 
 }
-add_action( 'init', 'pohutukawa_widgets_init' );
+add_action( 'init', 'meola_widgets_init' );
+
+
+if ( ! function_exists( 'meola_content_nav' ) ) :
 
 /*-----------------------------------------------------------------------------------*/
-/* Customized pohutukawa search form
+/* Display navigation to next/previous pages when applicable
 /*-----------------------------------------------------------------------------------*/
 
-function pohutukawa_search_form( $form ) {
+function meola_content_nav( $nav_id ) {
+	global $wp_query;
 
-    $form = '	<form method="get" class="searchform" action="'.get_bloginfo('url').'">
-			<input type="text" class="field s" name="s" placeholder="'. esc_attr__('Search...', 'pohutukawa') .'" />
-			<input type="submit" class="searchsubmit" name="submit" value="'. esc_attr__('Submit', 'pohutukawa') .'" />
-	</form>';
-
-    return $form;
+	if ( $wp_query->max_num_pages > 1 ) : ?>
+		<nav id="<?php echo $nav_id; ?>" class="clearfix">
+				<div class="nav-previous"><?php next_posts_link( __( '&laquo; Older entries', 'meola'  ) ); ?></div>
+				<div class="nav-next"><?php previous_posts_link( __( 'Newer entries &raquo;', 'meola' ) ); ?></div>
+			</nav><!-- end #nav-below -->
+	<?php endif;
 }
-add_filter( 'get_search_form', 'pohutukawa_search_form' );
 
-/**
- * Removes the default CSS style from the WP image gallery
- */
+endif; // meola_content_nav
+
+/*-----------------------------------------------------------------------------------*/
+/* Removes the default CSS style from the WP image gallery
+/*-----------------------------------------------------------------------------------*/
 add_filter('gallery_style', create_function('$a', 'return "
 <div class=\'gallery\'>";'));
 
+/*-----------------------------------------------------------------------------------*/
+/* Deactives the default CSS styles for the Smart Archives Reloaded plugin
+/*-----------------------------------------------------------------------------------*/
+
+add_filter('smart_archives_load_default_styles', '__return_false');
+
 
 /*-----------------------------------------------------------------------------------*/
-/* pohutukawa Shortcodes
+/* Meola Shortcodes
 /*-----------------------------------------------------------------------------------*/
  
 // Enable shortcodes in widget areas
 add_filter( 'widget_text', 'do_shortcode' );
 
 // Replace WP autop formatting
-if (!function_exists( "pohutukawa_remove_wpautop")) {
-	function pohutukawa_remove_wpautop($content) { 
+if (!function_exists( "meola_remove_wpautop")) {
+	function meola_remove_wpautop($content) { 
 		$content = do_shortcode( shortcode_unautop( $content ) ); 
 		$content = preg_replace( '#^<\/p>|^<br \/>|<p>$#', '', $content);
 		return $content;
@@ -421,130 +395,130 @@ if (!function_exists( "pohutukawa_remove_wpautop")) {
 /*-----------------------------------------------------------------------------------*/
 
 // Two Columns
-function pohutukawa_shortcode_two_columns_one( $atts, $content = null ) {
-   return '<div class="two-columns-one">' . pohutukawa_remove_wpautop($content) . '</div>';
+function meola_shortcode_two_columns_one( $atts, $content = null ) {
+   return '<div class="two-columns-one">' . meola_remove_wpautop($content) . '</div>';
 }
-add_shortcode( 'two_columns_one', 'pohutukawa_shortcode_two_columns_one' );
+add_shortcode( 'two_columns_one', 'meola_shortcode_two_columns_one' );
 
-function pohutukawa_shortcode_two_columns_one_last( $atts, $content = null ) {
-   return '<div class="two-columns-one last">' . pohutukawa_remove_wpautop($content) . '</div>';
+function meola_shortcode_two_columns_one_last( $atts, $content = null ) {
+   return '<div class="two-columns-one last">' . meola_remove_wpautop($content) . '</div>';
 }
-add_shortcode( 'two_columns_one_last', 'pohutukawa_shortcode_two_columns_one_last' );
+add_shortcode( 'two_columns_one_last', 'meola_shortcode_two_columns_one_last' );
 
 // Three Columns
-function pohutukawa_shortcode_three_columns_one($atts, $content = null) {
-   return '<div class="three-columns-one">' . pohutukawa_remove_wpautop($content) . '</div>';
+function meola_shortcode_three_columns_one($atts, $content = null) {
+   return '<div class="three-columns-one">' . meola_remove_wpautop($content) . '</div>';
 }
-add_shortcode( 'three_columns_one', 'pohutukawa_shortcode_three_columns_one' );
+add_shortcode( 'three_columns_one', 'meola_shortcode_three_columns_one' );
 
-function pohutukawa_shortcode_three_columns_one_last($atts, $content = null) {
-   return '<div class="three-columns-one last">' . pohutukawa_remove_wpautop($content) . '</div>';
+function meola_shortcode_three_columns_one_last($atts, $content = null) {
+   return '<div class="three-columns-one last">' . meola_remove_wpautop($content) . '</div>';
 }
-add_shortcode( 'three_columns_one_last', 'pohutukawa_shortcode_three_columns_one_last' );
+add_shortcode( 'three_columns_one_last', 'meola_shortcode_three_columns_one_last' );
 
-function pohutukawa_shortcode_three_columns_two($atts, $content = null) {
-   return '<div class="three-columns-two">' . pohutukawa_remove_wpautop($content) . '</div>';
+function meola_shortcode_three_columns_two($atts, $content = null) {
+   return '<div class="three-columns-two">' . meola_remove_wpautop($content) . '</div>';
 }
-add_shortcode( 'three_columns_two', 'pohutukawa_shortcode_three_columns' );
+add_shortcode( 'three_columns_two', 'meola_shortcode_three_columns' );
 
-function pohutukawa_shortcode_three_columns_two_last($atts, $content = null) {
-   return '<div class="three-columns-two last">' . pohutukawa_remove_wpautop($content) . '</div>';
+function meola_shortcode_three_columns_two_last($atts, $content = null) {
+   return '<div class="three-columns-two last">' . meola_remove_wpautop($content) . '</div>';
 }
-add_shortcode( 'three_columns_two_last', 'pohutukawa_shortcode_three_columns_two_last' );
+add_shortcode( 'three_columns_two_last', 'meola_shortcode_three_columns_two_last' );
 
 // Four Columns
-function pohutukawa_shortcode_four_columns_one($atts, $content = null) {
-   return '<div class="four-columns-one">' . pohutukawa_remove_wpautop($content) . '</div>';
+function meola_shortcode_four_columns_one($atts, $content = null) {
+   return '<div class="four-columns-one">' . meola_remove_wpautop($content) . '</div>';
 }
-add_shortcode( 'four_columns_one', 'pohutukawa_shortcode_four_columns_one' );
+add_shortcode( 'four_columns_one', 'meola_shortcode_four_columns_one' );
 
-function pohutukawa_shortcode_four_columns_one_last($atts, $content = null) {
-   return '<div class="four-columns-one last">' . pohutukawa_remove_wpautop($content) . '</div>';
+function meola_shortcode_four_columns_one_last($atts, $content = null) {
+   return '<div class="four-columns-one last">' . meola_remove_wpautop($content) . '</div>';
 }
-add_shortcode( 'four_columns_one_last', 'pohutukawa_shortcode_four_columns_one_last' );
+add_shortcode( 'four_columns_one_last', 'meola_shortcode_four_columns_one_last' );
 
-function pohutukawa_shortcode_four_columns_two($atts, $content = null) {
-   return '<div class="four-columns-two">' . pohutukawa_remove_wpautop($content) . '</div>';
+function meola_shortcode_four_columns_two($atts, $content = null) {
+   return '<div class="four-columns-two">' . meola_remove_wpautop($content) . '</div>';
 }
-add_shortcode( 'four_columns_two', 'pohutukawa_shortcode_four_columns_two' );
+add_shortcode( 'four_columns_two', 'meola_shortcode_four_columns_two' );
 
-function pohutukawa_shortcode_four_columns_two_last($atts, $content = null) {
-   return '<div class="four-columns-two last">' . pohutukawa_remove_wpautop($content) . '</div>';
+function meola_shortcode_four_columns_two_last($atts, $content = null) {
+   return '<div class="four-columns-two last">' . meola_remove_wpautop($content) . '</div>';
 }
-add_shortcode( 'four_columns_two_last', 'pohutukawa_shortcode_four_columns_two_last' );
+add_shortcode( 'four_columns_two_last', 'meola_shortcode_four_columns_two_last' );
 
-function pohutukawa_shortcode_four_columns_three($atts, $content = null) {
-   return '<div class="four-columns-three">' . pohutukawa_remove_wpautop($content) . '</div>';
+function meola_shortcode_four_columns_three($atts, $content = null) {
+   return '<div class="four-columns-three">' . meola_remove_wpautop($content) . '</div>';
 }
-add_shortcode( 'four_columns_three', 'pohutukawa_shortcode_four_columns_three' );
+add_shortcode( 'four_columns_three', 'meola_shortcode_four_columns_three' );
 
-function pohutukawa_shortcode_four_columns_three_last($atts, $content = null) {
-   return '<div class="four-columns-three last">' . pohutukawa_remove_wpautop($content) . '</div>';
+function meola_shortcode_four_columns_three_last($atts, $content = null) {
+   return '<div class="four-columns-three last">' . meola_remove_wpautop($content) . '</div>';
 }
-add_shortcode( 'four_columns_three_last', 'pohutukawa_shortcode_four_columns_three_last' );
+add_shortcode( 'four_columns_three_last', 'meola_shortcode_four_columns_three_last' );
 
 // Divide Text Shortcode
-function pohutukawa_shortcode_divider($atts, $content = null) {
+function meola_shortcode_divider($atts, $content = null) {
    return '<div class="divider"></div>';
 }
-add_shortcode( 'divider', 'pohutukawa_shortcode_divider' );
+add_shortcode( 'divider', 'meola_shortcode_divider' );
 
 /*-----------------------------------------------------------------------------------*/
 /* Text Highlight and Info Boxes Shortcodes
 /*-----------------------------------------------------------------------------------*/
 
-function pohutukawa_shortcode_white_box($atts, $content = null) {
-   return '<div class="white-box">' . do_shortcode( pohutukawa_remove_wpautop($content) ) . '</div>';
+function meola_shortcode_white_box($atts, $content = null) {
+   return '<div class="white-box">' . do_shortcode( meola_remove_wpautop($content) ) . '</div>';
 }
-add_shortcode( 'white_box', 'pohutukawa_shortcode_white_box' );
+add_shortcode( 'white_box', 'meola_shortcode_white_box' );
 
-function pohutukawa_shortcode_yellow_box($atts, $content = null) {
-   return '<div class="yellow-box">' . do_shortcode( pohutukawa_remove_wpautop($content) ) . '</div>';
+function meola_shortcode_yellow_box($atts, $content = null) {
+   return '<div class="yellow-box">' . do_shortcode( meola_remove_wpautop($content) ) . '</div>';
 }
-add_shortcode( 'yellow_box', 'pohutukawa_shortcode_yellow_box' );
+add_shortcode( 'yellow_box', 'meola_shortcode_yellow_box' );
 
-function pohutukawa_shortcode_red_box($atts, $content = null) {
-   return '<div class="red-box">' . do_shortcode( pohutukawa_remove_wpautop($content) ) . '</div>';
+function meola_shortcode_red_box($atts, $content = null) {
+   return '<div class="red-box">' . do_shortcode( meola_remove_wpautop($content) ) . '</div>';
 }
-add_shortcode( 'red_box', 'pohutukawa_shortcode_red_box' );
+add_shortcode( 'red_box', 'meola_shortcode_red_box' );
 
-function pohutukawa_shortcode_blue_box($atts, $content = null) {
-   return '<div class="blue-box">' . do_shortcode( pohutukawa_remove_wpautop($content) ) . '</div>';
+function meola_shortcode_blue_box($atts, $content = null) {
+   return '<div class="blue-box">' . do_shortcode( meola_remove_wpautop($content) ) . '</div>';
 }
-add_shortcode( 'blue_box', 'pohutukawa_shortcode_blue_box' );
+add_shortcode( 'blue_box', 'meola_shortcode_blue_box' );
 
-function pohutukawa_shortcode_green_box($atts, $content = null) {
-   return '<div class="green-box">' . do_shortcode( pohutukawa_remove_wpautop($content) ) . '</div>';
+function meola_shortcode_green_box($atts, $content = null) {
+   return '<div class="green-box">' . do_shortcode( meola_remove_wpautop($content) ) . '</div>';
 }
-add_shortcode( 'green_box', 'pohutukawa_shortcode_green_box' );
+add_shortcode( 'green_box', 'meola_shortcode_green_box' );
 
-function pohutukawa_shortcode_lightgrey_box($atts, $content = null) {
-   return '<div class="lightgrey-box">' . do_shortcode( pohutukawa_remove_wpautop($content) ) . '</div>';
+function meola_shortcode_lightgrey_box($atts, $content = null) {
+   return '<div class="lightgrey-box">' . do_shortcode( meola_remove_wpautop($content) ) . '</div>';
 }
-add_shortcode( 'lightgrey_box', 'pohutukawa_shortcode_lightgrey_box' );
+add_shortcode( 'lightgrey_box', 'meola_shortcode_lightgrey_box' );
 
-function pohutukawa_shortcode_grey_box($atts, $content = null) {
-   return '<div class="grey-box">' . do_shortcode( pohutukawa_remove_wpautop($content) ) . '</div>';
+function meola_shortcode_grey_box($atts, $content = null) {
+   return '<div class="grey-box">' . do_shortcode( meola_remove_wpautop($content) ) . '</div>';
 }
-add_shortcode( 'grey_box', 'pohutukawa_shortcode_grey_box' );
+add_shortcode( 'grey_box', 'meola_shortcode_grey_box' );
 
-function pohutukawa_shortcode_dark_box($atts, $content = null) {
-   return '<div class="dark-box">' . do_shortcode( pohutukawa_remove_wpautop($content) ) . '</div>';
+function meola_shortcode_dark_box($atts, $content = null) {
+   return '<div class="dark-box">' . do_shortcode( meola_remove_wpautop($content) ) . '</div>';
 }
-add_shortcode( 'dark_box', 'pohutukawa_shortcode_dark_box' );
+add_shortcode( 'dark_box', 'meola_shortcode_dark_box' );
 
 /*-----------------------------------------------------------------------------------*/
 /* General Buttons Shortcodes
 /*-----------------------------------------------------------------------------------*/
 
-function pohutukawa_button( $atts, $content = null ) {
+function meola_button( $atts, $content = null ) {
     extract(shortcode_atts(array(
     'link'	=> '#',
-    'target'	=> '',
+    'target' => '',
     'color'	=> '',
     'size'	=> '',
-	'form'	=> '',
-	'style'	=> '',
+	 'form'	=> '',
+	 'style'	=> '',
     ), $atts));
 
 	$color = ($color) ? ' '.$color. '-btn' : '';
@@ -556,44 +530,19 @@ function pohutukawa_button( $atts, $content = null ) {
 
     return $out;
 }
-add_shortcode('button', 'pohutukawa_button');
-
-/*-----------------------------------------------------------------------------------*/
-/* Link Post Format Button Shortcode
-/*-----------------------------------------------------------------------------------*/
-
-function pohutukawa_link_format( $atts, $content = null ) {
-    extract(shortcode_atts(array(
-    'link'	=> '#',
-    'target'	=> '',
-	 'style'	=> '',
-    ), $atts));
-
-	$target = ($target == 'blank') ? ' target="_blank"' : '';
-
-	$out = '<a' .$target. ' class="link' .$style. '" href="' .$link. '"><span>' .do_shortcode($content). '</span></a>';
-
-    return $out;
-}
-add_shortcode('link_format', 'pohutukawa_link_format');
+add_shortcode('button', 'meola_button');
 
 
 /*-----------------------------------------------------------------------------------*/
-/* Deactives the default CSS styles for the Smart Archives Reloaded plugin
+/* Include Meola Flickr Widget
 /*-----------------------------------------------------------------------------------*/
 
-add_filter('smart_archives_load_default_styles', '__return_false');
+class meola_flickr extends WP_Widget {
 
-/*-----------------------------------------------------------------------------------*/
-/* Include a custom Flickr Widget
-/*-----------------------------------------------------------------------------------*/
+	function meola_flickr() {
+		$widget_ops = array('description' => 'Show your Flickr preview images' , 'meola');
 
-class pohutukawa_flickr extends WP_Widget {
-
-	function pohutukawa_flickr() {
-		$widget_ops = array('description' => 'Show some Flickr preview images.' , 'pohutukawa');
-
-		parent::WP_Widget(false, __('Flickr Widget', 'pohutukawa'),$widget_ops);
+		parent::WP_Widget(false, __('Meola Flickr', 'meola'),$widget_ops);
 	}
 
 	function widget($args, $instance) {  
@@ -634,27 +583,27 @@ class pohutukawa_flickr extends WP_Widget {
 		?>
 		
 		 <p>
-            <label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:','pohutukawa'); ?></label>
+            <label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:','meola'); ?></label>
             <input type="text" name="<?php echo $this->get_field_name('title'); ?>" value="<?php echo $title; ?>" class="widefat" id="<?php echo $this->get_field_id('title'); ?>" />
         </p>
 
         <p>
-            <label for="<?php echo $this->get_field_id('id'); ?>"><?php _e('Flickr ID (<a href="http://www.idgettr.com" target="_blank">idGettr</a>):','pohutukawa'); ?></label>
+            <label for="<?php echo $this->get_field_id('id'); ?>"><?php _e('Flickr ID (<a href="http://www.idgettr.com" target="_blank">idGettr</a>):','meola'); ?></label>
             <input type="text" name="<?php echo $this->get_field_name('id'); ?>" value="<?php echo $id; ?>" class="widefat" id="<?php echo $this->get_field_id('id'); ?>" />
         </p>
 		  
 		  <p>
-            <label for="<?php echo $this->get_field_id('linktext'); ?>"><?php _e('Flickr Profile Link Text:','pohutukawa'); ?></label>
+            <label for="<?php echo $this->get_field_id('linktext'); ?>"><?php _e('Flickr Profile Link Text:','meola'); ?></label>
             <input type="text" name="<?php echo $this->get_field_name('linktext'); ?>" value="<?php echo $linktext; ?>" class="widefat" id="<?php echo $this->get_field_id('linktext'); ?>" />
         </p>
 		
 		<p>
-            <label for="<?php echo $this->get_field_id('linkurl'); ?>"><?php _e('Flickr Profile URL:','pohutukawa'); ?></label>
+            <label for="<?php echo $this->get_field_id('linkurl'); ?>"><?php _e('Flickr Profile URL:','meola'); ?></label>
             <input type="text" name="<?php echo $this->get_field_name('linkurl'); ?>" value="<?php echo $linkurl; ?>" class="widefat" id="<?php echo $this->get_field_id('linkurl'); ?>" />
         </p>
 
        	<p>
-            <label for="<?php echo $this->get_field_id('number'); ?>"><?php _e('Number of photos:','pohutukawa'); ?></label>
+            <label for="<?php echo $this->get_field_id('number'); ?>"><?php _e('Number of photos:','meola'); ?></label>
             <select name="<?php echo $this->get_field_name('number'); ?>" class="widefat" id="<?php echo $this->get_field_id('number'); ?>">
                 <?php for ( $i = 1; $i <= 10; $i += 1) { ?>
                 <option value="<?php echo $i; ?>" <?php if($number == $i){ echo "selected='selected'";} ?>><?php echo $i; ?></option>
@@ -663,35 +612,200 @@ class pohutukawa_flickr extends WP_Widget {
         </p>
 
         <p>
-            <label for="<?php echo $this->get_field_id('type'); ?>"><?php _e('Choose user or group:','pohutukawa'); ?></label>
+            <label for="<?php echo $this->get_field_id('type'); ?>"><?php _e('Choose user or group:','meola'); ?></label>
             <select name="<?php echo $this->get_field_name('type'); ?>" class="widefat" id="<?php echo $this->get_field_id('type'); ?>">
-                <option value="user" <?php if($type == "user"){ echo "selected='selected'";} ?>><?php _e('User', 'pohutukawa'); ?></option>
-                <option value="group" <?php if($type == "group"){ echo "selected='selected'";} ?>><?php _e('Group', 'pohutukawa'); ?></option>            
+                <option value="user" <?php if($type == "user"){ echo "selected='selected'";} ?>><?php _e('User', 'meola'); ?></option>
+                <option value="group" <?php if($type == "group"){ echo "selected='selected'";} ?>><?php _e('Group', 'meola'); ?></option>            
             </select>
         </p>
         <p>
-            <label for="<?php echo $this->get_field_id('sorting'); ?>"><?php _e('Show latest or random pictures:','pohutukawa'); ?></label>
+            <label for="<?php echo $this->get_field_id('sorting'); ?>"><?php _e('Show latest or random pictures:','meola'); ?></label>
             <select name="<?php echo $this->get_field_name('sorting'); ?>" class="widefat" id="<?php echo $this->get_field_id('sorting'); ?>">
-                <option value="latest" <?php if($sorting == "latest"){ echo "selected='selected'";} ?>><?php _e('Latest', 'pohutukawa'); ?></option>
-                <option value="random" <?php if($sorting == "random"){ echo "selected='selected'";} ?>><?php _e('Random', 'pohutukawa'); ?></option>            
+                <option value="latest" <?php if($sorting == "latest"){ echo "selected='selected'";} ?>><?php _e('Latest', 'meola'); ?></option>
+                <option value="random" <?php if($sorting == "random"){ echo "selected='selected'";} ?>><?php _e('Random', 'meola'); ?></option>            
             </select>
         </p>
 		<?php
 	}
 } 
 
-register_widget('pohutukawa_flickr');
+register_widget('meola_flickr');
 
 /*-----------------------------------------------------------------------------------*/
-/* Include a custom Video Widget
+/* Include Meola Featured Image Widget
 /*-----------------------------------------------------------------------------------*/
 
-class pohutukawa_video extends WP_Widget {
+class meola_image extends WP_Widget {
 
-	function pohutukawa_video() {
-		$widget_ops = array('description' => 'Show a custom featured video.' , 'pohutukawa');
+	function meola_image() {
+		$widget_ops = array('description' => 'Show a featured image' , 'meola');
 
-		parent::WP_Widget(false, __('Video Widget', 'pohutukawa'),$widget_ops);
+		parent::WP_Widget(false, __('Meola Featured Image', 'meola'),$widget_ops);
+	}
+
+	function widget($args, $instance) {  
+		extract( $args );
+		$title = $instance['title'];
+		$imageurl = $instance['imageurl'];
+		$imagewidth = $instance['imagewidth'];
+		$imageheight = $instance['imageheight'];
+		$imagetitle = $instance['imagetitle'];
+		$linkurl = $instance['linkurl'];
+		
+		echo $before_widget; ?>
+		<?php if($title != '')
+			echo '<h3 class="widget-title">'.$title.'</h3>'; ?>
+
+			<a href="<?php echo $linkurl; ?>"><img src="<?php echo $imageurl; ?>" alt="<?php echo $imagetitle; ?>"  title="<?php echo $imagetitle; ?>" width="<?php echo $imagewidth; ?>" height="<?php echo $imageheight; ?>" class="meola-featured-image"></a><!-- end .featured-image -->
+
+	   <?php			
+	   echo $after_widget;
+   }
+
+   function update($new_instance, $old_instance) {                
+       return $new_instance;
+   }
+
+   function form($instance) {
+		$title = esc_attr($instance['title']);
+		$imageurl = esc_attr($instance['imageurl']);
+		$imagewidth = esc_attr($instance['imagewidth']);
+		$imageheight = esc_attr($instance['imageheight']);
+		$imagetitle = esc_attr($instance['imagetitle']);
+		$linkurl = esc_attr($instance['linkurl']);
+		?>
+		
+		 <p>
+            <label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:','meola'); ?></label>
+            <input type="text" name="<?php echo $this->get_field_name('title'); ?>" value="<?php echo $title; ?>" class="widefat" id="<?php echo $this->get_field_id('title'); ?>" />
+        </p>
+		  
+		  <p>
+            <label for="<?php echo $this->get_field_id('imageurl'); ?>"><?php _e('Image URL:','meola'); ?></label>
+            <input type="text" name="<?php echo $this->get_field_name('imageurl'); ?>" value="<?php echo $imageurl; ?>" class="widefat" id="<?php echo $this->get_field_id('imageurl'); ?>" />
+        </p>
+		  
+		  <p>
+            <label for="<?php echo $this->get_field_id('imagewidth'); ?>"><?php _e('Image Width:','meola'); ?></label>
+            <input type="text" name="<?php echo $this->get_field_name('imagewidth'); ?>" value="<?php echo $imagewidth; ?>" class="widefat" id="<?php echo $this->get_field_id('imagewidth'); ?>" />
+        </p>
+		  
+		   <p>
+            <label for="<?php echo $this->get_field_id('imageheight'); ?>"><?php _e('Image Height:','meola'); ?></label>
+            <input type="text" name="<?php echo $this->get_field_name('imageheight'); ?>" value="<?php echo $imageheight; ?>" class="widefat" id="<?php echo $this->get_field_id('imageheight'); ?>" />
+        </p>
+		  
+		  <p>
+            <label for="<?php echo $this->get_field_id('imagetitle'); ?>"><?php _e('Image Title:','meola'); ?></label>
+            <input type="text" name="<?php echo $this->get_field_name('imagetitle'); ?>" value="<?php echo $imagetitle; ?>" class="widefat" id="<?php echo $this->get_field_id('imagetitle'); ?>" />
+        </p>
+		
+		<p>
+            <label for="<?php echo $this->get_field_id('linkurl'); ?>"><?php _e('Link URL:','meola'); ?></label>
+            <input type="text" name="<?php echo $this->get_field_name('linkurl'); ?>" value="<?php echo $linkurl; ?>" class="widefat" id="<?php echo $this->get_field_id('linkurl'); ?>" />
+        </p>
+
+		<?php
+	}
+} 
+
+register_widget('meola_image');
+
+/*-----------------------------------------------------------------------------------*/
+/* Include Meola About Widget
+/*-----------------------------------------------------------------------------------*/
+
+class meola_about extends WP_Widget {
+
+	function meola_about() {
+		$widget_ops = array('description' => 'About widget with picture and intro text' , 'meola');
+
+		parent::WP_Widget(false, __('Meola About', 'meola'),$widget_ops);
+	}
+
+	function widget($args, $instance) {  
+		extract( $args );
+		$title = $instance['title'];
+		$imageurl = $instance['imageurl'];
+		$imagewidth = $instance['imagewidth'];
+		$imageheight = $instance['imageheight'];
+		$imagecaption = $instance['imagecaption'];
+		$abouttext = $instance['abouttext'];
+
+		echo $before_widget; ?>
+		<?php if($title != '')
+			echo '<h3 class="widget-title">'.$title.'</h3>'; ?>
+
+			<div class="about-image-wrap">
+			<img src="<?php echo $imageurl; ?>" width="<?php echo $imagewidth; ?>" height="<?php echo $imageheight; ?>" class="about-image">
+			<p class="about-image-caption"><?php echo $imagecaption; ?></p>
+			</div><!-- end .about-image-wrap -->
+			<div class="about-text-wrap">
+			<p class="about-text"><?php echo $abouttext; ?></p>
+			</div><!-- end .about-text-wrap -->
+	   <?php			
+	   echo $after_widget;
+   }
+
+   function update($new_instance, $old_instance) {                
+       return $new_instance;
+   }
+
+   function form($instance) {
+		$title = esc_attr($instance['title']);
+		$imageurl = esc_attr($instance['imageurl']);
+		$imagewidth = esc_attr($instance['imagewidth']);
+		$imageheight = esc_attr($instance['imageheight']);
+		$imagecaption = esc_attr($instance['imagecaption']);
+		$abouttext = esc_attr($instance['abouttext']);
+		?>
+		
+		 <p>
+            <label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:','meola'); ?></label>
+            <input type="text" name="<?php echo $this->get_field_name('title'); ?>" value="<?php echo $title; ?>" class="widefat" id="<?php echo $this->get_field_id('title'); ?>" />
+        </p>
+		  
+		  <p>
+            <label for="<?php echo $this->get_field_id('imageurl'); ?>"><?php _e('Image URL:','meola'); ?></label>
+            <input type="text" name="<?php echo $this->get_field_name('imageurl'); ?>" value="<?php echo $imageurl; ?>" class="widefat" id="<?php echo $this->get_field_id('imageurl'); ?>" />
+        </p>
+		  
+		  <p>
+            <label for="<?php echo $this->get_field_id('imagewidth'); ?>"><?php _e('Image Width (only value, no px):','meola'); ?></label>
+            <input type="text" name="<?php echo $this->get_field_name('imagewidth'); ?>" value="<?php echo $imagewidth; ?>" class="widefat" id="<?php echo $this->get_field_id('imagewidth'); ?>" />
+        </p>
+		  
+		   <p>
+            <label for="<?php echo $this->get_field_id('imageheight'); ?>"><?php _e('Image Height (only value, no px):','meola'); ?></label>
+            <input type="text" name="<?php echo $this->get_field_name('imageheight'); ?>" value="<?php echo $imageheight; ?>" class="widefat" id="<?php echo $this->get_field_id('imageheight'); ?>" />
+        </p>
+		  
+		  <p>
+            <label for="<?php echo $this->get_field_id('imagecaption'); ?>"><?php _e('Image Caption Text:','meola'); ?></label>
+            <textarea name="<?php echo $this->get_field_name('imagecaption'); ?>" class="widefat" rows="6" cols="20" id="<?php echo $this->get_field_id('imagecaption'); ?>"><?php echo( $imagecaption ); ?></textarea>
+        </p>
+
+		<p>
+            <label for="<?php echo $this->get_field_id('abouttext'); ?>"><?php _e('About Text:','meola'); ?></label>
+           <textarea name="<?php echo $this->get_field_name('abouttext'); ?>" class="widefat" rows="16" cols="20" id="<?php echo $this->get_field_id('abouttext'); ?>"><?php echo( $abouttext ); ?></textarea>
+        </p>
+
+		<?php
+	}
+} 
+
+register_widget('meola_about');
+
+/*-----------------------------------------------------------------------------------*/
+/* Include Meola Video Widget
+/*-----------------------------------------------------------------------------------*/
+
+class meola_video extends WP_Widget {
+
+	function meola_video() {
+		$widget_ops = array('description' => 'Show a featured video' , 'meola');
+
+		parent::WP_Widget(false, __('Meola Featured Video', 'meola'),$widget_ops);
 	}
 
 	function widget($args, $instance) {  
@@ -721,12 +835,12 @@ class pohutukawa_video extends WP_Widget {
 		?>
 		
 		 <p>
-            <label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:','pohutukawa'); ?></label>
+            <label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:','meola'); ?></label>
             <input type="text" name="<?php echo $this->get_field_name('title'); ?>" value="<?php echo $title; ?>" class="widefat" id="<?php echo $this->get_field_id('title'); ?>" />
         </p>
 
         <p>
-            <label for="<?php echo $this->get_field_id('id'); ?>"><?php _e('Video embed code:','pohutukawa'); ?></label>
+            <label for="<?php echo $this->get_field_id('id'); ?>"><?php _e('Video embed code:','meola'); ?></label>
 				<textarea name="<?php echo $this->get_field_name('embedcode'); ?>" class="widefat" rows="6" id="<?php echo $this->get_field_id('embedcode'); ?>"><?php echo( $embedcode ); ?></textarea>
         </p>
 
@@ -734,18 +848,104 @@ class pohutukawa_video extends WP_Widget {
 	}
 } 
 
-register_widget('pohutukawa_video');
+register_widget('meola_video');
+
 
 /*-----------------------------------------------------------------------------------*/
-/* Including a custom Social Media Widget
+/* Include Meola Recent Posts Widget
 /*-----------------------------------------------------------------------------------*/
 
- class pohutukawa_sociallinks extends WP_Widget {
+class meola_recentposts extends WP_Widget {
 
-	function pohutukawa_sociallinks() {
-		$widget_ops = array('description' => 'Link to your social profiles.' , 'pohutukawa');
+	function meola_recentposts() {
+		$widget_ops = array('description' => 'Show 3 recent posts with or without thumbnails' , 'meola');
 
-		parent::WP_Widget(false, __('Social Links Widget', 'pohutukawa'),$widget_ops);
+		parent::WP_Widget(false, __('Meola Recent Posts', 'meola'),$widget_ops);
+	}
+
+	function widget($args, $instance) {  
+		extract( $args );
+		$title = apply_filters('widget_title', $instance['title']);
+      $cat = apply_filters('widget_title', $instance['cat']);
+		$thumbnail = $instance['thumbnail'];
+		
+		echo $before_widget; ?>
+		<?php if ( $title )
+                        echo $before_title . $title . $after_title; ?>
+							<ul>
+							<?php
+								global $post;
+								$meola_post = $post;
+								
+								// get the category IDs and place them in an array
+								if($cat) {
+									$args = 'posts_per_page=' . 3 . '&cat=' . $cat;
+								} else {
+									$args = 'posts_per_page=' . 3;
+								}
+								$myposts = get_posts( $args );
+								foreach( $myposts as $post ) : setup_postdata($post); ?>
+									<li class="recentpost">
+											<header class="recentpost-header">
+												<h3 class="entry-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
+												<a href="<?php the_permalink(); ?>" class="entry-date"><?php echo get_the_date(); ?></a>
+											</header>
+											<?php if($thumbnail == true) { ?>
+												<a href="<?php the_permalink(); ?>"><?php the_post_thumbnail( 'large');?></a>
+											<?php } ?>
+											<div class="entry-summary">
+												<?php the_excerpt(); ?>
+											</div>
+									</li>
+								<?php endforeach; ?>
+								<?php $post = $meola_post; ?>
+							</ul>
+	   <?php			
+	   echo $after_widget;
+   }
+
+   function update($new_instance, $old_instance) {                
+       return $new_instance;
+   }
+
+   function form($instance) {
+		$title = esc_attr($instance['title']);
+		$cat = esc_attr($instance['cat']);
+		$thumbnail = esc_attr($instance['thumbnail']);
+		?>
+		
+		 <p>
+            <label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:','meola'); ?></label>
+            <input type="text" name="<?php echo $this->get_field_name('title'); ?>" value="<?php echo $title; ?>" class="widefat" id="<?php echo $this->get_field_id('title'); ?>" />
+        </p>
+
+        <p>
+            <label for="<?php echo $this->get_field_id('cat'); ?>"><?php _e('Category ID numbers (to choose which categories to include):','meola'); ?></label>
+            <input type="text" name="<?php echo $this->get_field_name('cat'); ?>" value="<?php echo $cat; ?>" class="widefat" id="<?php echo $this->get_field_id('cat'); ?>" />
+        </p>
+		
+		<p>
+          <input id="<?php echo $this->get_field_id('thumbnail'); ?>" name="<?php echo $this->get_field_name('thumbnail'); ?>" type="checkbox" value="1" <?php checked( '1', $thumbnail ); ?>/>
+          <label for="<?php echo $this->get_field_id('thumbnail'); ?>"><?php _e('Display thumbnails?','meola'); ?></label> 
+        </p>
+
+       
+		<?php
+	}
+} 
+
+register_widget('meola_recentposts');
+
+/*-----------------------------------------------------------------------------------*/
+/* Including Meola Social Links Widget
+/*-----------------------------------------------------------------------------------*/
+
+ class meola_sociallinks extends WP_Widget {
+
+	function meola_sociallinks() {
+		$widget_ops = array('description' => 'Link to your social profile sites' , 'meola');
+
+		parent::WP_Widget(false, __('Meola Social Links', 'meola'),$widget_ops);
 	}
 
 	function widget($args, $instance) {  
@@ -755,6 +955,7 @@ register_widget('pohutukawa_video');
 		$facebook = $instance['facebook'];
 		$googleplus = $instance['googleplus'];
 		$flickr = $instance['flickr'];
+		$instagram = $instance['instagram'];
 		$picasa = $instance['picasa'];
 		$fivehundredpx = $instance['fivehundredpx'];
 		$youtube = $instance['youtube'];
@@ -762,7 +963,7 @@ register_widget('pohutukawa_video');
 		$dribbble = $instance['dribbble'];
 		$ffffound = $instance['ffffound'];
 		$pinterest = $instance['pinterest'];
-		$zootool = $instance['zootool'];
+		$mixi = $instance['mixi'];
 		$behance = $instance['behance'];
 		$deviantart = $instance['deviantart'];
 		$squidoo = $instance['squidoo'];
@@ -771,7 +972,7 @@ register_widget('pohutukawa_video');
 		$grooveshark = $instance['grooveshark'];
 		$soundcloud = $instance['soundcloud'];
 		$foursquare = $instance['foursquare'];
-		$gowalla = $instance['gowalla'];
+		$github = $instance['github'];
 		$linkedin = $instance['linkedin'];
 		$xing = $instance['xing'];
 		$wordpress = $instance['wordpress'];
@@ -814,6 +1015,13 @@ register_widget('pohutukawa_video');
 				echo '<li><a href="'.$flickr.'" class="flickr" title="Flickr" target="_blank">Flickr</a></li>';
 			} elseif($flickr != '') {
 				echo '<li><a href="'.$flickr.'" class="flickr" title="Flickr">Flickr</a></li>';
+			}
+			?>
+			
+			<?php if($instagram != '' && $target != ''){
+				echo '<li><a href="'.$instagram.'" class="instagram" title="Instagram" target="_blank">Instagram</a></li>';
+			} elseif($instagram != '') {
+				echo '<li><a href="'.$instagram.'" class="instagram" title="Instagram">Instagram</a></li>';
 			}
 			?>
 
@@ -866,10 +1074,10 @@ register_widget('pohutukawa_video');
 			}
 			?>
 
-			<?php if($zootool != '' && $target != ''){
-				echo '<li><a href="'.$zootool.'" class="zootool" title="Zootool" target="_blank">Zootool</a></li>';
-			} elseif($zootool != '') {
-				echo '<li><a href="'.$zootool.'" class="zootool" title="Zootool">Zootool</a></li>';
+			<?php if($mixi != '' && $target != ''){
+				echo '<li><a href="'.$mixi.'" class="mixi" title="mixi" target="_blank">mixi</a></li>';
+			} elseif($mixi != '') {
+				echo '<li><a href="'.$mixi.'" class="mixi" title="mixi">mixi</a></li>';
 			}
 			?>
 
@@ -929,10 +1137,10 @@ register_widget('pohutukawa_video');
 			}
 			?>
 
-			<?php if($gowalla != '' && $target != ''){
-				echo '<li><a href="'.$gowalla.'" class="gowalla" title="Gowalla" target="_blank">Gowalla</a></li>';
-			} elseif($gowalla != '') {
-				echo '<li><a href="'.$gowalla.'" class="gowalla" title="Gowalla">Gowalla</a></li>';
+			<?php if($github != '' && $target != ''){
+				echo '<li><a href="'.$github.'" class="github" title="GitHub" target="_blank">GitHub</a></li>';
+			} elseif($github != '') {
+				echo '<li><a href="'.$github.'" class="github" title="GitHub">GitHub</a></li>';
 			}
 			?>
 
@@ -994,6 +1202,7 @@ register_widget('pohutukawa_video');
 		$facebook = esc_attr($instance['facebook']);
 		$googleplus = esc_attr($instance['googleplus']);
 		$flickr = esc_attr($instance['flickr']);
+		$instagram = esc_attr($instance['instagram']);
 		$picasa = esc_attr($instance['picasa']);
 		$fivehundredpx = esc_attr($instance['fivehundredpx']);
 		$youtube = esc_attr($instance['youtube']);
@@ -1001,7 +1210,7 @@ register_widget('pohutukawa_video');
 		$dribbble = esc_attr($instance['dribbble']);
 		$ffffound = esc_attr($instance['ffffound']);
 		$pinterest = esc_attr($instance['pinterest']);
-		$zootool = esc_attr($instance['zootool']);
+		$mixi = esc_attr($instance['mixi']);
 		$behance = esc_attr($instance['behance']);
 		$deviantart = esc_attr($instance['deviantart']);
 		$squidoo = esc_attr($instance['squidoo']);
@@ -1010,7 +1219,7 @@ register_widget('pohutukawa_video');
 		$grooveshark = esc_attr($instance['grooveshark']);
 		$soundcloud = esc_attr($instance['soundcloud']);
 		$foursquare = esc_attr($instance['foursquare']);
-		$gowalla = esc_attr($instance['gowalla']);
+		$github = esc_attr($instance['github']);
 		$linkedin = esc_attr($instance['linkedin']);
 		$xing = esc_attr($instance['xing']);
 		$wordpress = esc_attr($instance['wordpress']);
@@ -1022,151 +1231,156 @@ register_widget('pohutukawa_video');
 		?>
 
 		 <p>
-            <label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:','pohutukawa'); ?></label>
+            <label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:','meola'); ?></label>
             <input type="text" name="<?php echo $this->get_field_name('title'); ?>" value="<?php echo $title; ?>" class="widefat" id="<?php echo $this->get_field_id('title'); ?>" />
         </p>
 
 		<p>
-            <label for="<?php echo $this->get_field_id('twitter'); ?>"><?php _e('Twitter URL:','pohutukawa'); ?></label>
+            <label for="<?php echo $this->get_field_id('twitter'); ?>"><?php _e('Twitter URL:','meola'); ?></label>
             <input type="text" name="<?php echo $this->get_field_name('twitter'); ?>" value="<?php echo $twitter; ?>" class="widefat" id="<?php echo $this->get_field_id('twitter'); ?>" />
         </p>
 
 		<p>
-            <label for="<?php echo $this->get_field_id('facebook'); ?>"><?php _e('Facebook URL:','pohutukawa'); ?></label>
+            <label for="<?php echo $this->get_field_id('facebook'); ?>"><?php _e('Facebook URL:','meola'); ?></label>
             <input type="text" name="<?php echo $this->get_field_name('facebook'); ?>" value="<?php echo $facebook; ?>" class="widefat" id="<?php echo $this->get_field_id('facebook'); ?>" />
         </p>
 		
 		<p>
-            <label for="<?php echo $this->get_field_id('googleplus'); ?>"><?php _e('Google+ URL:','pohutukawa'); ?></label>
+            <label for="<?php echo $this->get_field_id('googleplus'); ?>"><?php _e('Google+ URL:','meola'); ?></label>
             <input type="text" name="<?php echo $this->get_field_name('googleplus'); ?>" value="<?php echo $googleplus; ?>" class="widefat" id="<?php echo $this->get_field_id('googleplus'); ?>" />
         </p>
 		
 		<p>
-            <label for="<?php echo $this->get_field_id('flickr'); ?>"><?php _e('Flickr URL:','pohutukawa'); ?></label>
+            <label for="<?php echo $this->get_field_id('flickr'); ?>"><?php _e('Flickr URL:','meola'); ?></label>
             <input type="text" name="<?php echo $this->get_field_name('flickr'); ?>" value="<?php echo $flickr; ?>" class="widefat" id="<?php echo $this->get_field_id('flickr'); ?>" />
         </p>
-		
+		  
+		 <p>
+            <label for="<?php echo $this->get_field_id('instagram'); ?>"><?php _e('Instagram URL (e.g. via Instagrid.me):','meola'); ?></label>
+            <input type="text" name="<?php echo $this->get_field_name('instagram'); ?>" value="<?php echo $instagram; ?>" class="widefat" id="<?php echo $this->get_field_id('instagram'); ?>" />
+        </p>
+
 		<p>
-            <label for="<?php echo $this->get_field_id('picasa'); ?>"><?php _e('Picasa URL:','pohutukawa'); ?></label>
+            <label for="<?php echo $this->get_field_id('picasa'); ?>"><?php _e('Picasa URL:','meola'); ?></label>
             <input type="text" name="<?php echo $this->get_field_name('picasa'); ?>" value="<?php echo $picasa; ?>" class="widefat" id="<?php echo $this->get_field_id('picasa'); ?>" />
         </p>
 
 		<p>
-            <label for="<?php echo $this->get_field_id('fivehundredpx'); ?>"><?php _e('500px URL:','pohutukawa'); ?></label>
+            <label for="<?php echo $this->get_field_id('fivehundredpx'); ?>"><?php _e('500px URL:','meola'); ?></label>
             <input type="text" name="<?php echo $this->get_field_name('fivehundredpx'); ?>" value="<?php echo $fivehundredpx; ?>" class="widefat" id="<?php echo $this->get_field_id('fivehundredpx'); ?>" />
         </p>
 
 		<p>
-            <label for="<?php echo $this->get_field_id('youtube'); ?>"><?php _e('YouTube URL:','pohutukawa'); ?></label>
+            <label for="<?php echo $this->get_field_id('youtube'); ?>"><?php _e('YouTube URL:','meola'); ?></label>
             <input type="text" name="<?php echo $this->get_field_name('youtube'); ?>" value="<?php echo $youtube; ?>" class="widefat" id="<?php echo $this->get_field_id('youtube'); ?>" />
         </p>
 		
 		<p>
-            <label for="<?php echo $this->get_field_id('vimeo'); ?>"><?php _e('Vimeo URL:','pohutukawa'); ?></label>
+            <label for="<?php echo $this->get_field_id('vimeo'); ?>"><?php _e('Vimeo URL:','meola'); ?></label>
             <input type="text" name="<?php echo $this->get_field_name('vimeo'); ?>" value="<?php echo $vimeo; ?>" class="widefat" id="<?php echo $this->get_field_id('vimeo'); ?>" />
         </p>
 		
 		<p>
-            <label for="<?php echo $this->get_field_id('dribbble'); ?>"><?php _e('Dribbble URL:','pohutukawa'); ?></label>
+            <label for="<?php echo $this->get_field_id('dribbble'); ?>"><?php _e('Dribbble URL:','meola'); ?></label>
             <input type="text" name="<?php echo $this->get_field_name('dribbble'); ?>" value="<?php echo $dribbble; ?>" class="widefat" id="<?php echo $this->get_field_id('dribbble'); ?>" />
         </p>
 		
 		<p>
-            <label for="<?php echo $this->get_field_id('ffffound'); ?>"><?php _e('Ffffound URL:','pohutukawa'); ?></label>
+            <label for="<?php echo $this->get_field_id('ffffound'); ?>"><?php _e('Ffffound URL:','meola'); ?></label>
             <input type="text" name="<?php echo $this->get_field_name('ffffound'); ?>" value="<?php echo $ffffound; ?>" class="widefat" id="<?php echo $this->get_field_id('ffffound'); ?>" />
         </p>
 		
 		<p>
-            <label for="<?php echo $this->get_field_id('pinterest'); ?>"><?php _e('Pinterest URL:','pohutukawa'); ?></label>
+            <label for="<?php echo $this->get_field_id('pinterest'); ?>"><?php _e('Pinterest URL:','meola'); ?></label>
             <input type="text" name="<?php echo $this->get_field_name('pinterest'); ?>" value="<?php echo $pinterest; ?>" class="widefat" id="<?php echo $this->get_field_id('pinterest'); ?>" />
         </p>
 
 		<p>
-            <label for="<?php echo $this->get_field_id('zootool'); ?>"><?php _e('Zootool URL:','pohutukawa'); ?></label>
-            <input type="text" name="<?php echo $this->get_field_name('zootool'); ?>" value="<?php echo $zootool; ?>" class="widefat" id="<?php echo $this->get_field_id('zootool'); ?>" />
+            <label for="<?php echo $this->get_field_id('mixi'); ?>"><?php _e('mixi URL:','meola'); ?></label>
+            <input type="text" name="<?php echo $this->get_field_name('mixi'); ?>" value="<?php echo $mixi; ?>" class="widefat" id="<?php echo $this->get_field_id('mixi'); ?>" />
         </p>
 		
 		<p>
-            <label for="<?php echo $this->get_field_id('behance'); ?>"><?php _e('Behance Network URL:','pohutukawa'); ?></label>
+            <label for="<?php echo $this->get_field_id('behance'); ?>"><?php _e('Behance Network URL:','meola'); ?></label>
             <input type="text" name="<?php echo $this->get_field_name('behance'); ?>" value="<?php echo $behance; ?>" class="widefat" id="<?php echo $this->get_field_id('behance'); ?>" />
         </p>
 		  
 		 <p>
-            <label for="<?php echo $this->get_field_id('deviantart'); ?>"><?php _e('deviantART URL:','pohutukawa'); ?></label>
+            <label for="<?php echo $this->get_field_id('deviantart'); ?>"><?php _e('deviantART URL:','meola'); ?></label>
             <input type="text" name="<?php echo $this->get_field_name('deviantart'); ?>" value="<?php echo $deviantart; ?>" class="widefat" id="<?php echo $this->get_field_id('deviantart'); ?>" />
         </p>
 		
 		<p>
-            <label for="<?php echo $this->get_field_id('squidoo'); ?>"><?php _e('Squidoo URL:','pohutukawa'); ?></label>
+            <label for="<?php echo $this->get_field_id('squidoo'); ?>"><?php _e('Squidoo URL:','meola'); ?></label>
             <input type="text" name="<?php echo $this->get_field_name('squidoo'); ?>" value="<?php echo $squidoo; ?>" class="widefat" id="<?php echo $this->get_field_id('squidoo'); ?>" />
         </p>
 		
 		<p>
-            <label for="<?php echo $this->get_field_id('slideshare'); ?>"><?php _e('Slideshare URL:','pohutukawa'); ?></label>
+            <label for="<?php echo $this->get_field_id('slideshare'); ?>"><?php _e('Slideshare URL:','meola'); ?></label>
             <input type="text" name="<?php echo $this->get_field_name('slideshare'); ?>" value="<?php echo $slideshare; ?>" class="widefat" id="<?php echo $this->get_field_id('slideshare'); ?>" />
         </p>
 		
 		<p>
-            <label for="<?php echo $this->get_field_id('lastfm'); ?>"><?php _e('Last.fm URL:','pohutukawa'); ?></label>
+            <label for="<?php echo $this->get_field_id('lastfm'); ?>"><?php _e('Last.fm URL:','meola'); ?></label>
             <input type="text" name="<?php echo $this->get_field_name('lastfm'); ?>" value="<?php echo $lastfm; ?>" class="widefat" id="<?php echo $this->get_field_id('lastfm'); ?>" />
         </p>
 		
 		<p>
-            <label for="<?php echo $this->get_field_id('grooveshark'); ?>"><?php _e('Grooveshark URL:','pohutukawa'); ?></label>
+            <label for="<?php echo $this->get_field_id('grooveshark'); ?>"><?php _e('Grooveshark URL:','meola'); ?></label>
             <input type="text" name="<?php echo $this->get_field_name('grooveshark'); ?>" value="<?php echo $grooveshark; ?>" class="widefat" id="<?php echo $this->get_field_id('grooveshark'); ?>" />
         </p>
-		
+
 		<p>
-            <label for="<?php echo $this->get_field_id('soundcloud'); ?>"><?php _e('Soundcloud URL:','pohutukawa'); ?></label>
+            <label for="<?php echo $this->get_field_id('soundcloud'); ?>"><?php _e('Soundcloud URL:','meola'); ?></label>
             <input type="text" name="<?php echo $this->get_field_name('soundcloud'); ?>" value="<?php echo $soundcloud; ?>" class="widefat" id="<?php echo $this->get_field_id('soundcloud'); ?>" />
         </p>
-		
+
 		<p>
-            <label for="<?php echo $this->get_field_id('foursquare'); ?>"><?php _e('Foursquare URL:','pohutukawa'); ?></label>
+            <label for="<?php echo $this->get_field_id('foursquare'); ?>"><?php _e('Foursquare URL:','meola'); ?></label>
             <input type="text" name="<?php echo $this->get_field_name('foursquare'); ?>" value="<?php echo $foursquare; ?>" class="widefat" id="<?php echo $this->get_field_id('foursquare'); ?>" />
         </p>
-		
+
 		<p>
-            <label for="<?php echo $this->get_field_id('gowalla'); ?>"><?php _e('Gowalla URL:','pohutukawa'); ?></label>
-            <input type="text" name="<?php echo $this->get_field_name('gowalla'); ?>" value="<?php echo $gowalla; ?>" class="widefat" id="<?php echo $this->get_field_id('gowalla'); ?>" />
+            <label for="<?php echo $this->get_field_id('github'); ?>"><?php _e('GitHub URL:','meola'); ?></label>
+            <input type="text" name="<?php echo $this->get_field_name('github'); ?>" value="<?php echo $github; ?>" class="widefat" id="<?php echo $this->get_field_id('github'); ?>" />
         </p>
-		
+
 		<p>
-            <label for="<?php echo $this->get_field_id('linkedin'); ?>"><?php _e('Linkedin URL:','pohutukawa'); ?></label>
+            <label for="<?php echo $this->get_field_id('linkedin'); ?>"><?php _e('Linkedin URL:','meola'); ?></label>
             <input type="text" name="<?php echo $this->get_field_name('linkedin'); ?>" value="<?php echo $linkedin; ?>" class="widefat" id="<?php echo $this->get_field_id('linkedin'); ?>" />
         </p>
-		
+
 		<p>
-            <label for="<?php echo $this->get_field_id('xing'); ?>"><?php _e('Xing URL:','pohutukawa'); ?></label>
+            <label for="<?php echo $this->get_field_id('xing'); ?>"><?php _e('Xing URL:','meola'); ?></label>
             <input type="text" name="<?php echo $this->get_field_name('xing'); ?>" value="<?php echo $xing; ?>" class="widefat" id="<?php echo $this->get_field_id('xing'); ?>" />
         </p>
 		
 		<p>
-            <label for="<?php echo $this->get_field_id('wordpress'); ?>"><?php _e('WordPress URL:','pohutukawa'); ?></label>
+            <label for="<?php echo $this->get_field_id('wordpress'); ?>"><?php _e('WordPress URL:','meola'); ?></label>
             <input type="text" name="<?php echo $this->get_field_name('wordpress'); ?>" value="<?php echo $wordpress; ?>" class="widefat" id="<?php echo $this->get_field_id('wordpress'); ?>" />
         </p>
 		
 		<p>
-            <label for="<?php echo $this->get_field_id('tumblr'); ?>"><?php _e('Tumblr URL:','pohutukawa'); ?></label>
+            <label for="<?php echo $this->get_field_id('tumblr'); ?>"><?php _e('Tumblr URL:','meola'); ?></label>
             <input type="text" name="<?php echo $this->get_field_name('tumblr'); ?>" value="<?php echo $tumblr; ?>" class="widefat" id="<?php echo $this->get_field_id('tumblr'); ?>" />
         </p>
 		
 		<p>
-            <label for="<?php echo $this->get_field_id('rss'); ?>"><?php _e('RSS-Feed URL:','pohutukawa'); ?></label>
+            <label for="<?php echo $this->get_field_id('rss'); ?>"><?php _e('RSS-Feed URL:','meola'); ?></label>
             <input type="text" name="<?php echo $this->get_field_name('rss'); ?>" value="<?php echo $rss; ?>" class="widefat" id="<?php echo $this->get_field_id('rss'); ?>" />
         </p>
 		
 		<p>
-            <label for="<?php echo $this->get_field_id('rsscomments'); ?>"><?php _e('RSS for Comments URL:','pohutukawa'); ?></label>
+            <label for="<?php echo $this->get_field_id('rsscomments'); ?>"><?php _e('RSS for Comments URL:','meola'); ?></label>
             <input type="text" name="<?php echo $this->get_field_name('rsscomments'); ?>" value="<?php echo $rsscomments; ?>" class="widefat" id="<?php echo $this->get_field_id('rsscomments'); ?>" />
         </p>
 		  
 		<p>
-			<input class="checkbox" type="checkbox" <?php checked( $instance['target'], true ); ?> id="<?php echo $this->get_field_id('target'); ?>" name="<?php echo $this->get_field_name('target'); ?>" <?php checked( $target, 'on' ); ?>> <?php _e('Open all links in a new browser tab', 'pohutukawa'); ?></input>
+			<input class="checkbox" type="checkbox" <?php checked( $instance['target'], true ); ?> id="<?php echo $this->get_field_id('target'); ?>" name="<?php echo $this->get_field_name('target'); ?>" <?php checked( $target, 'on' ); ?>> <?php _e('Open all links in a new browser tab', 'meola'); ?></input>
 		</p>
        
 		<?php
 	}
 } 
 
-register_widget('pohutukawa_sociallinks');
+register_widget('meola_sociallinks');

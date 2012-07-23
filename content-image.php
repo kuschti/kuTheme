@@ -2,31 +2,32 @@
 /**
  * The template for displaying posts in the Image Post Format
  *
- * @package WordPress
- * @subpackage Pohutukawa
- * @since Pohutukawa 1.0
+ * @package Meola
+ * @since Meola 1.0
  */
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
+	<aside class="entry-details">
+		<a href="<?php the_permalink(); ?>" class="entry-date"><?php echo get_the_date(); ?></a>
+	</aside><!--end .entry-details -->
+
+	<div class="entry-content">
+		<?php the_content( __( 'Read more &rarr;', 'meola' ) ); ?>
+	</div><!-- end entry-content -->
+
 	<footer class="entry-meta">
 		<ul>
-			<li class="post-date"><a href="<?php the_permalink(); ?>"><?php echo get_the_date(); ?></a></li>
-			<li class="post-comments"><?php comments_popup_link( __( '0 comments', 'pohutukawa' ), __( '1 comment', 'pohutukawa' ), __( '% comments', 'pohutukawa' ), 'comments-link', __( 'comments off', 'pohutukawa' ) ); ?></li>
-
+			<li class="entry-cats"><?php the_category(''); ?></li>
+			<li class="entry-comments"><?php comments_popup_link( __( '0 comments', 'meola' ), __( '1 comment', 'meola' ), __( '% comments', 'meola' ), 'comments-link', __( 'comments off', 'meola' ) ); ?></li>
+			<li class="entry-edit"><?php edit_post_link(__( 'Edit Post &rarr;', 'meola') ); ?></li>
 			<?php // Include Share-Btns
-				$options = get_option('pohutukawa_theme_options');
+				$options = get_option('meola_theme_options');
 				if( $options['share-posts'] ) : ?>
 				<?php get_template_part( 'share'); ?>
 			<?php endif; ?>
-
-			<li class="post-edit"><?php edit_post_link(__( 'Edit this post', 'pohutukawa') ); ?></li>
 		</ul>
 	</footer><!-- end .entry-meta -->
-	
-	<div class="entry-content">
-		<?php the_content( __( 'Continue Reading', 'pohutukawa' ) ); ?>
-	</div><!-- end entry-content -->
 
 </article><!-- end post -<?php the_ID(); ?> -->
