@@ -13,7 +13,9 @@
 			<?php
 				$options = get_option('meola_theme_options');
 				if($options['custom_footertext'] != '' ){
+					echo ('<p>');
 					echo stripslashes($options['custom_footertext']);
+					echo ('</p>');
 			} else { ?>
 			<ul class="credit">
 				<li>&copy; <?php echo date('Y'); ?> <?php bloginfo(); ?></li>
@@ -25,7 +27,7 @@
 			<?php if (has_nav_menu( 'optional' ) ) {
 				wp_nav_menu( array('theme_location' => 'optional', 'container' => 'nav' , 'container_class' => 'footer-nav', 'depth' => 1 ));} 
 			?>
-			<a href="#site-nav-wrap" class="top"><?php _e('Top', 'meola') ?></a>
+			<a href="#site-nav-wrap" class="top clearfix"><?php _e('Top', 'meola') ?></a>
 		</div><!-- end #site-info -->
 
 	</footer><!-- end #footer -->

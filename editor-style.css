@@ -150,6 +150,20 @@ p img,
 .wp-caption {
 	margin-top: 0.4em;
 }
+.wp-caption {
+	border: none;
+	text-align: center;
+	background-color: #fff;
+	-webkit-border-radius:0;
+	border-radius: 0;
+}
+.wp-caption-dd {
+	font-size: 14px;
+	line-height: 17px;
+	padding: 15px 0 15px;
+	font-style:italic;
+	text-align:center;
+}
 img {
 	border: none;
 }
@@ -227,15 +241,16 @@ a:hover {
 	text-decoration: none;
 	color:#909090;
 }
-
 /* --- Alignment --- */
 .alignleft {
-	display: block;
-	float: none;
+	display: inline;
+	float: left;
+	margin-right: 1.625em;
 }
 .alignright {
-	display: block;
-	float: none;
+	display: inline;
+	float: right;
+	margin-left: 1.625em;
 }
 .aligncenter {
 	clear: both;
