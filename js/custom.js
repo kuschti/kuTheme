@@ -31,13 +31,6 @@
 }
 
 
-/*---------------------------------------------------------------------------------------------
-  Flexible width for embedded videos (see https://github.com/davatron5000/FitVids.js/)
-----------------------------------------------------------------------------------------------*/
-	jQuery(document).ready(function(){
-		jQuery('#content').fitVids();
-		jQuery('.widget').fitVids();
-	});
 
 /*---------------------------------------------------------------------------------------------
   Support Placeholder input text in IE (see https://github.com/danielstocks/jQuery-Placeholder)

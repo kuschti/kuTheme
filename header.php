@@ -15,7 +15,7 @@
 <!--<![endif]-->
 <head>
 <meta charset="<?php bloginfo( 'charset' ); ?>" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title><?php
 	/*
 	 * Print the <title> tag based on what is being viewed.
@@ -23,10 +23,10 @@
 	global $page, $paged;
 
 	wp_title( '|', true, 'right' );
-	
+
 	// Add the blog name.
 	bloginfo( 'name' );
-	
+
 	// Add the blog description for the home/front page.
 	$site_description = get_bloginfo( 'description', 'display' );
 	if ( $site_description && ( is_home() || is_front_page() ) )
@@ -39,12 +39,12 @@
 <link rel="profile" href="http://gmpg.org/xfn/11" />
 <link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'stylesheet_url' ); ?>" />
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
-<?php 
+<?php
 	$options = get_option('meola_theme_options');
 	if( $options['custom_favicon'] != '' ) : ?>
 <link rel="shortcut icon" type="image/ico" href="<?php echo $options['custom_favicon']; ?>" />
 <?php endif  ?>
-<?php 
+<?php
 	$options = get_option('meola_theme_options');
 	if( $options['custom_apple_icon'] != '' ) : ?>
 <link rel="apple-touch-icon" href="<?php echo $options['custom_apple_icon']; ?>" />
@@ -65,6 +65,8 @@
 </head>
 
 <body <?php body_class(); ?>>
+	<div class="row">
+		<div class="columns">
 
 	<div id="site-nav-wrap" class="clearfix">
 		<div id="site-nav-container">
@@ -136,5 +138,5 @@
 				<?php } ?>
 
 			<?php endif; ?>
-			
+
 		</header><!-- end #header -->

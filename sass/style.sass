@@ -19,3 +19,15 @@
 
 @import small/base
 @import small/layout
+
+// Import styles for medium viewport
+@media #{$small}
+  @import medium/base
+  @import medium/layout
+
+
+// Import styles for large viewport
+@media #{$medium}
+  @import large/base
+  @import large/layout
+
