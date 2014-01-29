@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Meola v1.0\n"
+"Project-Id-Version: kuTheme v1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
 "PO-Revision-Date: 2012-07-23 04:25:52+0000\n"
@@ -20,23 +20,23 @@ msgstr ""
 "X-Textdomain-Support: yes"
 
 #: 404.php:17
-#@ meola
+#@ kuTheme
 msgid "Not Found"
 msgstr "Nichts gefunden"
 
 #: 404.php:21
-#@ meola
+#@ kuTheme
 msgid "Apologies, but the page you requested could not be found. Perhaps searching will help."
 msgstr "Entschuldigung, aber die Seite konnte leider nicht gefunden werden. Vielleicht findest du ein Ergebnis über die Suchfunktion."
 
 #: content-single.php:25
 #: content.php:40
-#@ meola
+#@ kuTheme
 msgid "Pages:"
 msgstr "Seiten:"
 
 #: comments.php:12
-#@ meola
+#@ kuTheme
 msgid "This post is password protected. Enter the password to view any comments."
 msgstr "Dieser Artikel ist Passwort geschützt. Trage das Passwort ein, um die Kommentare zu sehen."
 
@@ -47,40 +47,40 @@ msgstr "Dieser Artikel ist Passwort geschützt. Trage das Passwort ein, um die K
 #: content-video.php:17
 #: content.php:17
 #, php-format
-#@ meola
+#@ kuTheme
 msgid "Permalink to %s"
 msgstr "Permalink zu %s"
 
 #: functions.php:74
-#@ meola
+#@ kuTheme
 msgid "Primary Navigation"
 msgstr "Haupt-Navigation"
 
 #: header.php:37
 #, php-format
-#@ meola
+#@ kuTheme
 msgid "Page %s"
 msgstr "Seite %s"
 
 #: functions.php:277
 #, php-format
-#@ meola
+#@ kuTheme
 msgid "%s"
 msgstr "%s"
 
 #: functions.php:292
-#@ meola
+#@ kuTheme
 msgid "Your comment is awaiting moderation."
 msgstr "Dein Kommentar befindet sich in Moderation."
 
 #: archive.php:79
 #: search.php:33
-#@ meola
+#@ kuTheme
 msgid "Nothing Found"
 msgstr "Keine Einträge gefunden"
 
 #: search.php:36
-#@ meola
+#@ kuTheme
 msgid "Sorry, but nothing matched your search criteria. Please try again with some different keywords."
 msgstr "Entschuldigung, leider wurde zu deiner Suchanfrage kein Eintrag gefunden. Bitte versuche es noch einmal mit anderen Schlagwörtern."
 
@@ -90,103 +90,65 @@ msgstr "Entschuldigung, leider wurde zu deiner Suchanfrage kein Eintrag gefunden
 #: functions.php:838
 #: functions.php:918
 #: functions.php:1234
-#@ meola
+#@ kuTheme
 msgid "Title:"
 msgstr "Titel:"
 
 #: comments.php:74
-#@ meola
+#@ kuTheme
 msgctxt "noun"
 msgid "Message <span class=\"required\">*</span>"
 msgstr "Nachricht <span class=\"required\">*</span>"
 
-#: includes/theme-options.php:63
-#: includes/theme-options.php:64
-#@ meola
-msgid "Theme Options"
-msgstr "Theme Optionen"
-
-#: includes/theme-options.php:110
-#, php-format
-#@ meola
-msgid "%s Theme Options"
-msgstr "%s Theme Optionen"
-
-#: includes/theme-options.php:126
-#@ meola
-msgid "Link Color"
-msgstr "Linkfarbe"
-
 #: functions.php:278
-#@ meola
+#@ kuTheme
 msgid "Reply"
 msgstr "Antworten"
 
 #: comments.php:64
-#@ meola
+#@ kuTheme
 msgid "Comments are closed."
 msgstr "Kommentare sind geschlossen."
 
 #: functions.php:606
-#@ meola
+#@ kuTheme
 msgid "Number of photos:"
 msgstr "Anzahl der Bilder:"
 
 #: functions.php:617
-#@ meola
+#@ kuTheme
 msgid "User"
 msgstr "Person"
 
 #: functions.php:618
-#@ meola
+#@ kuTheme
 msgid "Group"
 msgstr "Gruppe"
 
 #: functions.php:622
-#@ meola
+#@ kuTheme
 msgid "Show latest or random pictures:"
 msgstr "Zeige neuste oder zufällige Bilder:"
 
 #: functions.php:624
-#@ meola
+#@ kuTheme
 msgid "Latest"
 msgstr "Neuste"
 
 #: functions.php:625
-#@ meola
+#@ kuTheme
 msgid "Random"
 msgstr "Zufällige"
 
 #: functions.php:615
-#@ meola
+#@ kuTheme
 msgid "Choose user or group:"
 msgstr "Wähle Person oder Gruppe:"
 
 #: functions.php:591
-#@ meola
+#@ kuTheme
 msgid "Flickr ID (<a href=\"http://www.idgettr.com\" target=\"_blank\">idGettr</a>):"
 msgstr "Flickr ID (<a href=\"http://www.idgettr.com\" target=\"_blank\">idGettr</a>):"
-
-#: includes/theme-options.php:154
-#@ meola
-msgid "Custom Logo image"
-msgstr "Eigenes Logobild"
-
-#: includes/theme-options.php:185
-#: includes/theme-options.php:187
-#@ meola
-msgid "Custom Favicon"
-msgstr "Eigenes Favicon"
-
-#: includes/theme-options.php:172
-#@ meola
-msgid "Custom Footer text"
-msgstr "Footer Text anpassen"
-
-#: includes/theme-options.php:174
-#@ meola
-msgid "Customize the footer credit text. Standard HTML is allowed."
-msgstr "Trage deinen eigenen Footer-Text ein. Standard HTML-Code ist möglich."
 
 #: content-aside.php:27
 #: content-audio.php:27
@@ -198,7 +160,7 @@ msgstr "Trage deinen eigenen Footer-Text ein. Standard HTML-Code ist möglich."
 #: content-status.php:23
 #: content-video.php:27
 #: content.php:48
-#@ meola
+#@ kuTheme
 msgid "0 comments"
 msgstr "0 Kommentare"
 
@@ -212,7 +174,7 @@ msgstr "0 Kommentare"
 #: content-status.php:23
 #: content-video.php:27
 #: content.php:48
-#@ meola
+#@ kuTheme
 msgid "% comments"
 msgstr "% Kommentare"
 
@@ -226,109 +188,86 @@ msgstr "% Kommentare"
 #: content-status.php:23
 #: content-video.php:27
 #: content.php:48
-#@ meola
+#@ kuTheme
 msgid "comments off"
 msgstr "Kommentare deaktiviert"
 
 #. translators: 1: date, 2: time
 #: functions.php:282
 #, php-format
-#@ meola
+#@ kuTheme
 msgid "%1$s &#64; %2$s"
 msgstr "%1$s &#64; %2$s"
 
 #: comments.php:73
-#@ meola
+#@ kuTheme
 msgid "<p class=\"comment-note\">Required fields are marked <span class=\"required\">*</span>.</p>"
 msgstr "<p class=\"comment-note\">Pflichtfelder sind mit <span class=\"required\">*</span> markiert.</p>"
 
 #: functions.php:596
-#@ meola
+#@ kuTheme
 msgid "Flickr Profile Link Text:"
 msgstr "Flickr-Profil Link-Text:"
 
 #: functions.php:601
-#@ meola
+#@ kuTheme
 msgid "Flickr Profile URL:"
 msgstr "Flickr-Profil URL:"
 
 #: functions.php:843
-#@ meola
+#@ kuTheme
 msgid "Video embed code:"
 msgstr "Video-Einbettungscode:"
 
 #: footer.php:20
-#@ meola
+#@ kuTheme
 msgid "WordPress"
 msgstr "WordPress"
 
 #: content-single.php:49
 #, php-format
-#@ meola
+#@ kuTheme
 msgid "Posted by %s"
 msgstr "Veröffentlicht von %s"
 
-#: includes/theme-options.php:152
-#@ meola
-msgid "Custom Logo"
-msgstr "Eigenes Logobild"
-
-#: includes/theme-options.php:209
-#: includes/theme-options.php:211
-#@ meola
-msgid "Share option for posts"
-msgstr "Teilen-Buttons für Artikel"
-
-#: includes/theme-options.php:218
-#: includes/theme-options.php:220
-#@ meola
-msgid "Share option for single post pages only"
-msgstr "Teilen-Buttons nur auf Einzelartikel-Seiten"
-
-#: includes/theme-options.php:227
-#: includes/theme-options.php:229
-#@ meola
-msgid "Share option for pages"
-msgstr "Teilen-Buttons für Seiten"
-
 #: share.php:14
-#@ meola
+#@ kuTheme
 msgid "Tweet"
 msgstr "Twitter"
 
 #: includes/theme-options.php:156
 #: includes/theme-options.php:198
-#@ meola
+#@ kuTheme
 msgid "WordPress Media Uploader"
 msgstr "WordPress Mediathek"
 
 #: footer.php:50
-#@ meola
+#@ kuTheme
 msgid "en_US"
 msgstr "de_DE"
 
 #: functions.php:306
-#@ meola
+#@ kuTheme
 msgid "<span>Pingback:</span>"
 msgstr "<span>Pingback:</span>"
 
 #: includes/theme-options.php:156
-#@ meola
+#@ kuTheme
 msgid "Upload your own logo image using the "
 msgstr "Lade dein eigenes Logo-Bild hoch "
 
 #: includes/theme-options.php:124
-#@ meola
+#@ kuTheme
 msgid "Custom Link Color"
 msgstr "Eigene Linkfarbe"
 
 #: comments.php:48
-#@ meola
+#@ kuTheme
 msgid "&larr;  Older Comments"
 msgstr "&larr;  Ältere Kommentare"
 
 #: comments.php:49
-#@ meola
+#@ kuTheme
 msgid "Newer Comments  &rarr;"
 msgstr "Neuere Kommentare  &rarr;"
 
@@ -343,7 +282,7 @@ msgstr "Neuere Kommentare  &rarr;"
 #: content-video.php:21
 #: content.php:37
 #: functions.php:217
-#@ meola
+#@ kuTheme
 msgid "Read more &rarr;"
 msgstr "Weiterlesen &rarr;"
 
@@ -357,110 +296,110 @@ msgstr "Weiterlesen &rarr;"
 #: content-status.php:24
 #: content-video.php:28
 #: content.php:49
-#@ meola
+#@ kuTheme
 msgid "Edit Post &rarr;"
 msgstr "Artikel bearbeiten &rarr;"
 
 #: includes/theme-options.php:156
-#@ meola
+#@ kuTheme
 msgid ". Then copy your logo image file URL and insert the URL here."
 msgstr ". Dann kopiere deine Logobild-URL und trage die URL hier ein."
 
 #: includes/theme-options.php:189
-#@ meola
+#@ kuTheme
 msgid "Create a <strong>16x16px</strong> image and generate a .ico favicon using a favicon online generator (e.g. <a href=\"http://www.faviconr.com/\" target=\"_blank\">Faviconr</a>). Now upload your favicon to your themes folder (via FTP) and enter your Favicon URL here (the URL path should be similar to: yourdomain.com/wp-content/themes/meola/favicon.ico)."
 msgstr "Erstelle ein <strong>16x16px</strong> Bild und erzeuge ein .ico favicon mit Hilfe eines Favicon Online Generators (z.B. <a href=\"http://www.faviconr.com/\" target=\"_blank\">Faviconr</a>). Jetzt kannst du dein .ico Favicon (mit einem FTP Programm) in deinen Themes-Ordner hochladen und die URL des Favicons hier eintragen (der URL Pfad sollte ähnlich sein wie:  deinedomain.de/wp-content/themes/meola/favicon.ico)."
 
 #: includes/theme-options.php:194
 #: includes/theme-options.php:196
-#@ meola
+#@ kuTheme
 msgid "Custom Apple Touch Icon"
 msgstr "Eigenes Apple Touch Icon"
 
 #: includes/theme-options.php:198
-#@ meola
+#@ kuTheme
 msgid "Create a <strong>128x128px png</strong> image for your webclip icon. Upload your image using the "
 msgstr "Erstelle ein <strong>128x128px png</strong> Bild für dein Apple Webclip-Icon. Lade das Bild über die "
 
 #: includes/theme-options.php:198
-#@ meola
+#@ kuTheme
 msgid ". Now copy the image file URL and insert the URL here."
 msgstr " hoch. Dann kopiere die Bild-URL und füge sie hier ein."
 
 #: includes/theme-options.php:222
-#@ meola
+#@ kuTheme
 msgid "Check this box to include the share post buttons <strong>only</strong> on single post pages (below the post content)."
 msgstr "Wähle diese Option, um die Teilen-Buttons <strong>nur</strong> auf den Artikel-Einzelseiten (unterhalb des Artikels) zu integrieren."
 
 #: includes/theme-options.php:231
-#@ meola
+#@ kuTheme
 msgid "Check this box to also include the share buttons on pages."
 msgstr "Wähle diese Option, um die Teilen-Buttons auch auf deinen Seiten anzuzeigen."
 
 #: share.php:10
-#@ meola
+#@ kuTheme
 msgid "Share"
 msgstr "Teilen"
 
 #: footer.php:20
-#@ meola
+#@ kuTheme
 msgid "Proudly powered by"
 msgstr "Proudly powered by"
 
 #: footer.php:21
 #, php-format
-#@ meola
+#@ kuTheme
 msgid "Theme: %1$s by %2$s"
 msgstr "Theme: %1$s von %2$s"
 
 #: header.php:71
-#@ meola
+#@ kuTheme
 msgid "Menu"
 msgstr "Menü"
 
 #: archive.php:21
 #, php-format
-#@ meola
+#@ kuTheme
 msgid "Posts in Category &lsquo;%s&rsquo;"
 msgstr "Artikel in der Kategorie &lsquo;%s&rsquo;"
 
 #: archive.php:24
 #, php-format
-#@ meola
+#@ kuTheme
 msgid "Posts Tagged &lsquo;%s&rsquo;"
 msgstr "Artikel mit dem Schlagwort &lsquo;%s&rsquo;"
 
 #: archive.php:28
 #, php-format
-#@ meola
+#@ kuTheme
 msgid "All Posts by %s"
 msgstr "Alle Artikel von %s"
 
 #: archive.php:32
 #, php-format
-#@ meola
+#@ kuTheme
 msgid "Daily Archives: %s"
 msgstr "Archiv von: %s"
 
 #: archive.php:35
 #, php-format
-#@ meola
+#@ kuTheme
 msgid "Monthly Archives: %s"
 msgstr "Archiv des Monats: %s"
 
 #: archive.php:38
 #, php-format
-#@ meola
+#@ kuTheme
 msgid "Yearly Archives: %s"
 msgstr "Archiv des Jahres: %s"
 
 #: archive.php:41
-#@ meola
+#@ kuTheme
 msgid "Archives"
 msgstr "Archiv"
 
 #: archive.php:83
-#@ meola
+#@ kuTheme
 msgid "It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help."
 msgstr "Leider kann kein Eintrag zu diesem Suchbegriff gefunden werden. Vielleicht ist die Suche mit einem alternativen Schlagwort erfolgreich."
 
@@ -477,442 +416,442 @@ msgstr "Leider kann kein Eintrag zu diesem Suchbegriff gefunden werden. Vielleic
 #: content-video.php:27
 #: content.php:48
 #, php-format
-#@ meola
+#@ kuTheme
 msgid "1 comment"
 msgid_plural "%1$s comments"
 msgstr[0] "1 Kommentar"
 msgstr[1] "%1$s Kommentare"
 
 #: comments.php:75
-#@ meola
+#@ kuTheme
 msgid "Send Comment"
 msgstr "Kommentar senden"
 
 #: content-single.php:30
-#@ meola
+#@ kuTheme
 msgid "Posted in:"
 msgstr "Veröffentlicht in:"
 
 #: content-single.php:33
-#@ meola
+#@ kuTheme
 msgid "Tagged:"
 msgstr "Schlagwort:"
 
 #: footer.php:20
-#@ meola
+#@ kuTheme
 msgid "http://wordpress.org/"
 msgstr "http://wordpress.org/"
 
 #: functions.php:75
-#@ meola
+#@ kuTheme
 msgid "Footer Navigation (no sub menus supported)"
 msgstr "Footer Navigation (es werden keine Untermenüs unterstützt)"
 
 #: functions.php:1239
-#@ meola
+#@ kuTheme
 msgid "Twitter URL:"
 msgstr "Twitter URL:"
 
 #: functions.php:1244
-#@ meola
+#@ kuTheme
 msgid "Facebook URL:"
 msgstr "Facebook URL:"
 
 #: functions.php:1249
-#@ meola
+#@ kuTheme
 msgid "Google+ URL:"
 msgstr "Google+ URL:"
 
 #: functions.php:1254
-#@ meola
+#@ kuTheme
 msgid "Flickr URL:"
 msgstr "Flickr URL:"
 
 #: functions.php:1259
-#@ meola
+#@ kuTheme
 msgid "Instagram URL (e.g. via Instagrid.me):"
 msgstr "Instagram URL (z.B. mit Instagrid.me):"
 
 #: functions.php:1264
-#@ meola
+#@ kuTheme
 msgid "Picasa URL:"
 msgstr "Picasa URL:"
 
 #: functions.php:1269
-#@ meola
+#@ kuTheme
 msgid "500px URL:"
 msgstr "500px URL:"
 
 #: functions.php:1274
-#@ meola
+#@ kuTheme
 msgid "YouTube URL:"
 msgstr "YouTube URL:"
 
 #: functions.php:1279
-#@ meola
+#@ kuTheme
 msgid "Vimeo URL:"
 msgstr "Vimeo URL:"
 
 #: functions.php:1284
-#@ meola
+#@ kuTheme
 msgid "Dribbble URL:"
 msgstr "Dribbble URL:"
 
 #: functions.php:1289
-#@ meola
+#@ kuTheme
 msgid "Ffffound URL:"
 msgstr "Ffffound URL:"
 
 #: functions.php:1294
-#@ meola
+#@ kuTheme
 msgid "Pinterest URL:"
 msgstr "Pinterest URL:"
 
 #: functions.php:1304
-#@ meola
+#@ kuTheme
 msgid "Behance Network URL:"
 msgstr "Behance Network URL:"
 
 #: functions.php:1309
-#@ meola
+#@ kuTheme
 msgid "deviantART URL:"
 msgstr "deviantART URL:"
 
 #: functions.php:1314
-#@ meola
+#@ kuTheme
 msgid "Squidoo URL:"
 msgstr "Squidoo URL:"
 
 #: functions.php:1319
-#@ meola
+#@ kuTheme
 msgid "Slideshare URL:"
 msgstr "Slideshare URL:"
 
 #: functions.php:1324
-#@ meola
+#@ kuTheme
 msgid "Last.fm URL:"
 msgstr "Last.fm URL:"
 
 #: functions.php:1329
-#@ meola
+#@ kuTheme
 msgid "Grooveshark URL:"
 msgstr "Grooveshark URL:"
 
 #: functions.php:1334
-#@ meola
+#@ kuTheme
 msgid "Soundcloud URL:"
 msgstr "Soundcloud URL:"
 
 #: functions.php:1339
-#@ meola
+#@ kuTheme
 msgid "Foursquare URL:"
 msgstr "Foursquare URL:"
 
 #: functions.php:1344
-#@ meola
+#@ kuTheme
 msgid "GitHub URL:"
 msgstr "GitHub URL:"
 
 #: functions.php:1349
-#@ meola
+#@ kuTheme
 msgid "Linkedin URL:"
 msgstr "Linkedin URL:"
 
 #: functions.php:1354
-#@ meola
+#@ kuTheme
 msgid "Xing URL:"
 msgstr "Xing URL:"
 
 #: functions.php:1359
-#@ meola
+#@ kuTheme
 msgid "WordPress URL:"
 msgstr "WordPress URL:"
 
 #: functions.php:1364
-#@ meola
+#@ kuTheme
 msgid "Tumblr URL:"
 msgstr "Tumblr URL:"
 
 #: functions.php:1369
-#@ meola
+#@ kuTheme
 msgid "RSS-Feed URL:"
 msgstr "RSS-Feed URL:"
 
 #: functions.php:1374
-#@ meola
+#@ kuTheme
 msgid "RSS for Comments URL:"
 msgstr "RSS der Kommentare URL:"
 
 #: functions.php:1379
-#@ meola
+#@ kuTheme
 msgid "Open all links in a new browser tab"
 msgstr "Öffne alle Links in einem neuen Browser-Tab"
 
 #: image.php:66
-#@ meola
+#@ kuTheme
 msgid "&larr; Previous Image"
 msgstr "&larr; Vorheriges Bild"
 
 #: image.php:67
-#@ meola
+#@ kuTheme
 msgid "Next Image &rarr;"
 msgstr "Nächstes Bild &rarr;"
 
 #: includes/theme-options.php:170
-#@ meola
+#@ kuTheme
 msgid "Custom Footer Text"
 msgstr "Individueller Footertext"
 
 #: includes/theme-options.php:213
-#@ meola
+#@ kuTheme
 msgid "Check this box to include share buttons (for Twitter, Facebook, Google+) on your blogs front page and on single post pages."
 msgstr "Wähle diese Option, um die Share-Buttons (für Twitter, Google+, Facebook) auf der Blog-Startseite, sowie auf Artikel-Einzelseiten anzuzeigen."
 
 #: search.php:17
 #, php-format
-#@ meola
+#@ kuTheme
 msgid "Search Results for &lsquo;%s&rsquo;"
 msgstr "Suchergebnisse für &lsquo;%s&rsquo;"
 
 #: searchform.php:11
-#@ meola
+#@ kuTheme
 msgid "Search"
 msgstr "Suche"
 
 #: single.php:25
-#@ meola
+#@ kuTheme
 msgid "Next Post &rarr;"
 msgstr "Nächster Artikel &rarr;"
 
 #: single.php:26
-#@ meola
+#@ kuTheme
 msgid "&larr; Previous Post"
 msgstr "&larr; Vorheriger Artikel"
 
 #: comments.php:32
-#@ meola
+#@ kuTheme
 msgid "Write a comment"
 msgstr "Schreibe einen Kommentar"
 
 #: footer.php:28
-#@ meola
+#@ kuTheme
 msgid "Top"
 msgstr "Top"
 
 #: functions.php:286
 #: functions.php:307
-#@ meola
+#@ kuTheme
 msgid "Edit"
 msgstr "Bearbeiten"
 
 #: functions.php:321
-#@ meola
+#@ kuTheme
 msgid "Widget Area Top"
 msgstr "Widgetbereich Oben"
 
 #: functions.php:323
-#@ meola
+#@ kuTheme
 msgid "Widgets will appear below the header and above the post or page content area."
 msgstr "Die Widgets werden unterhalb des Headers und oberhalb der Artikel oder Seiten angezeigt."
 
 #: functions.php:331
-#@ meola
+#@ kuTheme
 msgid "Widget Area Bottom"
 msgstr "Widgetbereich Unten"
 
 #: functions.php:333
-#@ meola
+#@ kuTheme
 msgid "Widgets will appear below the post or page content area and above the footer."
 msgstr "Widgets werden unterhalb der Artikel und Seiten und oberhalb des Footers angezeigt."
 
 #: functions.php:355
-#@ meola
+#@ kuTheme
 msgid "&laquo; Older entries"
 msgstr "&laquo; Ältere Einträge"
 
 #: functions.php:356
-#@ meola
+#@ kuTheme
 msgid "Newer entries &raquo;"
 msgstr "Neuere Einträge &raquo;"
 
 #: functions.php:545
-#@ meola
+#@ kuTheme
 msgid "Meola Flickr"
 msgstr "Meola Flickr"
 
 #: functions.php:643
-#@ meola
+#@ kuTheme
 msgid "Meola Featured Image"
 msgstr "Meola Featured Bild"
 
 #: functions.php:689
-#@ meola
+#@ kuTheme
 msgid "Image Width:"
 msgstr "Bildbreite:"
 
 #: functions.php:694
-#@ meola
+#@ kuTheme
 msgid "Image Height:"
 msgstr "Bildhöhe:"
 
 #: functions.php:699
-#@ meola
+#@ kuTheme
 msgid "Image Title:"
 msgstr "Bild-Titel:"
 
 #: functions.php:704
-#@ meola
+#@ kuTheme
 msgid "Link URL:"
 msgstr "Link URL:"
 
 #: functions.php:723
-#@ meola
+#@ kuTheme
 msgid "Meola About"
 msgstr "Meola About"
 
 #: functions.php:684
 #: functions.php:769
-#@ meola
+#@ kuTheme
 msgid "Image URL:"
 msgstr "Bild URL:"
 
 #: functions.php:784
-#@ meola
+#@ kuTheme
 msgid "Image Caption Text:"
 msgstr "Text der Bildunterschrift:"
 
 #: functions.php:789
-#@ meola
+#@ kuTheme
 msgid "About Text:"
 msgstr "About Text:"
 
 #: functions.php:808
-#@ meola
+#@ kuTheme
 msgid "Meola Featured Video"
 msgstr "Meola Featured Video"
 
 #: functions.php:863
-#@ meola
+#@ kuTheme
 msgid "Meola Recent Posts"
 msgstr "Meola Neueste Artikel"
 
 #: functions.php:929
-#@ meola
+#@ kuTheme
 msgid "Display thumbnails?"
 msgstr "Vorschaubilder anzeigen?"
 
 #: functions.php:948
-#@ meola
+#@ kuTheme
 msgid "Meola Social Links"
 msgstr "Meola Social Links"
 
 #: functions.php:1299
-#@ meola
+#@ kuTheme
 msgid "mixi URL:"
 msgstr "mixi URL:"
 
 #: includes/theme-options.php:122
-#@ meola
+#@ kuTheme
 msgid "Custom Colors"
 msgstr "Eigene Farben"
 
 #: includes/theme-options.php:130
 #, php-format
-#@ meola
+#@ kuTheme
 msgid "Choose your custom link color, the default Link Color is: %s. Do not forget to include the # before the color value."
 msgstr "Wähle deine eigene Linkfarbe, die Standardfarbe ist: %s. Vergiss dabei nicht das # Hexwert-Zeichen vor dem Farbwert."
 
 #: includes/theme-options.php:135
 #: includes/theme-options.php:137
-#@ meola
+#@ kuTheme
 msgid "Custom Background Color"
 msgstr "Eigene Hintergrundfarbe"
 
 #: includes/theme-options.php:141
 #, php-format
-#@ meola
+#@ kuTheme
 msgid "Choose your custom background colors (for special Widgets, Main Navigation & Autor Info). The default Background Color is: %s)."
 msgstr "Wähle eine eigene Hintergrundfarbe (für spezielle Widgets, die Haupt-Navigation und das Autoren-Infofeld). Die Standardfarbe ist: %s."
 
 #: includes/theme-options.php:150
-#@ meola
+#@ kuTheme
 msgid "Custom Logo, Post Excerpts and Custom Footer Text"
 msgstr "Eigenes Logo, Artikel-Excerpts und eigener Footertext"
 
 #: includes/theme-options.php:161
 #: includes/theme-options.php:163
-#@ meola
+#@ kuTheme
 msgid "Post Excerpts"
 msgstr "Artikel-Excerpts"
 
 #: includes/theme-options.php:165
-#@ meola
+#@ kuTheme
 msgid "Check this box to show automatic post excerpts in your blog (with this option you will not need the more tag in posts)."
 msgstr "Mache ein Häkchen, um automatische Artikel-Excerpts in deinem Blog anzuzeigen (mit dieser Option benötigst du keinen more tag in deinen Artikeln)."
 
 #: includes/theme-options.php:183
-#@ meola
+#@ kuTheme
 msgid "Favicon and Apple Touch Icon"
 msgstr "Favicon und Apple Touch Icon"
 
 #: includes/theme-options.php:207
-#@ meola
+#@ kuTheme
 msgid "Share Buttons"
 msgstr "Teilen Buttons"
 
 #: includes/theme-options.php:240
-#@ meola
+#@ kuTheme
 msgid "Responsive Slider"
 msgstr "Responsive Slider"
 
 #: includes/theme-options.php:242
 #: includes/theme-options.php:244
-#@ meola
+#@ kuTheme
 msgid "Include Responsive Slider"
 msgstr "Responsive Slider integrieren"
 
 #: searchform.php:10
-#@ meola
+#@ kuTheme
 msgid "Search this site..."
 msgstr "Seite durchsuchen..."
 
 #: functions.php:923
-#@ meola
+#@ kuTheme
 msgid "Category ID numbers (to choose which categories to include):"
 msgstr "Kategorie ID Nummern (um festzulegen, welche Kategorien angezeigt werden):"
 
 #: includes/theme-options.php:246
-#@ meola
+#@ kuTheme
 msgid "Check this box to inlcude the Responsive Slider WordPress-Plugin below the blog title in the header section of your front page(this can either be your blog or a static page, see Settings/Reading)."
 msgstr "Mache ein Häkchen, um den Slider des Responsive Slider WordPress-Plugins unterhalb des Blog-Titels im Header deiner Startseite anzuzeigen (die Startseite kann entweder dein Blog oder eine statische Seite sein, siehe Einstellungen/Lesen)."
 
 #: functions.php:126
-#@ meola
+#@ kuTheme
 msgid "Ocean"
 msgstr "Ozean"
 
 #: functions.php:774
-#@ meola
+#@ kuTheme
 msgid "Image Width (only value, no px):"
 msgstr "Bildbreite (nur Wert, nicht px):"
 
 #: functions.php:779
-#@ meola
+#@ kuTheme
 msgid "Image Height (only value, no px):"
 msgstr "Bildhöhe (nur Wert, nicht px):"
 
 #: functions.php:131
-#@ meola
+#@ kuTheme
 msgid "Directions"
 msgstr "Wegweise"
 
 #: functions.php:136
-#@ meola
+#@ kuTheme
 msgid "Wave"
 msgstr "Welle"
 
 #: functions.php:141
-#@ meola
+#@ kuTheme
 msgid "Beach"
 msgstr "Strand"
 

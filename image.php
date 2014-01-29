@@ -1,9 +1,6 @@
 <?php
 /**
- * The template for displaying image attachments.
- *
- * @package Meola
- * @since Meola 1.0
+ * @package kuTheme
  */
 
 get_header(); ?>
@@ -63,8 +60,8 @@ get_header(); ?>
 			<?php comments_template(); ?>
 			
 			<nav id="image-nav"  class="clearfix">
-				<div class="previous-image"><?php previous_image_link( '%link', __( '&larr; Previous Image', 'meola' )); ?></div>
-				<div class="next-image"><?php next_image_link(  '%link', __( 'Next Image &rarr;', 'meola' ) ); ?></div>
+				<div class="previous-image"><?php previous_image_link( '%link', __( '&larr; Previous Image', 'kuTheme' )); ?></div>
+				<div class="next-image"><?php next_image_link(  '%link', __( 'Next Image &rarr;', 'kuTheme' ) ); ?></div>
 			</nav><!-- #image-nav -->
 
 	</div><!-- end #content -->

@@ -12,22 +12,24 @@
 @import normalize
 
 // Foundation
-@import foundation
+@import foundation_includes
 
 // Mixins import
 @import mixins
 
 @import small/base
 @import small/layout
+@import small/modules/post
 
 // Import styles for medium viewport
-@media #{$small}
+@media #{$medium}
   @import medium/base
   @import medium/layout
-
+  @import medium/modules/post
 
 // Import styles for large viewport
-@media #{$medium}
+@media #{$large}
   @import large/base
   @import large/layout
+  @import large/modules/post
 

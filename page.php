@@ -1,9 +1,6 @@
 <?php
 /**
- * The template for displaying all pages.
- *
- * @package Meola
- * @since Meola 1.0
+ * @package kuTheme
  */
 
 get_header(); ?>

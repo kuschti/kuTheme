@@ -3,8 +3,7 @@
  * Template Name: Full Width
  * Description: A full-width site template
  *
- * @package Meola
- * @since Meola 1.0
+ * @package kuTheme
  */
 
 get_header(); ?>
@@ -13,16 +12,14 @@ get_header(); ?>
 
 	<div id="content" class="fullwidth">
 
-		<?php /* Start the Loop */ ?>
 		<?php while ( have_posts() ) : the_post(); ?>
 
 			<?php get_template_part( 'content', 'page' ); ?>
-
 			<?php comments_template( '', true ); ?>
 
-		<?php endwhile; // end of the loop. ?>
+		<?php endwhile; ?>
 
-	</div><!-- end #content .fullwidth -->
+	</div>
 
 <?php get_sidebar('bottom'); ?>
 <?php get_footer(); ?>

@@ -1,30 +1,20 @@
 <?php
 /**
- * The template used for displaying page content.
- *
- * @package Meola
- * @since Meola 1.0
+ * @package kuTheme
  */
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+<article id="post-<?php the_ID(); ?>" <?php post_class(); ?> role="article">
 
-	<header class="entry-header">
+	<header class="post-header text-center">
 		<h1 class="entry-title"><?php the_title(); ?></h1>
-	</header><!-- end .entry-header -->
-	
-	<div class="entry-content clearfix">
+	</header>
+
+	<div class="post-content clearfix">
 		<?php the_content(); ?>
-	</div><!-- end .entry-content -->
+	</div>
 
-	<footer class="entry-meta">
-		<ul>
-			<?php // Include Share-Btns
-				$options = get_option('meola_theme_options');
-				if( $options['share-pages'] ) : ?>
-				<?php get_template_part( 'share'); ?>
-			<?php endif; ?>
-		</ul>
-	</footer><!-- end .entry-meta -->
+	<footer class="post-meta">
+	</footer>
 
-</article><!-- end post-<?php the_ID(); ?> -->
+</article>

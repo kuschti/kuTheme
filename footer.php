@@ -1,63 +1,39 @@
- <?php
+<?php
 /**
- * The template for displaying the footer.
- *
- * @package Meola
- * @since Meola 1.0
+ * @package kuTheme
  */
 ?>
+			<footer id="footer" role="contentinfo" class="row">
 
-	<footer id="footer" class="clearfix">
-
-		<div id="site-info">
-			<?php
-				$options = get_option('meola_theme_options');
-				if($options['custom_footertext'] != '' ){
-					echo ('<p>');
-					echo stripslashes($options['custom_footertext']);
-					echo ('</p>');
-			} else { ?>
-			<ul class="credit">
-				<li>&copy; <?php echo date('Y'); ?> <?php bloginfo(); ?></li>
-				<li><?php _e('Proudly powered by', 'meola') ?> <a href="<?php echo esc_url( __( 'http://wordpress.org/', 'meola' ) ); ?>" ><?php _e('WordPress', 'meola') ?></a></li>
-				<li><?php printf( __( 'Theme: %1$s by %2$s', 'meola' ), 'Meola', '<a href="http://www.elmastudio.de/wordpress-themes/">Elmastudio</a>' ); ?></li>
-			</ul><!-- end .credit -->
-			<?php } ?>
-
-			<?php if (has_nav_menu( 'optional' ) ) {
-				wp_nav_menu( array('theme_location' => 'optional', 'container' => 'nav' , 'container_class' => 'footer-nav', 'depth' => 1 ));} 
-			?>
-			<a href="#site-nav-wrap" class="top clearfix"><?php _e('Top', 'meola') ?></a>
-		</div><!-- end #site-info -->
-
-	</footer><!-- end #footer -->
-
-<?php // Includes Twitter, Facebook and Google+ button code if the share post option is active.
-	$options = get_option('meola_theme_options');
-	if($options['share-singleposts'] or $options['share-posts'] or $options['share-pages']) : ?>
-	<script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
-	<script type="text/javascript">
-	(function() {
-		var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-		po.src = 'https://apis.google.com/js/plusone.js';
-		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-	})();
-	</script>
-
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/<?php _e('en_US', 'meola') ?>/all.js#xfbml=1";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
-
-<?php endif; ?>
-
-<?php wp_footer(); ?>
+				<div id="site-info" class="columns large-4">
+					<small>&copy; <?php echo date('Y'); ?> <?php bloginfo(); ?></small>
+				</div>
+				<nav id="footer-nav" class="columns large-8">
+					<ul class="inline-list">
+						<li><a href="<?php echo home_url( '/' ); ?>type/image/">Bilder</a></li>
+						<li><a href="<?php echo home_url( '/' ); ?>type/gallery/">Gallerie</a></li>
+						<li><a href="<?php echo home_url( '/' ); ?>type/video/">Videos</a></li>
+						<li><a href="<?php echo home_url( '/' ); ?>type/link/">Links</a></li>
+						<li><a href="<?php echo home_url( '/' ); ?>type/aside/">Kurzmitteilungen</a></li>
+						<li><a href="<?php echo home_url( '/' ); ?>type/quote/">Zitate</a></li>
+						<li><a href="<?php echo home_url( '/' ); ?>type/status/">Status</a></li>
+					</ul>
+				</nav>
+			</footer>
 
 		</div>
 	</div>
+
+	<?php wp_footer(); ?>
+	<?php
+		if ( function_exists( 'yoast_analytics' ) ) {
+  		yoast_analytics();
+		}
+	?>
+	<?php
+		if ( is_singular() && get_option( 'thread_comments' ) )
+			wp_enqueue_script( 'comment-reply' );
+	?>
+
 </body>
 </html>

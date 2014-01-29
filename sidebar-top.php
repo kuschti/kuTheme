@@ -1,9 +1,6 @@
 <?php
 /**
- * The Sidebar Top containing the widget areas.
- *
- * @package Meola
- * @since Meola 1.0
+ * @package kuTheme
  */
 ?>
 
