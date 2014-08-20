@@ -1,17 +1,25 @@
 var gulp = require('gulp'),
     sass = require('gulp-sass'),
-    neat = require('node-neat').includePaths;
+    neat = require('node-neat').includePaths,
+    notify = require("gulp-notify");
 
 var paths = {
-  scss: './src/sass/*.scss'
+  sass: './src/sass/*.sass'
 };
 
 gulp.task('sass', function () {
-  return gulp.src(paths.scss)
+  return gulp.src(paths.sass)
     .pipe(sass({
-      includePaths: ['styles'].concat(neat)
+      includePaths: ['./src/sass'].concat(neat),
+      onError: function(err) {
+        return notify().write(err);
+      }
     }))
     .pipe(gulp.dest('./dist/css'));
 });
 
-gulp.task('default', ['sass']);
+gulp.task('watch', function() {
+  gulp.watch(paths.sass, ['sass']);
+});
+
+gulp.task('default', ['watch', 'sass']);
