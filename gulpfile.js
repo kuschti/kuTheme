@@ -4,7 +4,8 @@ var gulp = require('gulp'),
     notify = require("gulp-notify");
 
 var paths = {
-  sass: './src/sass/*.sass'
+  sass: './src/sass/*.sass',
+  sassFiles: './src/sass/**/*.sass'
 };
 
 gulp.task('sass', function () {
@@ -19,7 +20,7 @@ gulp.task('sass', function () {
 });
 
 gulp.task('watch', function() {
-  gulp.watch(paths.sass, ['sass']);
+  gulp.watch(paths.sassFiles, ['sass']);
 });
 
-gulp.task('default', ['watch', 'sass']);
+gulp.task('default', ['sass', 'watch']);
