@@ -4,12 +4,12 @@
 
 // Stylesheet: Main Stylesheet
 
-// Project settings
-@import "settings";
-
 // Project Libraries
 @import "bourbon";
 @import "neat";
+
+// Project settings
+@import "settings";
 
 // import normalize
 @import "normalize";
@@ -22,14 +22,15 @@
 @import "small/modules/post";
 
 // Import styles for medium viewport
-// @media #{$medium}
-//   @import medium/base
-//   @import medium/layout
-//   @import medium/modules/post
+@media #{$medium} {
+  @import "medium/base";
+  @import "medium/layout";
+  @import "medium/modules/post";
+}
 
 // Import styles for large viewport
-// @media #{$large}
-//   @import large/base
-//   @import large/layout
-//   @import large/modules/post
-
+@media #{$large} {
+  @import "large/base";
+  @import "large/layout";
+  @import "large/modules/post";
+}

@@ -1,0 +1,52 @@
+// BOURBON SETTINGS
+$prefix-for-webkit: true;
+$prefix-for-mozilla: true;
+$prefix-for-microsoft: true;
+$prefix-for-opera: true;
+$prefix-for-spec: true;
+$em-base: 16px;
+
+// NEAT SETTINGS
+$column: 90px;
+$gutter: 30px;
+$grid-columns: 10;
+$max-width: rem(1200);
+
+$base-font-size: 150%;
+
+$medium: "(min-width: 33.750em)"; // 540px
+$large: "(min-width: 56.250em)";  // 900px
+
+// COLORS
+$red: #a62630;
+$black: #333333;
+
+$primary-color: $red;
+$secondary-color: scale-color($primary-color, $lightness: -15%);
+$alert-color: #f04124;
+$success-color: #43ac6a;
+$warning-color: #f08a24;
+$info-color: #a0d3e8;
+
+$font-weight-thin: 300;
+$font-weight-regular: 400;
+$font-weight-bold: 700;
+
+$body-bg: white;
+$body-font-color: $black;
+$body-font-family: "futura-pt", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+$body-font-weight: $font-weight-regular;
+
+$h1-font-size: rem-calc(96);
+$h2-font-size: rem-calc(72);
+$h3-font-size: rem-calc(48);
+$h4-font-size: rem-calc(36);
+$h5-font-size: rem-calc(24);
+$h6-font-size: 1rem;
+
+$header-font-weight: $font-weight-bold;
+
+$anchor-font-color: $primary-color;
+$anchor-font-color-hover: $secondary-color;
+
+$paragraph-font-weight: 400;

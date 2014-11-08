@@ -1,17 +1,21 @@
-var gulp = require('gulp'),
-    sass = require('gulp-sass'),
-    neat = require('node-neat').includePaths,
-    notify = require("gulp-notify");
+var gulp      = require('gulp'),
+    sass      = require('gulp-sass'),
+    concat    = require('gulp-concat'),
+    bourbon   = require('node-bourbon'),
+    neat      = require('node-neat').includePaths,
+    minifyCSS = require('gulp-minify-css'),
+    rename    = require('gulp-rename'),
+    notify    = require("gulp-notify");
 
 var paths = {
-  sass: './src/sass/*.sass',
-  sassFiles: './src/sass/**/*.sass'
+  style: './src/scss/style.scss',
+  sassFiles: './src/scss/**/*.scss'
 };
 
 gulp.task('sass', function () {
-  return gulp.src(paths.sass)
+  return gulp.src(paths.style)
     .pipe(sass({
-      includePaths: ['./src/sass'].concat(neat),
+      includePaths: neat,
       onError: function(err) {
         return notify().write(err);
       }

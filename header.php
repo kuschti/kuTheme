@@ -33,21 +33,18 @@
 </head>
 
 <body <?php body_class(); ?>>
-	<div class="row">
-		<div class="columns">
+	<header class="header" role="banner">
+		<div class="header__branding">
+			<h1><a href="<?php echo home_url( '/' ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>"><?php bloginfo( 'name' ); ?></a></h1>
+			<h2 class="header__description"><?php bloginfo( 'description' ); ?></h2>
+		</div>
+		<nav class="main-nav">
+			<ul class="inline-list">
+				<li><a href="<?php echo home_url( '/' ); ?>">Blog</a></li>
+				<li><a href="<?php echo home_url( '/' ); ?>review">Reviews</a></li>
+				<li><a href="<?php echo home_url( '/' ); ?>about">&Uuml;ber mich</a></li>
+				<li><a href="<?php echo home_url( '/' ); ?>about/contact">Kontakt</a></li>
+			</ul>
+		</nav>
 
-			<header id="header" role="banner" class="row">
-				<div id="branding" class="columns large-6">
-					<h1><a href="<?php echo home_url( '/' ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>"><?php bloginfo( 'name' ); ?></a></h1>
-					<h2 id="site-description"><?php bloginfo( 'description' ); ?></h2>
-				</div>
-				<nav id="main-nav" class="right">
-					<ul class="inline-list">
-						<li><a href="<?php echo home_url( '/' ); ?>">Blog</a></li>
-						<li><a href="<?php echo home_url( '/' ); ?>review">Reviews</a></li>
-						<li><a href="<?php echo home_url( '/' ); ?>about">&Uuml;ber mich</a></li>
-						<li><a href="<?php echo home_url( '/' ); ?>about/contact">Kontakt</a></li>
-					</ul>
-				</nav>
-
-			</header>
+	</header>
